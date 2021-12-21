@@ -1,0 +1,41 @@
+/* Button Spacing in Data Tables */
+
+.spaceButtons{
+    margin-right: 1rem;
+    margin-bottom: .7rem;
+}
+.editButton{
+    margin-right:.3rem;
+}
+
+
+/*List Result Image Size in Manage Employee Accounts */
+
+.accountManageImageResult{
+    max-width: 10%;
+}
+
+
+/*List Result add Department Head*/
+
+.DepartmentHeadImage{
+    max-width: 10%;
+}
+
+    /*[Leave View]List Results Leave Allocation */
+.leaveAllocateImage{
+    max-width: 10%;
+}
+
+/*[Schedule Control] For the time picker IN Schdule */
+.ui-timepicker-container{
+    z-index: 9999 !important;
+}
+/*[PayrollView] Payroll Group*/
+.payrollGroup{
+    width: 30%;
+    margin-left: 70%;
+    margin-bottom:3%;
+}
+
+
