@@ -166,6 +166,14 @@
                 </select>
             </div>
 
+            <div class = "form-group">
+                <label for = "">  Base Salary </label>
+                <input type = "text" id = "baseSalary" class = "form-control">
+            </div>
+
+
+            
+
 
             <div class = "form-group">
                 <label for = ""> RFID Number </label>
