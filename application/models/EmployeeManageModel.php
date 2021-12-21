@@ -50,13 +50,20 @@
            
             $this->db->trans_start();
             $this->db->insert('employees',$ajax_data); 
-            
+            $this->db->insert('employeecalculation',$ajax_data2);
+            $affectedRows = $this->db->affected_rows();
             $this->db->trans_complete();
+        
             if ($this->db->trans_status() === FALSE) {
                 return false;
             } 
             else {
-                return true; 
+                if($affectedRows <= 0){
+                    return false;
+                }
+                else{
+                    return true; 
+                }
             }
         }
 

@@ -137,9 +137,14 @@ class EmployeeManageController extends CI_Controller {
 							'Image' => $imagePath['message'],
 							);
 
+
+							$baseSalary = $this->input->post('BaseSalary');
+							$baseSalary = round($baseSalary,2);
+							
+							
 							$ajax_data2 = array(
 								'EmployeeNumber'=>$employeeId,
-								'BaseSalary' => $this->input->post('BaseSalary'),			
+								'BaseSalary' => $baseSalary,			
 							);
 		
 							$this->load->model('EmployeeManageModel');
