@@ -20,7 +20,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                             <h1> 3 </h1>
+                                             <h1 id = "numberEmployees">  </h1>
                                         </div>
                                         <div class="col">
                                             <i class="fas fa-camera fa-5x"></i>
@@ -123,7 +123,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
 
-    <script src="<?php echo base_url('assets\js\LocalScripts\JqueryMin.js') ?>"></script>
+    <script src="<?php echo base_url('assets\js\Admin\dashBoardManage.js') ?>"></script>
 
 
 

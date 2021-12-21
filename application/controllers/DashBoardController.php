@@ -45,4 +45,12 @@ class DashBoardController extends CI_Controller {
 		redirect('Login');
 	}
 
+	public function fetch()
+	{
+		$this->load->model('DashBoardModel');
+		$numberOfEmployees = $this->dashBoardModel->fetchAllEmployees();
+		$data = array('NumberOfEmployees' => $numberOfEmployees);
+		echo json_encode($data);
+	}
+
 }
