@@ -365,6 +365,7 @@ $('#editImage').change(function (e) {
         var FirstName = $('#FirstName').val();
         var LastName = $('#LastName').val();
         var BirthDate = $('#BirthDate').val();
+        var baseSalary = $('#baseSalary').val();
      
         var Address = $('#Address').val();
         var ContactNumber = $('#ContactNumber').val();
@@ -382,6 +383,8 @@ $('#editImage').change(function (e) {
         formData.append('PositionId',PositionId);
         formData.append('BranchId',BranchId);
         formData.append('ScheduleId',ScheduleId);
+        formData.append('BaseSalary',baseSalary);
+
         formData.append('RFID',RFID);
         formData.append('Image',Image);
 

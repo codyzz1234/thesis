@@ -45,7 +45,7 @@
             return $results->result();
         }
 
-        public function addEmployee($ajax_data)
+        public function addEmployee($ajax_data,$ajax_data2)
         {   
            
             $this->db->trans_start();

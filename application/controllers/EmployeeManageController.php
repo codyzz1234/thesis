@@ -103,6 +103,11 @@ class EmployeeManageController extends CI_Controller {
 			array('greater_than'=> 'Please Select a Branch'));
 
 			
+			$this->form_validation->set_rules('BaseSalary','Base Salary Field','trim|required|numeric|greater_than[0]',
+			array(
+				'numeric' => 'Base Salary must be a in valid currency form'
+			));
+
 			if ($this->form_validation->run() == FALSE) {
 				$data = array('response' => 'failed', 'message' => validation_errors());
 			} 
@@ -111,7 +116,6 @@ class EmployeeManageController extends CI_Controller {
 					$employeeId = date('Y')."-".$employeeId;
 					$BirthDate = $this->input->post('BirthDate');
 					$BirthDate = date('Y-m-d',strtotime($BirthDate));
-
 
 					$imagePath = $this->imageUpload($employeeId);
 
@@ -132,10 +136,15 @@ class EmployeeManageController extends CI_Controller {
 							'HireDate' => date('Y-m-d'),
 							'Image' => $imagePath['message'],
 							);
+
+							$ajax_data2 = array(
+								'EmployeeNumber'=>$employeeId,
+								'BaseSalary' => $this->input->post('BaseSalary'),			
+							);
 		
 							$this->load->model('EmployeeManageModel');
 		
-							$verify = $this->EmployeeManageModel->addEmployee($ajax_data);
+							$verify = $this->EmployeeManageModel->addEmployee($ajax_data,$ajax_data2);
 							if($verify != true ){
 									$data = array('response' => 'failed', 'message' => 'Failed to insert data, try again later');
 								}
