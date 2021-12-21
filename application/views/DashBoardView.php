@@ -13,6 +13,43 @@
 
                     <!-- Content Row -->
                     <div class="row">
+                        <div class="card-deck">
+
+                           <div class="card text-white bg-primary mb-3  dashBoardCards">
+                            <div class="card-header">Total Employees </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                             <h1> 3 </h1>
+                                        </div>
+                                        <div class="col">
+                                            <i class="fas fa-camera fa-5x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card text-white bg-primary mb-3">
+                              <div class="card-header">Total Employees </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                             <h1> 3 </h1>
+                                        </div>
+                                        <div class="col">
+                                            <i class="fas fa-camera fa-5x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div> 
+                        
+                        
+                        
+                        
+                        
 
                     </div>
 
@@ -85,6 +122,9 @@
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+
+    <script src="<?php echo base_url('assets\js\LocalScripts\JqueryMin.js') ?>"></script>
+
 
 
 
