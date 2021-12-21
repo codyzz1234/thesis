@@ -137,7 +137,6 @@ class EmployeeManageController extends CI_Controller {
 							'Image' => $imagePath['message'],
 							);
 
-
 							$baseSalary = $this->input->post('BaseSalary');
 							$baseSalary = round($baseSalary,2);
 							
