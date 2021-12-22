@@ -34,7 +34,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                             <h1> Some Employees Here </h1>
+                                             <h1> Some Employees Here` </h1>
                                         </div>
                                         <div class="col">
                                             <i class="fas fa-camera fa-5x"></i>
