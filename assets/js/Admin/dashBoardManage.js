@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    fetchAllData();
     function fetchAllData()
     {
       $.ajax({

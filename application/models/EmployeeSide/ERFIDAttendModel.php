@@ -14,7 +14,7 @@
             $this->db->trans_start();
             $sql = "select employees.EmployeeId,employees.EmployeeNumber, 
             employees.FirstName,employees.LastName,departments.Department,positions.Position,
-            positions.Rate,TIME_FORMAT(schedules.TimeIn,'%r') as TimeIn,
+            TIME_FORMAT(schedules.TimeIn,'%r') as TimeIn,
              TIME_FORMAT(schedules.TimeOut, '%r') as TimeOut ,CURRENT_TIME as Timestamp, 
              employees.Image from employees 
              inner JOIN departments on departments.DepartmentId = employees.DepartmentId 
@@ -38,7 +38,7 @@
             return $message;
         }
 
-        public function timeInOut($EmployeeId,$EmployeeNumber,$position,$rate,$timeIn,$timeOut)
+        public function timeInOut($EmployeeId,$EmployeeNumber,$position,$timeIn,$timeOut)
         {
             date_default_timezone_set('Asia/Singapore');
             $this->db->trans_start();

@@ -8,15 +8,16 @@
         public function fetchAllEmployees()
         {
             $this->db->trans_start();
-            $sql = "select COUNT(employees.EmployeeId)
+            $sql = "select COUNT(EmployeeId) as TotalEmployees
             from employees";
-            $result = $this->db->query($sql);
+            $numEmployees = $this->db->query($sql);
+            $sql = "select COUNT(attendance.AttendanceId) as "
             $this->db->trans_complete();
             if($this->db->trans_status() == false){
-                
+                return false;
             }
             else{
-
+                return $result;
             }
         }
 }
