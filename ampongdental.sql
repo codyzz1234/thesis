@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2021 at 11:06 PM
+-- Generation Time: Dec 22, 2021 at 05:31 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$AIxYamY/pAvr8UQaecXfZevnXX7rFHmK00tOFe4hcZ7Io/MOAzS/e', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2021-12-21 21:24:17');
+(1, 'admin12345', '$2y$10$AIxYamY/pAvr8UQaecXfZevnXX7rFHmK00tOFe4hcZ7Io/MOAzS/e', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2021-12-22 14:04:27');
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,8 @@ INSERT INTO `attendance` (`AttendanceId`, `EmployeeId`, `EmployeeNumber`, `Date`
 (102, 323, '2021-B9IMP7', '2021-12-15', '2021-12-15 00:26:46', '2021-12-15 01:22:45', '0', 1, 6),
 (103, 322, '2021-8EKEMH', '2021-12-15', '2021-12-15 01:27:27', '2021-12-15 01:27:36', '0', 2, 6),
 (104, 322, '2021-8EKEMH', '2021-12-15', '2021-12-15 01:21:18', '2021-12-15 01:24:15', '0', 1, 6),
-(105, 323, '2021-B9IMP7', '2021-12-15', '2021-12-15 01:22:54', '2021-12-19 15:06:16', '109', 1, 6);
+(105, 323, '2021-B9IMP7', '2021-12-15', '2021-12-15 01:22:54', '2021-12-19 15:06:16', '109', 1, 6),
+(107, 329, '2021-57MZRW', '2021-12-22', '2021-12-22 14:23:39', NULL, '0', 2, 6);
 
 -- --------------------------------------------------------
 
@@ -459,7 +460,7 @@ ALTER TABLE `adminlogin`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `branches`
