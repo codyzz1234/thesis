@@ -8,16 +8,28 @@
         public function fetchAllEmployees()
         {
             $this->db->trans_start();
-            $sql = "select COUNT(EmployeeId) as TotalEmployees
+            $sql = "select employees.EmployeeId as TotalEmployees
             from employees";
             $numEmployees = $this->db->query($sql);
-            $sql = "select COUNT(attendance.AttendanceId) as "
+            $numEmployees = $numEmployees->num_rows();
+
+            $sql = "select attendance.AttendanceId as PresentEmployees from attendance where 		      
+            (attendance.TimeInStatus = 1 OR attendance.TimeInStatus = 2) AND attendance.Date = CURRENT_DATE(); ";
+            $presentEmployees = $this->db->query($sql);
+            $presentEmployees = $presentEmployees->num_rows();
+
             $this->db->trans_complete();
+
+            $dataArray = array(
+                'TotalEmployees' => $numEmployees,
+                'PresentEmployees' => $presentEmployees
+            );
+
             if($this->db->trans_status() == false){
                 return false;
             }
             else{
-                return $result;
+                return $dataArray;
             }
         }
 }

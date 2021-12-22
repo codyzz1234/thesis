@@ -6,7 +6,7 @@ class DashBoardController extends CI_Controller {
 	/**
 	 * Index Page for this controller.
 	 *
-	 * Maps to the following URL
+	 * Maps to the following URLP
 	 * 		http://example.com/index.php/welcome
 	 *	- or -
 	 * 		http://example.com/index.php/welcome/index
@@ -48,9 +48,14 @@ class DashBoardController extends CI_Controller {
 	public function fetch()
 	{
 		$this->load->model('DashBoardModel');
-		$numberOfEmployees = $this->DashBoardModel->fetchAllEmployees();
-		$data = array('NumberOfEmployees' => $numberOfEmployees);
-		echo json_encode($data);
+		$dataArray = $this->DashBoardModel->fetchAllEmployees();
+		if($dataArray == false){
+			$dataArray = array('response'=> "failed", 'message'=> "Error Loading The Data to Cards");
+		}
+		else{
+			$dataArray = array('response'=> "success", 'posts' => $dataArray);
+		}
+		echo json_encode($dataArray);
 	}
 
 }
