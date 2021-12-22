@@ -30,11 +30,11 @@
                             </div>
 
                             <div class="card text-white bg-primary mb-3">
-                              <div class="card-header">Total Employees </div>
+                              <div class="card-header">Employees Attending </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                             <h1> 3 </h1>
+                                             <h1> Some Employees Here </h1>
                                         </div>
                                         <div class="col">
                                             <i class="fas fa-camera fa-5x"></i>
