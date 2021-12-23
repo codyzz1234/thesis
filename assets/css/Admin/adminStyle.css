@@ -38,13 +38,11 @@
     margin-bottom:3%;
 }
 
-/*Dashboard View Cards*/
-.dashBoardDeck{
-    padding-left: 10%;
-    padding-right: 10%;
-    
+/*Dashboard View Cards in DashboardView*/
+.dashboardCards .totalEmployees{
+    background: rgb(211,204,227);
+    background: radial-gradient(circle, rgba(211,204,227,1) 0%, rgba(233,228,240,1) 33%);
 }
-
 
 
 
