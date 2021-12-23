@@ -16,21 +16,14 @@
                     <div class="card-deck dashBoardDeck">
                         
                        
-                        <div class="card text-white bg-primary mb-3">
-                            <div class="card-header">Total Number of Employees</div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h1 class="card-title">100</h2>
-                                    </div>
-                                    <div class="col">
-                                        <i class="fas fa-user-alt fa-5x"></i>    
-                                    </div>
-                                </div>
-                                
-                            </div>
+                    <div class="col-md-3">
+                        <div class="card-counter primary">
+                            <i class="fa fa-code-fork"></i>
+                            <span class="count-numbers">12</span>
+                            <span class="count-name">Flowz</span>
                         </div>
-                        
+                    </div>
+                                        
                         
 
                         
