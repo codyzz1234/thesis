@@ -5,8 +5,8 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Employee Management</h1>
-                    <p class="mb-4 text-gray-800">Here you can manage employee information edit employee details. </p>
+                    <h1 class="h3 mb-2 text-gray-800">Employee Information Management</h1>
+                    <p class="mb-4 text-gray-800">Here you can manage employee information and edit employee details. </p>
 
                     <!-- Data Tables -->
                     <div class="card shadow mb-4">
