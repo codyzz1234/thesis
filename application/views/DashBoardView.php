@@ -13,49 +13,45 @@
 
                     <!-- Content Row -->
                     <div class="row">
-                    <div class="card-deck dashBoardDeck">
-                        
-                       
-                    <div class="col-md-3">
-                        <div class="card-counter primary">
-                            <i class="fa fa-code-fork"></i>
-                            <span class="count-numbers">12</span>
-                            <span class="count-name">Flowz</span>
-                        </div>
-                    </div>
-                                        
-                        
+                        <div class="card-deck dashboardCards">
 
                         
 
+                            <div class="card text-white bg-primary mb-3 text-center" style="max-width: 18rem;">
+                                <div class="card-header">
+                                    <h2> Total Employees </h2>
+                                </div>
+                                <div class="card-body">
+                                     <i class="fas fa-users fa-5x "></i>
+                                    <h1 class="card-title">50</h>
+                                  
+                                </div>
+                            </div>
 
 
-                        <div class="card">
-                            <i class="fas fa-user-alt fa-5x"></i>    
-                            <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+                           
+                            <div class="card text-white bg-primary mb-3 text-center" style="max-width: 18rem;">
+                                <div class="card-header">
+                                    <h2> Total Employees </h2>
+                                </div>
+                                <div class="card-body">
+                                     <i class="fas fa-users fa-5x "></i>
+                                    <h1 class="card-title">50</h>
+                                  
+                                </div>
+                            </div>
+
+
+                            <div class="card">
+                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
                             </div>
                         </div>
-
-
-                        <div class="card">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-
-                        
-                        
-                        
-                        
-                        
-
                     </div>
 
                 </div>
