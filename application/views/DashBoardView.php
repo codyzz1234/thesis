@@ -42,12 +42,15 @@
                                 </div>
                             </div>
 
-                            <div class="card">
-                                <img class="card-img-top" src="..." alt="Card image cap">
+                            
+                            <div class="card text-white bg-success mb-3 text-center" style="max-width: 18rem;">
+                                <div class="card-header">
+                                    <h3> Late Employees </h3>
+                                </div>
                                 <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                     <i class="fas fa-users fa-5x "></i>
+                                    <h1 class="card-title" id = "presentEmployees"></h1>
+                                  
                                 </div>
                             </div>
 
