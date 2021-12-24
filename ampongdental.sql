@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2021 at 05:31 PM
+-- Generation Time: Dec 24, 2021 at 09:56 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$AIxYamY/pAvr8UQaecXfZevnXX7rFHmK00tOFe4hcZ7Io/MOAzS/e', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2021-12-22 14:04:27');
+(1, 'admin12345', '$2y$10$AIxYamY/pAvr8UQaecXfZevnXX7rFHmK00tOFe4hcZ7Io/MOAzS/e', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2021-12-24 20:08:51');
 
 -- --------------------------------------------------------
 
@@ -61,20 +61,6 @@ CREATE TABLE `attendance` (
   `TimeInStatus` int(11) DEFAULT 6,
   `TimeOutStatus` int(11) DEFAULT 6
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `attendance`
---
-
-INSERT INTO `attendance` (`AttendanceId`, `EmployeeId`, `EmployeeNumber`, `Date`, `TimeIn`, `TimeOut`, `HoursWorked`, `TimeInStatus`, `TimeOutStatus`) VALUES
-(99, 322, '2021-8EKEMH', '2021-12-14', '2021-12-14 15:04:15', '2021-12-14 15:05:13', '0', 0, 0),
-(100, 323, '2021-B9IMP7', '2021-12-14', '2021-12-14 15:36:40', '2021-12-14 15:36:41', '0', 0, 0),
-(101, NULL, NULL, '2021-12-16', '2021-12-15 16:08:28', '2021-12-15 01:28:10', '14', 1, 6),
-(102, 323, '2021-B9IMP7', '2021-12-15', '2021-12-15 00:26:46', '2021-12-15 01:22:45', '0', 1, 6),
-(103, 322, '2021-8EKEMH', '2021-12-15', '2021-12-15 01:27:27', '2021-12-15 01:27:36', '0', 2, 6),
-(104, 322, '2021-8EKEMH', '2021-12-15', '2021-12-15 01:21:18', '2021-12-15 01:24:15', '0', 1, 6),
-(105, 323, '2021-B9IMP7', '2021-12-15', '2021-12-15 01:22:54', '2021-12-19 15:06:16', '109', 1, 6),
-(107, 329, '2021-57MZRW', '2021-12-22', '2021-12-22 14:23:39', NULL, '0', 2, 6);
 
 -- --------------------------------------------------------
 
@@ -135,7 +121,7 @@ CREATE TABLE `departments` (
 
 INSERT INTO `departments` (`DepartmentId`, `Department`, `Description`, `DepartmentHead`) VALUES
 (18, 'Lab Tech', 'Handles lab analysis and stuffzzyy', NULL),
-(25, 'Security', 'Security Department', 323);
+(25, 'Security', 'Security Department', NULL);
 
 -- --------------------------------------------------------
 
@@ -157,7 +143,7 @@ CREATE TABLE `employeecalculation` (
 --
 
 INSERT INTO `employeecalculation` (`id`, `EmployeeNumber`, `BaseSalary`, `SSS`, `PagIbig`, `PhilHealth`) VALUES
-(1, '2021-57MZRW', '24300.36', '0.00', '0.00', '0.00');
+(2, '2021-MIE8RC', '15000.00', '0.00', '0.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -173,14 +159,6 @@ CREATE TABLE `employeelogin` (
   `LastLogin` timestamp NULL DEFAULT current_timestamp(),
   `DateCreated` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `employeelogin`
---
-
-INSERT INTO `employeelogin` (`id`, `EmployeeId`, `EmployeeNumber`, `Password`, `LastLogin`, `DateCreated`) VALUES
-(34, 323, '2021-B9IMP7', '$2y$10$xK1hujOMBzVNhrivcj4MouNo6LnQhJnU.HEegqSUiq8O.cJAIyGcG', '2021-12-20 16:37:36', '2021-08-19 02:32:55'),
-(35, 322, '2021-8EKEMH', '$2y$10$D7B8VcoInR..InRWrtLDXuWrzACUINzk2/QakoImP07UEh0C1dkqS', '2021-12-20 20:30:33', '2021-12-20 20:29:37');
 
 -- --------------------------------------------------------
 
@@ -212,9 +190,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`EmployeeId`, `EmployeeNumber`, `RFID`, `FirstName`, `LastName`, `Address`, `ContactNumber`, `BirthDate`, `HireDate`, `DepartmentId`, `PositionId`, `BranchId`, `ScheduleId`, `TotalHours`, `Status`, `Image`) VALUES
-(322, '2021-8EKEMH', '0002115107', 'Kenlineeny', 'So', '647 National Road 16 Sunlight Building Barangay Muzon, Taytay, Rizal Taytay CPO-PO Box# 1920 + Rizal Philippines', '09453218471', '2000-02-10', '2021-08-19', 25, 2, 1, 17, 0, 1, './assets/EmployeeImages/2021-8EKEMH.png'),
-(323, '2021-B9IMP7', '0002115109', 'Marverick', 'Ong', 'Makati City Valencia Street ', '09453218471', '1992-04-10', '2021-08-19', 18, 24, 1, 18, 0, 1, './assets/EmployeeImages/default.png'),
-(329, '2021-57MZRW', '9518985152', 'Gay', 'Lo', 'Valencia Street San Juan Metro Manila', '09453218471', '2000-02-02', '2021-12-21', 18, 24, 1, 17, 0, 1, './assets/EmployeeImages/default.png');
+(330, '2021-MIE8RC', '0002115107', 'Keegan Micahel', 'Key', 'Somewhere in contintal United States', '09224891495', '1971-03-22', '2021-12-24', 18, 24, 1, 17, 0, 1, './assets/EmployeeImages/2021-MIE8RC.jpg');
 
 -- --------------------------------------------------------
 
@@ -282,7 +258,7 @@ INSERT INTO `leaveallocation` (`LeaveId`, `EmployeeId`, `LeaveAllocated`, `Leave
 (4, NULL, 50, 0, 50),
 (8, NULL, 12, 0, 12),
 (9, NULL, 15, 0, 15),
-(10, 323, 46, 0, 46);
+(10, NULL, 46, 0, 46);
 
 -- --------------------------------------------------------
 
@@ -460,7 +436,7 @@ ALTER TABLE `adminlogin`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `branches`
@@ -484,7 +460,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `employeecalculation`
 --
 ALTER TABLE `employeecalculation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `employeelogin`
@@ -496,7 +472,7 @@ ALTER TABLE `employeelogin`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `EmployeeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=330;
+  MODIFY `EmployeeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=331;
 
 --
 -- AUTO_INCREMENT for table `employeestatus`
