@@ -90,6 +90,7 @@ $(document).ready(function () {
                 console.log(data.response);
                 if(data.response == "success"){
                     setters = data.posts;
+                    console.log(data.posts);
                     $('#splashAvatar').attr("src",setters[0].Image);
                     $('#nameField').val(setters[0].FirstName + " " + setters[0].LastName);
                     $('#departmentField').val(setters[0].Department);

@@ -36,7 +36,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">Department</label>
-                        <input type="password" class="form-control" id="departmentField" placeholder="" readonly>
+                        <input class="form-control" id="departmentField" placeholder="" readonly>
                     </div>
 
                     <div class="form-group">
