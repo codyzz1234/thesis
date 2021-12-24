@@ -195,7 +195,6 @@ $(document).ready(function() {
                         $('#editBranchSelector').val(setters[0].BranchId);
 
                         $("#editPreview").attr("src",setters[0].Image+"?time"+new Date().getTime());
-                        var attribute = $('#editPreview').attr("src");
 
 
         
