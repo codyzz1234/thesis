@@ -196,10 +196,9 @@ $(document).ready(function() {
 
                         $("#editPreview").attr("src",setters[0].Image+"?time"+new Date().getTime());
                         var attribute = $('#editPreview').attr("src");
-                        console.log(attribute);
 
-                
 
+        
                         $("#editImage").val("");
 
 
