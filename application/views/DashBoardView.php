@@ -19,11 +19,11 @@
 
                             <div class="card text-white bg-primary mb-3 text-center" style="max-width: 18rem;">
                                 <div class="card-header">
-                                    <h2> Total Employees </h2>
+                                    <h3> Total Employees </h3>
                                 </div>
                                 <div class="card-body">
                                      <i class="fas fa-users fa-5x "></i>
-                                    <h1 class="card-title">50</h>
+                                    <h1 class="card-title" id = "totalEmployees"></h1>
                                   
                                 </div>
                             </div>
@@ -31,13 +31,13 @@
 
 
                            
-                            <div class="card text-white bg-primary mb-3 text-center" style="max-width: 18rem;">
+                            <div class="card text-white bg-success mb-3 text-center" style="max-width: 18rem;">
                                 <div class="card-header">
-                                    <h2> Total Employees </h2>
+                                    <h3> Present Employees </h3>
                                 </div>
                                 <div class="card-body">
                                      <i class="fas fa-users fa-5x "></i>
-                                    <h1 class="card-title">50</h>
+                                    <h1 class="card-title" id = "presentEmployees"></h1>
                                   
                                 </div>
                             </div>
