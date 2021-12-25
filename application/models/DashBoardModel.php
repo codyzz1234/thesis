@@ -13,10 +13,8 @@
             $numEmployees = $this->db->query($sql);
             $numEmployees = $numEmployees->num_rows();
 
-            $sql = "select DISTINCT employees.EmployeeId
-            from employees
-            left join attendance
-            on employees.EmployeeId = attendance.EmployeeId
+            $sql = "select DISTINCT attendance.EmployeeId
+            from attendance
             where (attendance.TimeInStatus = 1 OR attendance.TimeInStatus = 2) AND attendance.Date = CURRENT_DATE();";
             
             $presentEmployees = $this->db->query($sql);
