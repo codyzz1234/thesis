@@ -38,17 +38,20 @@ $(document).ready(function () {
                     setters = data.posts;
                     console.log(setters);
                     let totalEmployees = setters.TotalEmployees;
-                    let presentEmployees = setters.PresentEmployees; 
-                    valueToCards(totalEmployees,presentEmployees)
+                    let presentEmployees = setters.PresentEmployees;
+                    let lateEmployees = setters.LateEmployees; 
+                    valueToCards(totalEmployees,presentEmployees,lateEmployees)
               }
           }
       });  
     }
 
-    function valueToCards(totalEmployees,presentEmployees)
+    function valueToCards(totalEmployees,presentEmployees,lateEmployees)
     {
       $("#totalEmployees").html(totalEmployees);
       $("#presentEmployees").html(presentEmployees);
+      $("#lateEmployees").html(lateEmployees);
+
 
       console.log("Total Employees is " + totalEmployees);
       console.log("Present Employees is: " + presentEmployees)
