@@ -8,10 +8,13 @@
         public function fetchAllEmployees()
         {
             $this->db->trans_start();
-            $sql = "select employees.EmployeeId as TotalEmployees
+            $sql = "select COUNT(employees.EmployeeId) as TotalEmployees
             from employees";
+
             $numEmployees = $this->db->query($sql);
-            $numEmployees = $numEmployees->num_rows();
+            foreach($numEmployees->result_array() as $row){
+                $numEmployees = $row['TotalEmployees'];
+            }
 
             $sql = "select DISTINCT attendance.EmployeeId
             from attendance

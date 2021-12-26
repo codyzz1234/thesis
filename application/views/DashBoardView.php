@@ -41,13 +41,13 @@
                             </div>
 
                             
-                            <div class="card text-white bg-warning mb-3 text-center" style="max-width: 18rem;">
+                            <div class="card text-white bg-danger mb-3 text-center" style="max-width: 18rem;">
                                 <div class="card-header">
                                     <h3> Late Employees </h3>
                                 </div>
                                 <div class="card-body">
                                      <i class="fas fa-users fa-5x "></i>
-                                    <h1 class="card-title" id = "presentEmployees"></h1>
+                                    <h1 class="card-title" id = "lateEmployees"></h1>
                                   
                                 </div>
                             </div>
