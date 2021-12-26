@@ -50,10 +50,18 @@
            
             $this->db->trans_start();
             $this->db->insert('employees',$ajax_data); 
-            $this->db->insert('employeepayroll',$ajax_data2);
+
+        
+            $sql = "INSERT INTO employeecalculation (id,EmployeeNumber,BaseSalary) 
+            VALUES((SELECT MAX(employees.EmployeeId) from employees),?,?)";
+            $this->db->query($sql,array(
+                $ajax_data2['EmployeeNumber'],
+                $ajax_data2['BaseSalary'],
+            ));
+
             $affectedRows = $this->db->affected_rows();
             $this->db->trans_complete();
-        
+    
             if ($this->db->trans_status() === FALSE) {
                 return false;
             } 
