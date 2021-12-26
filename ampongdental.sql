@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2021 at 09:56 PM
+-- Generation Time: Dec 26, 2021 at 05:53 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$AIxYamY/pAvr8UQaecXfZevnXX7rFHmK00tOFe4hcZ7Io/MOAzS/e', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2021-12-24 20:08:51');
+(1, 'admin12345', '$2y$10$AIxYamY/pAvr8UQaecXfZevnXX7rFHmK00tOFe4hcZ7Io/MOAzS/e', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2021-12-26 14:07:30');
 
 -- --------------------------------------------------------
 
@@ -190,7 +190,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`EmployeeId`, `EmployeeNumber`, `RFID`, `FirstName`, `LastName`, `Address`, `ContactNumber`, `BirthDate`, `HireDate`, `DepartmentId`, `PositionId`, `BranchId`, `ScheduleId`, `TotalHours`, `Status`, `Image`) VALUES
-(330, '2021-MIE8RC', '0002115107', 'Keegan Micahel', 'Key', 'Somewhere in contintal United States', '09224891495', '1971-03-22', '2021-12-24', 18, 24, 1, 17, 0, 1, './assets/EmployeeImages/2021-MIE8RC.jpg');
+(330, '2021-MIE8RC', '0002115107', 'Keegan Micahel', 'Key And Peelez', 'Somewhere in contintal United States', '09224891495', '1971-03-22', '2021-12-24', 18, 24, 1, 17, 0, 1, './assets/EmployeeImages/2021-MIE8RC.jpg');
 
 -- --------------------------------------------------------
 
