@@ -28,6 +28,7 @@ function toasterOptions()
 
 $(document).ready(function () {
     fetch();
+
     function fetch()
     {
         console.log("Fetched")
@@ -92,13 +93,20 @@ $(document).ready(function () {
                                },
     
                             ],
-                            "data":data.posts,
+                            data:data.posts,
                             columns:[
-                                {"data":"Position"},
-                                {"data":"Description"},
-                                {"data":"NumberOfEmployees"},
-                                {"data":null,
-                                 "render":function(data,type,row,meta){
+                               // {data:"Position"},
+                                {
+                                    title:"Position",         
+                                    data:"Position"
+                                },
+
+                                {data:"Description"},
+                              
+                                {data:"NumberOfEmployees"},
+                                {data:null,
+                                 render:function(data,type,row,meta){
+                              
                                     var editButton = '<a href="#" value = "'+'" class = "btn btn-outline-info editButton"><i class="fas fa-pen-square"></i></a>'
                                     var deleteButton = '<a href="#" value = "'+'" class = "btn btn-outline-danger deleteButton"><i class="fas fa-trash-alt"></i></a>'
                                     return editButton+deleteButton
