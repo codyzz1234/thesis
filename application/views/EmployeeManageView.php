@@ -134,7 +134,12 @@
 
             <div class = "form-group">
                 <label for = ""> Contact Number </label>
-                <input type = "text" id = "ContactNumber" class = "form-control">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">+63</span>
+                    </div>
+                    <input type = "text" id = "ContactNumber" class = "form-control">            
+              </div>
             </div>
 
             <div class="form-group">
@@ -259,10 +264,18 @@
                 <input type = "text" id = "editAddress" class = "form-control">
             </div>
 
+    
+
             <div class = "form-group">
                 <label for = ""> Contact Number </label>
-                <input type = "text" id = "editContactNumber" class = "form-control">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">+63</span>
+                    </div>
+                    <input type = "text" id = "editContactNumber" class = "form-control">            
+              </div>
             </div>
+
 
             <div class="form-group">
                 <label for="Select Department">Select Department</label>
