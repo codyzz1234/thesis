@@ -123,6 +123,10 @@ class EmployeeManageController extends CI_Controller {
 
 					$imagePath = $this->imageUpload($employeeId);
 
+					$contactNum = $this->input->post('ContactNumber');
+					
+			
+
 					if($imagePath['response'] == "success"){
 
 						$ajax_data = array(
@@ -132,7 +136,7 @@ class EmployeeManageController extends CI_Controller {
 							'BirthDate' => $BirthDate,
 							'Address' => $this->input->post('Address'),
 							'RFID' => $this->input->post('RFID'),
-							'ContactNumber' => $this->input->post('ContactNumber'),
+							'ContactNumber' => $contactNum,
 							'ScheduleId' => $this->input->post('ScheduleId'),
 							'PositionId' => $this->input->post('PositionId'),
 							'DepartmentId' => $this->input->post('DepartmentId'),
@@ -418,11 +422,11 @@ class EmployeeManageController extends CI_Controller {
 	public function checkPhoneNumber()
 	{
 		$contactNum = $this->input->post('ContactNumber');
-		if(!preg_match('/(^0|[89]\d{2}-\d{3}\-?\d{4}$)|(^0|[89]\d{2}\d{3}\d{4}$)|(^63[89]\d{2}-\d{3}-\d{4}$)|(^63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}-\d{3}-\d{4}$)/',$contactNum)){
+		if(!preg_match('/(^6\d{11}$)|(^0\d{10}$)|(^9\d{9}$)/',$contactNum)){
 			return false;
 		}
 		else{
-
+			return true;
 		}
 	}
 	
