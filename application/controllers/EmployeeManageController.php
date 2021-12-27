@@ -87,7 +87,11 @@ class EmployeeManageController extends CI_Controller {
 			array('alpha_numeric'=> 'RFID cannot contain special symbols',
 				'is_unique'=> 'An employee has already been assigned that RFID tag'));
 
-			$this->form_validation->set_rules('ContactNumber','ContactNumber','trim|required|numeric');
+			
+			$this->form_validation->set_rules('ContactNumber','ContactNumber','trim|required|callback_checkPhoneNumber',
+			array(
+				'checkPhoneNumber'=>"Input a valid mobile number",
+			));
 
 			$this->form_validation->set_rules('ScheduleId','ScheduleId','trim|required|numeric|greater_than[0]',
 			array('greater_than'=> 'Please Select a Schedule')	);
@@ -284,7 +288,11 @@ class EmployeeManageController extends CI_Controller {
 				'checkRFID'=> 'Cannot update RFID number, an employee using this number already exists'));
 
 
-			$this->form_validation->set_rules('ContactNumber','ContactNumber','trim|required|numeric');
+
+			$this->form_validation->set_rules('ContactNumber','ContactNumber','trim|required|callback_checkPhoneNumber',
+			array(
+				'checkPhoneNumber'=>"Input a valid mobile number",
+			));
 
 			$this->form_validation->set_rules('ScheduleId','ScheduleId','trim|required|numeric|greater_than[0]',
 			array('greater_than'=> 'Please Select a Schedule')	);
@@ -406,6 +414,16 @@ class EmployeeManageController extends CI_Controller {
 			$data = array('response'=> "success",'message'=>"Employee Deleted Successfully");
 		}
 		echo json_encode($data);
+	}
+	public function checkPhoneNumber()
+	{
+		$contactNum = $this->input->post('ContactNumber');
+		if(!preg_match('/(^0|[89]\d{2}-\d{3}\-?\d{4}$)|(^0|[89]\d{2}\d{3}\d{4}$)|(^63[89]\d{2}-\d{3}-\d{4}$)|(^63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}-\d{3}-\d{4}$)/',$contactNum)){
+			return false;
+		}
+		else{
+
+		}
 	}
 	
 }
