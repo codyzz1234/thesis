@@ -84,17 +84,7 @@
         public function loadTable()
         {
             $this->db->trans_start();
-            $sql = "select employees.EmployeeId,employees.EmployeeNumber,employees.FirstName, employees.LastName, employees.ContactNumber,employees.Image,
-            departments.Department,
-            branches.Branch,
-            positions.Position,
-            schedules.TimeIn,
-            schedules.TimeOut
-            from employees 
-            left join departments on employees.DepartmentId = departments.DepartmentId
-            left join positions on employees.PositionId = positions.PositionId
-            left join schedules on employees.ScheduleId = schedules.ScheduleId
-            left join branches on employees.BranchId = branches.BranchId";
+            $sql = "SELECT * from viewemployeeinformation";
             
             $results = $this->db->query($sql);
             $this->db->trans_complete();           
