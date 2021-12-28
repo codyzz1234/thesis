@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2021 at 01:49 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.26
+-- Generation Time: Dec 28, 2021 at 03:59 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -130,7 +130,7 @@ INSERT INTO `departments` (`DepartmentId`, `Department`, `Description`, `Departm
 --
 
 CREATE TABLE `employeecalculation` (
-  `id` int(11) NOT NULL,
+  `EmployeeId` int(11) DEFAULT NULL,
   `EmployeeNumber` varchar(255) NOT NULL,
   `BaseSalary` decimal(13,2) NOT NULL DEFAULT 0.00,
   `SSS` decimal(13,2) NOT NULL DEFAULT 0.00,
@@ -142,8 +142,8 @@ CREATE TABLE `employeecalculation` (
 -- Dumping data for table `employeecalculation`
 --
 
-INSERT INTO `employeecalculation` (`id`, `EmployeeNumber`, `BaseSalary`, `SSS`, `PagIbig`, `PhilHealth`) VALUES
-(2, '2021-MIE8RC', '15000.00', '0.00', '0.00', '0.00');
+INSERT INTO `employeecalculation` (`EmployeeId`, `EmployeeNumber`, `BaseSalary`, `SSS`, `PagIbig`, `PhilHealth`) VALUES
+(334, '2021-OTQFFF', '150000.00', '0.00', '0.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -190,7 +190,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`EmployeeId`, `EmployeeNumber`, `RFID`, `FirstName`, `LastName`, `Address`, `ContactNumber`, `BirthDate`, `HireDate`, `DepartmentId`, `PositionId`, `BranchId`, `ScheduleId`, `TotalHours`, `Status`, `Image`) VALUES
-(330, '2021-MIE8RC', '0002115107', 'Keegan Michael', 'Key And Peelez', 'Somewhere in contintal United States', '9453218471', '1971-03-22', '2021-12-24', 18, 24, 1, 17, 0, 1, './assets/EmployeeImages/2021-MIE8RC.jpg');
+(334, '2021-OTQFFF', '1561451', 'Kenley', 'So', 'Valencai Street Metro Manila', '09453218471', '1990-02-07', '2021-12-28', 18, 2, 1, 17, 0, 1, './assets/EmployeeImages/default.png');
 
 -- --------------------------------------------------------
 
@@ -341,6 +341,7 @@ CREATE TABLE `viewemployeeinformation` (
 ,`Position` varchar(255)
 ,`TimeIn` time
 ,`TimeOut` time
+,`BaseSalary` decimal(13,2)
 );
 
 -- --------------------------------------------------------
@@ -350,7 +351,7 @@ CREATE TABLE `viewemployeeinformation` (
 --
 DROP TABLE IF EXISTS `viewemployeeinformation`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `viewemployeeinformation`  AS SELECT `employees`.`EmployeeId` AS `EmployeeId`, `employees`.`EmployeeNumber` AS `EmployeeNumber`, `employees`.`FirstName` AS `FirstName`, `employees`.`LastName` AS `LastName`, `employees`.`ContactNumber` AS `ContactNumber`, `employees`.`Image` AS `Image`, `departments`.`Department` AS `Department`, `branches`.`Branch` AS `Branch`, `positions`.`Position` AS `Position`, `schedules`.`TimeIn` AS `TimeIn`, `schedules`.`TimeOut` AS `TimeOut` FROM ((((`employees` left join `departments` on(`employees`.`DepartmentId` = `departments`.`DepartmentId`)) left join `positions` on(`employees`.`PositionId` = `positions`.`PositionId`)) left join `schedules` on(`employees`.`ScheduleId` = `schedules`.`ScheduleId`)) left join `branches` on(`employees`.`BranchId` = `branches`.`BranchId`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `viewemployeeinformation`  AS SELECT `employees`.`EmployeeId` AS `EmployeeId`, `employees`.`EmployeeNumber` AS `EmployeeNumber`, `employees`.`FirstName` AS `FirstName`, `employees`.`LastName` AS `LastName`, `employees`.`ContactNumber` AS `ContactNumber`, `employees`.`Image` AS `Image`, `departments`.`Department` AS `Department`, `branches`.`Branch` AS `Branch`, `positions`.`Position` AS `Position`, `schedules`.`TimeIn` AS `TimeIn`, `schedules`.`TimeOut` AS `TimeOut`, `employeecalculation`.`BaseSalary` AS `BaseSalary` FROM (((((`employees` left join `departments` on(`employees`.`DepartmentId` = `departments`.`DepartmentId`)) left join `positions` on(`employees`.`PositionId` = `positions`.`PositionId`)) left join `schedules` on(`employees`.`ScheduleId` = `schedules`.`ScheduleId`)) left join `branches` on(`employees`.`BranchId` = `branches`.`BranchId`)) left join `employeecalculation` on(`employees`.`EmployeeId` = `employeecalculation`.`EmployeeId`)) ;
 
 --
 -- Indexes for dumped tables
@@ -395,8 +396,8 @@ ALTER TABLE `departments`
 -- Indexes for table `employeecalculation`
 --
 ALTER TABLE `employeecalculation`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `EmployeeNumber` (`EmployeeNumber`);
+  ADD UNIQUE KEY `EmployeeNumber` (`EmployeeNumber`),
+  ADD KEY `EmployeId` (`EmployeeId`);
 
 --
 -- Indexes for table `employeelogin`
@@ -486,12 +487,6 @@ ALTER TABLE `departments`
   MODIFY `DepartmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `employeecalculation`
---
-ALTER TABLE `employeecalculation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `employeelogin`
 --
 ALTER TABLE `employeelogin`
@@ -501,7 +496,7 @@ ALTER TABLE `employeelogin`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `EmployeeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=331;
+  MODIFY `EmployeeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=335;
 
 --
 -- AUTO_INCREMENT for table `employeestatus`
@@ -554,7 +549,8 @@ ALTER TABLE `departments`
 -- Constraints for table `employeecalculation`
 --
 ALTER TABLE `employeecalculation`
-  ADD CONSTRAINT `employeecalculation_ibfk_1` FOREIGN KEY (`EmployeeNumber`) REFERENCES `employees` (`EmployeeNumber`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `employeecalculation_ibfk_1` FOREIGN KEY (`EmployeeNumber`) REFERENCES `employees` (`EmployeeNumber`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `employeecalculation_ibfk_2` FOREIGN KEY (`EmployeeId`) REFERENCES `employees` (`EmployeeId`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `employeelogin`

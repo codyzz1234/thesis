@@ -250,6 +250,10 @@ class EmployeeManageController extends CI_Controller {
 		if($verify == false){
 			$data = array('response'=>'failed','message'=> 'An error has occured,failed to retrieve data');
 		}
+		else if($verify == "none"){
+			$data = array('response'=>'none','message'=> 'There are No Employee Records to be retrieved.');
+
+		}
 		else{
 			$data = array('response'=>'success','posts'=>$verify);
 		}

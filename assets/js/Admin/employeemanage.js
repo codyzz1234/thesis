@@ -28,6 +28,7 @@ $(document).ready(function() {
     fetch();
     function fetch()
     {
+        toasterOptions();
         $.ajax({
             type: "POST",
             url: baseurl + "EmployeeManageController/loadRecords",
@@ -135,6 +136,9 @@ $(document).ready(function() {
                             ],
                         })
                     }
+                }
+                else if(data.response == "none"){
+                    toastr["info"]("Alert",data.message);
                 }
                 else{
                     toastr["error"]("Alert",data.message);
