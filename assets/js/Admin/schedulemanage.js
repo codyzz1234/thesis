@@ -228,7 +228,7 @@ $(document).ready(function () {
     });
 
     // Edit Position
-    $(document).on('click','.editButton', function(e) 
+    $(document).on('click','tbody .editButton', function(e) 
     { 
         e.preventDefault();
         $this = $(this);
@@ -338,7 +338,7 @@ $(document).ready(function () {
     });
 
     //Delete Schedule
-    $(document).on('click','.deleteButton', function(e) 
+    $(document).on('click','tbody .deleteButton', function(e) 
     { 
         e.preventDefault();
         $this = $(this);
