@@ -24,6 +24,7 @@
             $results =  $this->db->query($sql);
             $this->db->trans_complete();
             return $results->result();
+            
         }
 
 
