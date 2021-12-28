@@ -52,7 +52,7 @@
             $this->db->insert('employees',$ajax_data); 
 
         
-            $sql = "INSERT INTO employeecalculation (id,EmployeeNumber,BaseSalary) 
+            $sql = "INSERT INTO employeecalculation (EmployeeId,EmployeeNumber,BaseSalary) 
             VALUES((SELECT MAX(employees.EmployeeId) from employees),?,?)";
             $this->db->query($sql,array(
                 $ajax_data2['EmployeeNumber'],
