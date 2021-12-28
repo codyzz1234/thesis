@@ -29,12 +29,13 @@ $(document).ready(function() {
     function fetch()
     {
         toasterOptions();
+
         $.ajax({
             type: "POST",
             url: baseurl + "EmployeeManageController/loadRecords",
             cache: false,
             data: "data",
-            dataType: "jsonp",
+            dataType: "JSON",
             success: function (data) {
                 if(data.response == "success"){
                     var table;
@@ -234,7 +235,9 @@ $(document).ready(function() {
     var Image = $('#editImage')[0].files[0];
     var EmployeeNumber = $('#editEmployeeNumber').val();
 
-    let myForm = document.getElementById('#addEmployeeForm');
+   
+    let myForm = ('#addEmployeeForm');
+
     let dataForm = new FormData(myForm);
     for(var p of dataForm){
         let name = p[0];
