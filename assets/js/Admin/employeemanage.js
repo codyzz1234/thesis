@@ -34,7 +34,7 @@ $(document).ready(function() {
             url: baseurl + "EmployeeManageController/loadRecords",
             cache: false,
             data: "data",
-            dataType: "JSON",
+            dataType: "jsonp",
             success: function (data) {
                 if(data.response == "success"){
                     var table;
@@ -233,6 +233,16 @@ $(document).ready(function() {
     var EmployeeId = $('#editEmployeeId').val();
     var Image = $('#editImage')[0].files[0];
     var EmployeeNumber = $('#editEmployeeNumber').val();
+
+    let myForm = document.getElementById('#addEmployeeForm');
+    let dataForm = new FormData(myForm);
+    for(var p of dataForm){
+        let name = p[0];
+        let value = p[1];
+        console.log(name,value);
+
+    }
+
 
 
     var formData = new FormData();
