@@ -9,26 +9,22 @@
         {
             $message = "";
             $this->db->trans_start();
-            $sql = "
-            select employees.EmployeeId,employees.EmployeeNumber,employees.FirstName,employees.LastName, employees.Address,employees.ContactNumber,employees.BirthDate, employees.Image,
-            
-            SUM(attendance.HoursWorked) as TotalHours,
-            positions.Position,positions.Rate,
-            
-            departments.Department
-            
+            $sql = "SELECT employees.Image,employees.EmployeeId,employees.EmployeeNumber,employees.FirstName,employees.LastName,
+            employeecalculation.BaseSalary,employeecalculation.SSS,employeecalculation.PagIbig,employeecalculation.PhilHealth,
+            departments.Department,
+            positions.Position,
+            SUM(attendance.HoursWorked) as TotalHours
             from employees
-            left join attendance
-            on employees.EmployeeId = attendance.EmployeeId
-            
-            left join positions
-            on employees.PositionId = employees.PositionId
-            
+            left JOIN employeecalculation
+            On employees.EmployeeId = employeecalculation.EmployeeId
             left join departments
-            on departments.DepartmentId = employees.DepartmentId
-            where attendance.Date BETWEEN ? AND ?
-            
-            group by employees.EmployeeId";
+            on employees.DepartmentId = departments.DepartmentId
+            left join positions
+            on employees.PositionId = positions.PositionId
+            left join attendance
+            on attendance.EmployeeId = employees.EmployeeId
+            where attendance.Date BETWEEN ? AND ? 
+            GROUP by employees.EmployeeId";
 
 
 
