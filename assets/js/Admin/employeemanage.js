@@ -112,6 +112,10 @@ $(document).ready(function() {
                                 {"data": "Position"},
                                 {"data": "TimeIn"},
                                 {"data": "TimeOut"},
+                                {
+                                    data:"BaseSalary",
+                                    name:"Base Salary",
+                                },
                                 {"data":"EmployeeId",
                                 "render": function ( data, type, row, meta ) {
                                     var editButton = '<a href="#" value = "'+data+'" class = "btn btn-outline-info editButton"><i class="fas fa-pen-square"></i></a>'
