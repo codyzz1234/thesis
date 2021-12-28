@@ -256,6 +256,8 @@ $(document).ready(function () {
     //Edit Functiosn
     $(document).on('click','.editButton', function() 
     { 
+        e.preventDefault();
+
         $this = $(this);
         id = $this.attr('value');
         loadEditForm(id);

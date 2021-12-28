@@ -155,7 +155,7 @@ $(document).ready(function () {
 
     //Edit records 
 
-    $(document).on('click','.editButton', function(e) 
+    $(document).on('click','tbody .editButton', function(e) 
     { 
         e.preventDefault();
         $this = $(this);
