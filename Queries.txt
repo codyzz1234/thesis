@@ -1,0 +1,76 @@
+
+// fetch Payroll
+
+select employees.EmployeeId,employees.EmployeeNumber,employees.FirstName,employees.LastName, employees.Address,employees.ContactNumber,employees.BirthDate, employees.Image,
+
+SUM(attendance.HoursWorked) as TotalHours,
+positions.Position,positions.Rate,
+
+departments.Department
+
+from employees
+left join attendance
+on employees.EmployeeId = attendance.EmployeeId
+
+left join positions
+on employees.PositionId = employees.PositionId
+
+left join departments
+on departments.DepartmentId = employees.DepartmentId
+where attendance.Date BETWEEN '2021-12-14' AND '2021-12-16'
+
+group by employees.EmployeeId
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// View Employee Payroll
+SELECT employees.Image,employees.EmployeeId,employees.EmployeeNumber,employees.FirstName,employees.LastName,
+employeecalculation.BaseSalary,employeecalculation.SSS,employeecalculation.PagIbig,employeecalculation.PhilHealth,
+departments.Department,
+positions.Position,
+SUM(attendance.HoursWorked) as TotalHours
+from employees
+left JOIN employeecalculation
+On employees.EmployeeId = employeecalculation.EmployeeId
+left join departments
+on employees.DepartmentId = departments.DepartmentId
+left join positions
+on employees.PositionId = positions.PositionId
+left join attendance
+on attendance.EmployeeId = employees.EmployeeId
+where attendance.Date = CURRENT_DATE()
+GROUP by employees.EmployeeId
+
+
+
+
+
+
+
+
+
+
+
+
+//View Employee Information
+select `ampongdental`.`employees`.`EmployeeId` AS `EmployeeId`,`ampongdental`.`employees`.`EmployeeNumber` AS `EmployeeNumber`,`ampongdental`.`employees`.`FirstName` AS `FirstName`,`ampongdental`.`employees`.`LastName` AS `LastName`,`ampongdental`.`employees`.`ContactNumber` AS `ContactNumber`,`ampongdental`.`employees`.`Image` AS `Image`,`ampongdental`.`departments`.`Department` AS `Department`,`ampongdental`.`branches`.`Branch` AS `Branch`,`ampongdental`.`positions`.`Position` AS `Position`,`ampongdental`.`schedules`.`TimeIn` AS `TimeIn`,`ampongdental`.`schedules`.`TimeOut` AS `TimeOut`,`ampongdental`.`employeecalculation`.`BaseSalary` AS `BaseSalary` from (((((`ampongdental`.`employees` left join `ampongdental`.`departments` on(`ampongdental`.`employees`.`DepartmentId` = `ampongdental`.`departments`.`DepartmentId`)) left join `ampongdental`.`positions` on(`ampongdental`.`employees`.`PositionId` = `ampongdental`.`positions`.`PositionId`)) left join `ampongdental`.`schedules` on(`ampongdental`.`employees`.`ScheduleId` = `ampongdental`.`schedules`.`ScheduleId`)) left join `ampongdental`.`branches` on(`ampongdental`.`employees`.`BranchId` = `ampongdental`.`branches`.`BranchId`)) left join `ampongdental`.`employeecalculation` on(`ampongdental`.`employees`.`EmployeeId` = `ampongdental`.`employeecalculation`.`EmployeeId`))
