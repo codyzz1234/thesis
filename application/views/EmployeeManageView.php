@@ -111,12 +111,12 @@
         <form action ="" method = "post" id = "addEmployeeForm">
             <div class = "form-group">
                 <label for = ""> First Name </label>
-                <input type = "text" id = "FirstName" class = "form-control">
+                <input type = "text" id = "FirstName" class = "form-control" name = "FirstName">
             </div>
 
             <div class = "form-group">
                 <label for = ""> Last Name </label>
-                <input type = "text" id = "LastName" class = "form-control">
+                <input type = "text" id = "LastName" class = "form-control" name = "LastName">
             </div>
             
         
