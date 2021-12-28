@@ -354,13 +354,8 @@ $('#editImage').change(function (e) {
 
 
     // Add records on hitting enter key
-    $(document).on('keypress',function(e) {
-        if(e.which == 13) {
-            
-            $("#addRecords").trigger("click");
-        }
-    });
 
+    
 
 
     //add records
