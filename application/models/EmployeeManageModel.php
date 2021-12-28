@@ -91,22 +91,23 @@
 
         public function loadTable()
         {
+            $message = "";
             $this->db->trans_start();
             $sql = "SELECT * from viewemployeeinformation";
-            
             $results = $this->db->query($sql);
             $this->db->trans_complete();           
             if($this->db->trans_status() == false){
-                return false;
+                $message = false;
             }
             else{
                 if(count ($results->result()) > 0){
-                    return $results->result();
+                    $message = $results->result();
                 }
                 else{
-                    return false;
+                    $message = "none";
                 }
             }
+            return $message;
         }
 
         public function loadEditForm($employeeId)

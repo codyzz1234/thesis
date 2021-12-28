@@ -306,9 +306,18 @@
             </div>
 
             <div class = "form-group">
+                <label for = ""> Base Salary </label>
+                <input type = "text" id = "editBase" class = "form-control">
+            </div>
+
+
+
+
+            <div class = "form-group">
                 <label for = ""> RFID Number </label>
                 <input type = "text" id = "editRFID" class = "form-control">
             </div>
+
         </form>
       </div>
 
