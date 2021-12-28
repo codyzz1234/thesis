@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2021 at 03:59 AM
+-- Generation Time: Dec 28, 2021 at 04:34 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -61,6 +61,13 @@ CREATE TABLE `attendance` (
   `TimeInStatus` int(11) DEFAULT 6,
   `TimeOutStatus` int(11) DEFAULT 6
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`AttendanceId`, `EmployeeId`, `EmployeeNumber`, `Date`, `TimeIn`, `TimeOut`, `HoursWorked`, `TimeInStatus`, `TimeOutStatus`) VALUES
+(110, 334, '2021-OTQFFF', '2021-12-28', '2021-12-28 03:14:20', NULL, '0', 2, 6);
 
 -- --------------------------------------------------------
 
@@ -299,7 +306,7 @@ CREATE TABLE `positions` (
 --
 
 INSERT INTO `positions` (`PositionId`, `Position`, `Description`) VALUES
-(2, 'Lab Tech Head', 'In charge of other lab techs and other stuff'),
+(2, 'Lab Tech Head and stuff', 'In charge of other lab techs and other stuff'),
 (24, 'Security Head', 'In Charge of Security'),
 (28, 'Security Manager', 'Manages the security');
 
@@ -347,11 +354,41 @@ CREATE TABLE `viewemployeeinformation` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `viewemployeepayroll`
+-- (See below for the actual view)
+--
+CREATE TABLE `viewemployeepayroll` (
+`Image` varchar(255)
+,`EmployeeId` int(11)
+,`EmployeeNumber` varchar(255)
+,`FirstName` varchar(255)
+,`LastName` varchar(255)
+,`BaseSalary` decimal(13,2)
+,`SSS` decimal(13,2)
+,`PagIbig` decimal(13,2)
+,`PhilHealth` decimal(13,2)
+,`Department` varchar(255)
+,`Position` varchar(255)
+,`TotalHours` decimal(32,0)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `viewemployeeinformation`
 --
 DROP TABLE IF EXISTS `viewemployeeinformation`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `viewemployeeinformation`  AS SELECT `employees`.`EmployeeId` AS `EmployeeId`, `employees`.`EmployeeNumber` AS `EmployeeNumber`, `employees`.`FirstName` AS `FirstName`, `employees`.`LastName` AS `LastName`, `employees`.`ContactNumber` AS `ContactNumber`, `employees`.`Image` AS `Image`, `departments`.`Department` AS `Department`, `branches`.`Branch` AS `Branch`, `positions`.`Position` AS `Position`, `schedules`.`TimeIn` AS `TimeIn`, `schedules`.`TimeOut` AS `TimeOut`, `employeecalculation`.`BaseSalary` AS `BaseSalary` FROM (((((`employees` left join `departments` on(`employees`.`DepartmentId` = `departments`.`DepartmentId`)) left join `positions` on(`employees`.`PositionId` = `positions`.`PositionId`)) left join `schedules` on(`employees`.`ScheduleId` = `schedules`.`ScheduleId`)) left join `branches` on(`employees`.`BranchId` = `branches`.`BranchId`)) left join `employeecalculation` on(`employees`.`EmployeeId` = `employeecalculation`.`EmployeeId`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `viewemployeepayroll`
+--
+DROP TABLE IF EXISTS `viewemployeepayroll`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `viewemployeepayroll`  AS SELECT `employees`.`Image` AS `Image`, `employees`.`EmployeeId` AS `EmployeeId`, `employees`.`EmployeeNumber` AS `EmployeeNumber`, `employees`.`FirstName` AS `FirstName`, `employees`.`LastName` AS `LastName`, `employeecalculation`.`BaseSalary` AS `BaseSalary`, `employeecalculation`.`SSS` AS `SSS`, `employeecalculation`.`PagIbig` AS `PagIbig`, `employeecalculation`.`PhilHealth` AS `PhilHealth`, `departments`.`Department` AS `Department`, `positions`.`Position` AS `Position`, sum(`attendance`.`HoursWorked`) AS `TotalHours` FROM ((((`employees` left join `employeecalculation` on(`employees`.`EmployeeId` = `employeecalculation`.`EmployeeId`)) left join `departments` on(`employees`.`DepartmentId` = `departments`.`DepartmentId`)) left join `positions` on(`employees`.`PositionId` = `positions`.`PositionId`)) left join `attendance` on(`attendance`.`EmployeeId` = `employees`.`EmployeeId`)) WHERE `attendance`.`Date` = curdate() GROUP BY `employees`.`EmployeeId` ;
 
 --
 -- Indexes for dumped tables
@@ -466,7 +503,7 @@ ALTER TABLE `adminlogin`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT for table `branches`
