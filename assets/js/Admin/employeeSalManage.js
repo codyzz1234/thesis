@@ -34,6 +34,114 @@ $(document).ready(function () {
                 if(data.response == "success"){
                     var setters = data.posts;
                     console.log(setters);
+
+                    var table;
+                    setters = data.posts;
+                
+                    if($.fn.dataTable.isDataTable('#employeeSalTable')) {
+                        table = $('#employeeSalTable').DataTable();
+                        table.clear().draw();
+                        table.rows.add(setters); // Add new data
+                        table.columns.adjust().draw();
+                    }
+                    else{
+                        table = $('#employeeSalTable').DataTable({
+                            "destroy": true,
+                            responsive:true,
+                            dom: //'Blfrtip', // if you remove this line you will see the show entries dropdown
+                            'B'+
+                            "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>"+
+                             "rtip",
+                             buttons: [
+                                // 'copy', 'csv', 'excel', 'pdf', 'print',
+                                {
+                                    text:'Copy Table to Clipboard',
+                                    className: "copy spaceButtons",
+                                    extend:'copy',
+                                },
+                                {
+                                    text:'Export Table To Excel',
+                                    extend:'excel',
+                                    className:"excel spaceButtons"
+                                },
+                                {
+                                    text:'Export Table To CSV',
+                                    extend:'csv',
+                                    className:"csv spaceButtons"
+                                },
+                                
+                                {
+                                     text:'Export Table To PDF',
+                                     extend:'pdf',
+                                     className:"pdf spaceButtons",
+                                     orientation : 'landscape',
+                                     pageSize : 'LEGAL',
+                                     exportOptions: {
+                                               columns: [ 0,1,2,3,4,5,6,7,8,9]
+                                          }
+                                },
+     
+                             ],
+                             data:data.posts,
+                             columns:[
+                                 {
+                                    width:"6%",
+                                    title:"Image",
+                                    data:"Image",
+                                    "render": function ( data, type, row, meta ) {
+                                        return '<img src="'+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>'                     
+                                    }
+                                 },
+                                {
+                                    title:"Employee Number",
+                                    data:"EmployeeNumber",
+                                },
+                                {
+                                    title: "First Name",
+                                    data:"FirstName",
+                                },
+                                {
+                                    title:"Base Salary",
+                                    data:"BaseSalary",
+                                },
+
+
+                                {
+                                    title:"Pag Ibig",
+                                    data:"PagIbig",
+                                },
+
+
+                                {
+                                    title:"Phil Health",
+                                    data:"PhilHealth",
+                                },
+                                {
+                                    title:"SSS Contribution",
+                                    data:"SSS",
+                                },
+                                {
+                                    title:"Actions",
+                                    data:null,
+                                    render:function(data,type,row,meta){
+                                        var editButton = '<a href = "#" value = "" class = "btn btn-outline-info editButton"> <i class="fas fa-pen-square"></i></a>'
+                                        return editButton;
+                                    }
+                                },
+
+                             
+                            
+
+                             ],
+                         
+
+
+                        })
+
+
+                    }
+
+
                 }
                 else if(data.response == "none"){
                     toastr["info"]("Alert",data.message);
@@ -48,9 +156,35 @@ $(document).ready(function () {
         });
     }
 
+    // load edit 
+    $(document).on('click','tbody .editButton', function(e) 
+    { 
+        e.preventDefault();
+
+        $this=  $(this);
+        var currentRow = $this.closest('tr');
+        var data = $('#employeeSalTable').DataTable().row(currentRow).data();
+
+        var dataJson = {
+            
+            'EmployeeId':data['EmployeeId'],
+            'PhilHealth':data['PhilHealth'],
+            'PagIbig':data['PagIbig'],
+            'SSS':data['SSS'],
+            'Image':data['Image'],
+        };
+      
+        loadEditForm(dataJson)
+        
+    });
+    function loadEditForm(dataJson)
+    {  
+        $("#editSalaryForm").find('input[name=EmployeeId').val(dataJson['EmployeeId']);
+        $("#editSalaryForm").find('img[name=ImagePreview]').attr('src',dataJson['Image']+"?time"+new Date().getTime());
+        $('#editSalaryModal').modal('show'); 
 
 
-
+    }
 
 
     $('#editRecord').click(function (e) { 
@@ -82,4 +216,6 @@ $(document).ready(function () {
         });
         
     });
+
+  
 });
