@@ -33,11 +33,32 @@ class EmployeeSalaryControl extends CI_Controller {
 				'username' => $sessionData,
 			);
 			$this->load->view('template/DashBoardHead',$data);
-			$this->load->view('EmployeSalaryView',$data);
+			$this->load->view('EmpSalView',$data);
 		}
 		else{
 			redirect('Login');
 		}
+
+	}
+	
+	public function fetch()
+	{
+		$this->load->model('EmpSalModel');
+		$verify = $this->EmpSalModel->fetch();
+		if($verify == false){
+			$data = array('response'=>'failed','message'=> 'An error has occured,failed to retrieve data');
+		}
+		else if($verify == "none"){
+			$data = array('response'=>'none','message'=> 'There are no records to be retrieved');
+		}
+		else{
+			$data = array('response'=>'success','posts'=>$verify);
+		}
+		echo json_encode($data);
+	}
+
+	public function editSalary()
+	{
 
 	}
 }
