@@ -166,12 +166,15 @@ $(document).ready(function () {
         var data = $('#employeeSalTable').DataTable().row(currentRow).data();
 
         var dataJson = {
-            
+            'EmployeeNumber':data['EmployeeNumber'],
             'EmployeeId':data['EmployeeId'],
             'PhilHealth':data['PhilHealth'],
             'PagIbig':data['PagIbig'],
             'SSS':data['SSS'],
             'Image':data['Image'],
+            'BaseSalary':data['BaseSalary'],
+            'FirstName':data['FirstName'],
+            'LastName':data['LastName'],
         };
       
         loadEditForm(dataJson)
@@ -179,8 +182,30 @@ $(document).ready(function () {
     });
     function loadEditForm(dataJson)
     {  
-        $("#editSalaryForm").find('input[name=EmployeeId').val(dataJson['EmployeeId']);
+        $("#editSalaryForm").find('input[name=EmployeeId]').val(dataJson['EmployeeId']);
+
+        $("#editSalaryForm").find('input[name=EmployeeNumber]').val(dataJson['EmployeeNumber']);
+
+
+        $("#editSalaryForm").find('input[name=PhilHealth]').val(dataJson['PhilHealth']);
+
+
+        $("#editSalaryForm").find('input[name=PagIbig]').val(dataJson['PagIbig']);
+
+
+        $("#editSalaryForm").find('input[name=BaseSalary]').val(dataJson['BaseSalary']);
+
+
+        $("#editSalaryForm").find('input[name=FirstName').val(dataJson['FirstName']);
+
+        $("#editSalaryForm").find('input[name=LastName]').val(dataJson['LastName']);
+
+        $("#editSalaryForm").find('input[name=SSS]').val(dataJson['SSS']);
+
+
+
         $("#editSalaryForm").find('img[name=ImagePreview]').attr('src',dataJson['Image']+"?time"+new Date().getTime());
+
         $('#editSalaryModal').modal('show'); 
 
 
@@ -189,7 +214,6 @@ $(document).ready(function () {
 
     $('#editRecord').click(function (e) { 
         e.preventDefault();
-    
         let formData = new FormData($('#editSalaryForm')[0]);
         for(var pair of formData.entries()){
             console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
