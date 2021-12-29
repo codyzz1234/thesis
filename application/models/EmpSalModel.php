@@ -32,4 +32,10 @@
             }
             return $message;
         }
+
+        public function editRecord($ajax_data)
+        {
+            echo "Here in edit record";
+
+        }
 }

@@ -89,27 +89,27 @@
 
                     <div class = "form-group">
                         <label for = ""> Base Salary </label>
-                        <input type = "text" id = "editAmount" class = "form-control" name = "BaseSalary" readonly>
+                        <input type = "text" id = "editAmount" class = "form-control" name = "BaseSalary" >
                     </div>
 
       
                     <div class = "form-group">
                         <label for = ""> Pag Ibig </label>
-                        <input type = "text" id = "editAmount" class = "form-control">
+                        <input type = "text" id = "editAmount" class = "form-control" name = "PagIbig" >
                     </div>
 
 
 
                     <div class = "form-group">
                         <label for = ""> SSS </label>
-                        <input type = "text" id = "editAmount" class = "form-control">
+                        <input type = "text" id = "editAmount" class = "form-control" name = "SSS" >
                     </div>
 
 
 
                     <div class = "form-group">
                         <label for = ""> Phil Health </label>
-                        <input type = "text" id = "editAmount" class = "form-control">
+                        <input type = "text" id = "editAmount" class = "form-control" name = "PhilHealth" >
                     </div>
 
 
