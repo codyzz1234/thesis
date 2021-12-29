@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2021 at 04:34 AM
+-- Generation Time: Dec 29, 2021 at 12:42 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$AIxYamY/pAvr8UQaecXfZevnXX7rFHmK00tOFe4hcZ7Io/MOAzS/e', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2021-12-27 20:06:14');
+(1, 'admin12345', '$2y$10$AIxYamY/pAvr8UQaecXfZevnXX7rFHmK00tOFe4hcZ7Io/MOAzS/e', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2021-12-29 09:19:36');
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,7 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`AttendanceId`, `EmployeeId`, `EmployeeNumber`, `Date`, `TimeIn`, `TimeOut`, `HoursWorked`, `TimeInStatus`, `TimeOutStatus`) VALUES
-(110, 334, '2021-OTQFFF', '2021-12-28', '2021-12-28 03:14:20', NULL, '0', 2, 6);
+(110, 334, '2021-OTQFFF', '2021-12-28', '2021-12-28 03:14:20', '2021-12-29 03:06:15', '23', 2, 6);
 
 -- --------------------------------------------------------
 
@@ -150,7 +150,7 @@ CREATE TABLE `employeecalculation` (
 --
 
 INSERT INTO `employeecalculation` (`EmployeeId`, `EmployeeNumber`, `BaseSalary`, `SSS`, `PagIbig`, `PhilHealth`) VALUES
-(334, '2021-OTQFFF', '150000.00', '0.00', '0.00', '0.00');
+(334, '2021-OTQFFF', '150000.00', '500.00', '400.00', '350.00');
 
 -- --------------------------------------------------------
 
