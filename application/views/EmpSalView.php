@@ -17,14 +17,7 @@
                                 <table class="table table-bordered" id="employeeSalTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Image</th>
-                                            <th>Employee Number</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Base Salary</th>
-                                            <th>Pag-Ibig</th>
-                                            <th>SSS</th>
-                                            <th>Phil Health</th>
+                                           
                                            
                                         </tr>
                                     </thead>
@@ -73,36 +66,52 @@
             </div>
             <div class="modal-body">
                 <form action = "" method = "post" id = "editSalaryForm">
-                    <input type = "hidden" id = "editId" class = "form-control" name = "EmployeeId">
-
+                    <input type = "hidden" id = "editId" class = "form-control" name = "EmployeeId" >
+                    
                     <div class = "form-group" >
                         <img src="..." class="img-fluid" alt="Responsive image" name = "ImagePreview">
                     </div>
 
                     <div class = "form-group">
                         <label for = ""> Employee Number </label>
-                        <input type = "text"  class = "form-control" name = "EmployeeNumber">
+                        <input type = "text"  class = "form-control" name = "EmployeeNumber" readonly>
                     </div>
                     
                     <div class = "form-group">
                         <label for = ""> First Name </label>
-                        <input type = "text" id = "editDesc" class = "form-control" name = "FirstName">
+                        <input type = "text" id = "editDesc" class = "form-control" name = "FirstName" readonly>
                     </div>
 
                     <div class = "form-group">
                         <label for = ""> Last Name </label>
-                        <input type = "text" class = "form-control" name = "LastName">
+                        <input type = "text" class = "form-control" name = "LastName" readonly>
                     </div>
 
                     <div class = "form-group">
-                        <label for = ""> Amount </label>
+                        <label for = ""> Base Salary </label>
+                        <input type = "text" id = "editAmount" class = "form-control" name = "BaseSalary" readonly>
+                    </div>
+
+      
+                    <div class = "form-group">
+                        <label for = ""> Pag Ibig </label>
                         <input type = "text" id = "editAmount" class = "form-control">
                     </div>
 
+
+
                     <div class = "form-group">
-                        <label for = ""> Amount </label>
+                        <label for = ""> SSS </label>
                         <input type = "text" id = "editAmount" class = "form-control">
                     </div>
+
+
+
+                    <div class = "form-group">
+                        <label for = ""> Phil Health </label>
+                        <input type = "text" id = "editAmount" class = "form-control">
+                    </div>
+
 
 
 

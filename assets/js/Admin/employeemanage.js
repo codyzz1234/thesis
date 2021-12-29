@@ -40,7 +40,6 @@ $(document).ready(function() {
                 if(data.response == "success"){
                     var table;
                     setters = data.posts;
-                    console.log(setters)
                     if($.fn.dataTable.isDataTable('#employeeRecords')) {
                         table = $('#employeeRecords').DataTable();
                         table.clear().draw();
@@ -90,7 +89,6 @@ $(document).ready(function() {
                             columns:[
                                 {"data": "Image",
                                 "render": function ( data, type, row, meta ) {
-                                      console.log('<img src="'+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>' )
                                        return '<img src="'+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>'                     
                                     }
                                 },
@@ -133,7 +131,8 @@ $(document).ready(function() {
                                 {
                                   "targets":10,
                                   "width":"10%",
-                                }
+                                },
+
                             ],
                         })
                     }
@@ -143,7 +142,6 @@ $(document).ready(function() {
                 }
                 else{
                     toastr["error"]("Alert",data.message);
-                    console.log("Failed to retrieve");
                 }
             }
         });
@@ -151,7 +149,7 @@ $(document).ready(function() {
 
 
     // Edit Employee
-    $(document).on('click','.editButton', function(e) 
+    $(document).on('click','tbody .editButton', function(e) 
     { 
         e.preventDefault();
         $this = $(this);
@@ -175,7 +173,6 @@ $(document).ready(function() {
             success: function (data) {
                 if(data.response == "success"){
                         setters = data.posts;
-                        console.log(setters);
                         $('#editEmployeeId').val(setters[0].EmployeeId);
 
                         $('#editEmployeeNumber').val(setters[0].EmployeeNumber);
@@ -235,17 +232,6 @@ $(document).ready(function() {
     var Image = $('#editImage')[0].files[0];
     var EmployeeNumber = $('#editEmployeeNumber').val();
 
-   
-    let myForm = ('#addEmployeeForm');
-
-    let dataForm = new FormData(myForm);
-    for(var p of dataForm){
-        let name = p[0];
-        let value = p[1];
-        console.log(name,value);
-
-    }
-
 
 
     var formData = new FormData();
@@ -299,7 +285,7 @@ $('#editImage').change(function (e) {
 
     //Delete Record
 
-    $(document).on('click','.deleteButton', function(e) 
+    $(document).on('click','tbody .deleteButton', function(e) 
     { 
         e.preventDefault();
         $this = $(this);
@@ -358,7 +344,6 @@ $('#editImage').change(function (e) {
             },
             dataType: "JSON",
             success: function (data) {
-                console.log(data.response);
                 if(data.response == "success"){
                     toastr["success"]("Alert",data.message);
                     $('#deleteEmployeeModal').modal('hide'); 
