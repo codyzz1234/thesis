@@ -174,7 +174,7 @@
 
     <!-- Cusotm Script-->
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets\js\Admin\employeSalManage.js') ?>"></script>
+    <script src="<?php echo base_url('assets\js\Admin\employeeSalManage.js') ?>"></script>
 
 
 </body>
