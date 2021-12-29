@@ -35,7 +35,6 @@
                                             <th>Position</th> 
                                             <th>Time In</th> 
                                             <th>Time Out</th>
-                                            <th>BaseSalary</th>
                                             <th>Actions</th>
                                         </tr> 
                                     </thead>
