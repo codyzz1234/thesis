@@ -227,15 +227,17 @@ $(document).ready(function () {
             contentType: false, 
             processData: false,
             success: function (data) {
-                
                 if(data.response == "success"){
+                    toastr["success"]("Alert",data.message);
                     fetch();
-                  
+                }
+                else if(data.response == "none"){
+                    toastr["info"]("Alert",data.message);
+
                 }
                 else{
                     toastr["error"]("Alert",data.message);
                 }   
-                
             }
         });
         

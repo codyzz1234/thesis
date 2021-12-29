@@ -98,18 +98,15 @@ class EmployeeSalaryControl extends CI_Controller {
 				'SSS' => $this->input->post('SSS'),
 				'PhilHealth' => $this->input->post('PhilHealth'),
 			);
-			var_dump($ajax_data);
 			$verify = $this->EmpSalModel->editRecord($ajax_data);
-
-
 			if($verify == false){
 				$data = array('response'=>'failed','message'=> 'An error has occured,failed to retrieve data');
 			}
 			else if($verify == "none"){
-				$data = array('response'=>'none','message'=> 'There are no records to be retrieved');
+				$data = array('response'=>'none','message'=> 'No Changes Made');
 			}
 			else{
-				$data = array('response'=>'success','posts'=>$verify);
+				$data = array('response'=>'success','message' => "Data Updated Successfully");
 			}
 
 		} 

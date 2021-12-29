@@ -35,7 +35,23 @@
 
         public function editRecord($ajax_data)
         {
-            echo "Here in edit record";
-
+            $message = "";
+            $this->db->trans_start();
+            $this->db->where('EmployeeId',$ajax_data['EmployeeId']);
+            $this->db->update('employeecalculation',$ajax_data);
+            $affectedRows = $this->db->affected_rows();
+            $this->db->trans_complete();
+            if($this->db->trans_status() === false){
+                $message = "failed";
+            }
+            else{
+                if($affectedRows <= 0){
+                    $message = "none";
+                }
+                else{
+                    $message = "success";
+                }
+            }
+            return $message;
         }
 }
