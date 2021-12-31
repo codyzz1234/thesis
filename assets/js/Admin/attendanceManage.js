@@ -27,7 +27,11 @@ function toasterOptions()
 
 
 $(document).ready(function () {
+    toasterOptions();
     initialLoad();
+    setDateRangePicker();
+
+
     function initialLoad()
     {
         var date = new Date();
@@ -35,8 +39,6 @@ $(document).ready(function () {
         var end = new Date(date.getFullYear(), date.getMonth() + 1, 0);
         start = moment(start).format('YYYY-MM-DD');
         end = moment(end).format('YYYY-MM-DD');
-        console.log("Start is " + start);
-        console.log("ENd is : " + end);
         fetch(start,end)
         
     }
@@ -58,16 +60,13 @@ $(document).ready(function () {
                 if(data.response == "success"){
                     var table;
                     setters = data.posts;
-                    console.log(setters)
                     if($.fn.dataTable.isDataTable('#attendanceTable')) {
                         table = $('#attendanceTable').DataTable();
                         table.clear().draw();
                         table.rows.add(setters); // Add new data
                         table.columns.adjust().draw();
-                        console.log("Drew it");
                     }
                     else{
-                        console.log("Generate It");
                         table = $('#attendanceTable').DataTable({
                             "destroy": true,
                             responsive:true,
@@ -133,7 +132,6 @@ $(document).ready(function () {
                                   "render":function(data,type,row,meta){
                                         var hoursWorked = data.HoursWorked;
                                         var timeOut = data.TimeOut;
-                                        console.log("Hours Worked is: ")
                                         if(hoursWorked == 0 && timeOut == null){ 
                                             return " "
                                         }
@@ -180,7 +178,6 @@ $(document).ready(function () {
         var dataJson = {
             'AttendanceId':data['AttendanceId'],
             }
-        console.log(data['AttendanceId']);
     });
 
     //delete Attendance
@@ -201,4 +198,49 @@ $(document).ready(function () {
     {
         
     }
+  
+    //Initialize Date Range Picker
+    function setDateRangePicker()
+    {
+        var date = new Date();
+        var start = new Date(date.getFullYear(), date.getMonth(), 1);
+        var end = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        $('#dateRangePicker').val(date);
+        $('#dateRangePicker').daterangepicker({
+            startDate:start,
+            endDate:end,
+            "applyButtonClasses": "btn-success",
+            "cancelClass": "btn-danger",
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+    }
+
+    $('#dateRangePicker').on('apply.daterangepicker', function(ev, picker) {
+        var startDate = picker.startDate.format('YYYY-MM-DD');
+        var endDate =  picker.endDate.format('YYYY-MM-DD');
+ 
+        fetch(startDate,endDate)
+    });
+    // when Clear/Cancel button is hit
+    $('#dateRangePicker').on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
+    });
+
+    //Same as apply.
+    $('#applyDate').on('click', function (e,picker) {
+        e.preventDefault();
+        alert("Hello world");
+        var start = $('#dateRangePicker').data('daterangepicker').startDate;
+        var end =  $('#dateRangePicker').data('daterangepicker').endDate;
+        start = moment(start).format('YYYY-MM-DD');
+        end = moment(end).format('YYYY-MM-DD');
+        fetch(start,end);
+        
+    });
+
+
+
+
 });
