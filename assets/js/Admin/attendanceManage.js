@@ -27,14 +27,32 @@ function toasterOptions()
 
 
 $(document).ready(function () {
-    fetch();
-    function fetch()
+    initialLoad();
+    function initialLoad()
+    {
+        var date = new Date();
+        var start = new Date(date.getFullYear(), date.getMonth(), 1);
+        var end = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        start = moment(start).format('YYYY-MM-DD');
+        end = moment(end).format('YYYY-MM-DD');
+        console.log("Start is " + start);
+        console.log("ENd is : " + end);
+        fetch(start,end)
+        
+    }
+
+
+
+    function fetch(start,end)
     {
         toasterOptions();
         $.ajax({
             type: "POST",
             url: baseurl+"AttendanceControl/fetch",
-            data: "data",
+            data:{
+                StartDate:start,
+                EndDate:end,
+            },
             dataType: "JSON",
             success: function (data) {
                 if(data.response == "success"){

@@ -40,8 +40,11 @@ class AttendanceControl extends CI_Controller {
 	}
 	public function fetch()
 	{
+		$start = $this->input->post('StartDate');
+		$end = $this->input->post('EndDate');
+	
 		$this->load->model('AttendanceModel');
-		$verify = $this->AttendanceModel->fetch();
+		$verify = $this->AttendanceModel->fetch($start,$end);
 		if($verify == "failed"){
 			$data = array('response'=>"failed",'message'=>"failed to retrieve records due to connection error");
 		}

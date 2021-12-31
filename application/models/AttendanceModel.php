@@ -5,16 +5,17 @@
             parent:: __construct();
             $this->load->database();
         }
-        public function fetch()
+        public function fetch($start,$end)
         {
             $message = "";
             $this->db->trans_start();
             $sql = "SELECT attendance.AttendanceId,attendance.EmployeeNumber,attendance.TimeIn,attendance.TimeOut,attendance.HoursWorked,attendance.Date,attendance.TimeInStatus,attendance.TimeOutStatus,employees.FirstName,employees.LastName,employees.Image, departments.Department, positions.Position from attendance 
             left JOIN employees on attendance.EmployeeId = employees.EmployeeId 
             left join departments on employees.DepartmentId = departments.DepartmentId 
-            left join positions on employees.PositionId = positions.PositionId";
-
-            $results = $this->db->query($sql);
+            left join positions on employees.PositionId = positions.PositionId
+            WHERE attendance.Date BETWEEN ? AND ?";
+            $results = $this->db->query($sql,array($start,$end));
+            
             $this->db->trans_complete();
             if($this->db->trans_status() == false){
                 $message = "failed";
