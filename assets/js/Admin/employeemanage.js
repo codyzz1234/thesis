@@ -59,24 +59,24 @@ $(document).ready(function() {
                                // 'copy', 'csv', 'excel', 'pdf', 'print',
                                {
                                    text:'Copy Table to Clipboard',
-                                   className: "copy spaceButtons",
+                                   className: "btn btn-secondary spaceButtons",
                                    extend:'copy',
                                },
                                {
                                    text:'Export Table To Excel',
                                    extend:'excel',
-                                   className:"excel spaceButtons"
+                                   className:"btn btn-success spaceButtons"
                                },
                                {
                                    text:'Export Table To CSV',
                                    extend:'csv',
-                                   className:"csv spaceButtons"
+                                   className:"btn btn-info spaceButtons"
                                },
                                
                                {
                                     text:'Export Table To PDF',
                                     extend:'pdf',
-                                    className:"pdf spaceButtons",
+                                    className:"btn btn-warningspaceButtons",
                                     orientation : 'landscape',
                                     pageSize : 'LEGAL',
                                     exportOptions: {

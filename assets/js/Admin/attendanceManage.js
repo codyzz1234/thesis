@@ -171,7 +171,7 @@ $(document).ready(function () {
                                 },
 
                                 {
-                                   title:"Hours Worked",
+                                   title:"Total Hours Worked",
                                    data:null,
                                    render:function(data,type,row,meta){
                                         var hoursWorked = data.HoursWorked;
