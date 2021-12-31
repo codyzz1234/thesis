@@ -78,27 +78,43 @@ $(document).ready(function () {
                                // 'copy', 'csv', 'excel', 'pdf', 'print',
                                {
                                    text:'Copy Table to Clipboard',
-                                   className: "copy spaceButtons",
                                    extend:'copy',
+                                   className: "btn btn-secondary spaceButtons",
+                                   orientation : 'landscape',
+                                   pageSize : 'LEGAL',
+                                   exportOptions: {
+                                             columns: [1,2,3,4,5,6,7]
+                                        }
                                },
                                {
                                    text:'Export Table To Excel',
                                    extend:'excel',
-                                   className:"excel spaceButtons"
+                                   className:"btn btn-success spaceButtons",
+                                   orientation : 'landscape',
+                                   pageSize : 'LEGAL',
+                                   exportOptions: {
+                                             columns: [1,2,3,4,5,6,7]
+                                        }
                                },
                                {
                                    text:'Export Table To CSV',
                                    extend:'csv',
-                                   className:"csv spaceButtons"
+                                   className:"btn btn-info spaceButtons",
+                                   orientation : 'landscape',
+                                   pageSize : 'LEGAL',
+                                   exportOptions: {
+                                             columns: [1,2,3,4,5,6,7]
+                                        }
+                                   
                                },
                                {
                                     text:'Export Table To PDF',
                                     extend:'pdf',
-                                    className:"pdf spaceButtons",
+                                    className:"btn btn-warning spaceButtons",
                                     orientation : 'landscape',
                                     pageSize : 'LEGAL',
                                     exportOptions: {
-                                              columns: [ 0,1,2,3,4,5,6,7,8,9]
+                                              columns: [1,2,3,4,5,6,7]
                                          }
                                },
     
