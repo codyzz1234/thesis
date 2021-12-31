@@ -14,13 +14,21 @@
                  
                         <div class="card-body">
 
-                        <div class="input-group payrollGroup">
-                        <input type="text" id = "dateRangePicker" name="daterange"/>
-
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id = "appendButton">Button</button>
+ 
+                        <div class="row justify-content-start payrollGroup">
+                            <div class="col md-4 lg-5">
+                                <div class="input-group">
+                                  <input type="text" id = "dateRangePicker" name="daterange"/>
+                                     <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" id = "appendButton">Button</button>
+                                     </div>
+                                </div>
                             </div>
                         </div>
+
+
+
+
 
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="payrollRecords" width="100%" cellspacing="0">

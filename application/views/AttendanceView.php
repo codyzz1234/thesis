@@ -15,6 +15,23 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Attendance History</h6>
                         </div>
+                        
+                        <div class="row justify-content-start attendanceGroup">
+                            <div class="col md-4 lg-5">
+                                <div class="input-group">
+                                  <input type="text" id = "dateRangePicker" name="daterange"/>
+                                     <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" id = "appendButton">Button</button>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                
+
+
+
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="attendanceTable" width="100%" cellspacing="0">
