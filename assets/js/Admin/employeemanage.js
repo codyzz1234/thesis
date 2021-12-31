@@ -76,7 +76,7 @@ $(document).ready(function() {
                                {
                                     text:'Export Table To PDF',
                                     extend:'pdf',
-                                    className:"btn btn-warningspaceButtons",
+                                    className:"btn btn-warning spaceButtons",
                                     orientation : 'landscape',
                                     pageSize : 'LEGAL',
                                     exportOptions: {
