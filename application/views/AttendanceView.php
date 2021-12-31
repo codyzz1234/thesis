@@ -37,15 +37,7 @@
                                 <table class="table table-bordered" id="attendanceTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Image</th>
-                                            <th>Employee Number</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Date</th>
-                                            <th>Time In</th>
-                                            <th>Time Out</th>
-                                            <th>Hours Worked</th>
-                                            <th>Actions</th>
+                                           
                                         </tr>
                                     </thead>
             

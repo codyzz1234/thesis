@@ -119,18 +119,39 @@ $(document).ready(function () {
                                },
     
                             ],
-                            "data":data.posts,
+                            data:data.posts,
                             columns:[
-                                {"data":"Image",
-                                 "render":function(data,type,row,meta){ 
-                                    return '<img src="'+data+'"alt="Error load" class="img-fluid"></img>'         
-                                  },
+                                {
+                                    title:"Image",
+                                    data:"Image",
+                                    render:function(data,type,row,meta){ 
+                                        return '<img src="'+data+'"alt="Error load" class="img-fluid"></img>'         
+                                    },
                                 },
-                                {"data":"EmployeeNumber"},
-                                {"data":"FirstName"},
-                                {"data":"LastName"},
-                                {"data":"Date"},
-                                {"data":null,
+
+                                {
+                                    title:"Employee Number",
+                                    data:"EmployeeNumber"
+                                },
+
+                                {
+                                    title:"First Name",
+                                    data:"FirstName"
+                                },
+                                
+                                {   title:"Last Name",
+                                    data:"LastName"
+
+                                },
+
+                                {
+                                    title:"Date",
+                                    data:"Date"
+                                },
+
+                                {
+                                    title:"Time In",
+                                    data:null,
                                     "render":function(data,type,row,meta){
                                         render = data.TimeIn+ " ";
                                         if(data.TimeInStatus == "1"){
@@ -142,10 +163,17 @@ $(document).ready(function () {
                                         return render;
                                     },
                                 },
+
                                 
-                                {"data":"TimeOut"},
-                                {"data":null,
-                                  "render":function(data,type,row,meta){
+                                {
+                                    title:"Time Out",
+                                    data:"TimeOut"
+                                },
+
+                                {
+                                   title:"Hours Worked",
+                                   data:null,
+                                   render:function(data,type,row,meta){
                                         var hoursWorked = data.HoursWorked;
                                         var timeOut = data.TimeOut;
                                         if(hoursWorked == 0 && timeOut == null){ 
@@ -156,8 +184,11 @@ $(document).ready(function () {
                                         }
                                   },
                                 },
-                                {"data":null,
-                                    "render":function(data,type,row,meta){
+                                
+                                {
+                                    title:"Actions",
+                                    data:null,
+                                     render:function(data,type,row,meta){
                                         var editButton = '<a href="#" value = "'+'" class = "btn btn-outline-info editButton"><i class="fas fa-pen-square"></i></a>'
                                         var deleteButton = '<a href="#" value = "'+'" class = "btn btn-outline-danger deleteButton"><i class="fas fa-trash-alt"></i></a>'
                                         return editButton+deleteButton
