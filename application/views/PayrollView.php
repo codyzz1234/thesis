@@ -34,16 +34,7 @@
                                 <table class="table table-bordered" id="payrollRecords" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Image</th>
-                                            <th>Employee Number</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Department</th>
-                                            <th>Position </th>
-                                            <th>Hourly Rate</th>
-                                            <th>Total Hours Worked</th>
-    
-                                                                       
+                                 
                                         </tr>
                                     </thead>
 

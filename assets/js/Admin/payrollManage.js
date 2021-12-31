@@ -102,19 +102,36 @@ $(document).ready(function (){
     
                             ],
     
-                            "data":data.posts,
+                            data:data.posts,
                             columns:[
-                                {"data": "Image",
-                                "render": function ( data, type, row, meta ) {
+                                {
+                                    title:"Image",
+                                    "data": "Image",
+                                    "render": function ( data, type, row, meta ) {
                                        return '<img src="'+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>'                     
                                     }
                                 },
-                                {"data":"EmployeeNumber"},
-                                {"data":"FirstName"},
-                                {"data": "LastName"},
 
-                                {"data": "Department",
-                                 "render":function(data,type,row,meta){
+                                {
+                                    title:"Employee Number",
+                                    data:"EmployeeNumber"
+                                },
+
+                                {
+                                    title:"First Name",
+                                    data:"FirstName"
+                                },
+
+                                {
+                                    title:"Last Name",
+                                    data:"LastName"
+                                },
+
+
+                                {
+                                    title:"Department",
+                                    data:"Department",
+                                    "render":function(data,type,row,meta){
                                      var a;
                                      if(data == null){
                                         a = "Employee Has No Department";
@@ -125,9 +142,33 @@ $(document).ready(function (){
                                     return a;
                                  },
                                 },
-                                {"data": "Position"},
-                                {"data": "Rate"},
-                                {"data": "TotalHours"}
+
+                                {
+                                    title:"Position",
+                                    data:"Position"
+                                },
+
+                                {
+                                    title:"Base Salary",
+                                    data:"BaseSalary",
+                                },
+
+                                {
+                                    title:"Hourly Rate",
+                                    data:"BaseSalary",
+                                    render:function(data,type,row,meta){
+                                        var hourlyRate = parseFloat(data);
+                                        hourlyRate = ((hourlyRate * 12)/313) /8;
+                                        return hourlyRate;
+                                    
+                                    },
+                                },
+
+                                {
+                                    title:"Total Hours",
+                                    data: "TotalHours",
+                                    
+                                },
                  
     
                             ],
