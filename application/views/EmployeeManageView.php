@@ -304,11 +304,7 @@
                 </select>
             </div>
 
-            <div class = "form-group">
-                <label for = ""> Base Salary </label>
-                <input type = "text" id = "editBase" class = "form-control">
-            </div>
-
+            
 
 
 
