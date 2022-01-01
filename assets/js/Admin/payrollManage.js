@@ -138,30 +138,36 @@ $(document).ready(function (){
                                     
                                 },
 
-                               
-
-
                                 {
-                                    title:"Department",
-                                    data:"Department",
-                                    "render":function(data,type,row,meta){
-                                     var a;
-                                     if(data == null){
-                                        a = "Employee Has No Department";
-                                     }
-                                     else{
-                                        a = data;
-                                    }
-                                    return a;
-                                 },
+                                    title:"Total Days Worked",
+                                    data:"DaysWorked"
+
                                 },
 
-                               
 
                                 {
                                     title:"Base Salary",
                                     data:"BaseSalary",
                                 },
+
+                                {
+                                    title:"Gross pay",
+                                    data:null,
+                                    render: function(row,type,data,meta){
+                                        return " ";
+                                    },
+                                },
+
+                                {
+                                    title:"Net Pay",
+                                    data:null,
+                                    render: function(row,type,data,meta){
+                                        return " ";
+                                    },
+                                },
+
+
+
 
                                 {
                                     title:"Hourly Rate",
