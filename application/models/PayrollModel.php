@@ -13,7 +13,7 @@
             employeecalculation.BaseSalary,employeecalculation.SSS,employeecalculation.PagIbig,employeecalculation.PhilHealth,
             departments.Department,
             positions.Position,
-            SUM(attendance.HoursWorked) as TotalHours
+            SUM(attendance.HoursWorked) as TotalHours, COUNT(attendance.EmployeeId) AS DaysWorked
             from employees
             left JOIN employeecalculation
             On employees.EmployeeId = employeecalculation.EmployeeId
@@ -23,8 +23,8 @@
             on employees.PositionId = positions.PositionId
             left join attendance
             on attendance.EmployeeId = employees.EmployeeId
-            where attendance.Date BETWEEN ? AND ? 
-            GROUP by employees.EmployeeId";
+            where attendance.Date BETWEEN ? AND ?
+            GROUP by employees.EmployeeId;";
 
 
 
