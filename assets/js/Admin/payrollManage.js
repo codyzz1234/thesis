@@ -104,6 +104,7 @@ $(document).ready(function (){
     
                             data:data.posts,
                             columns:[
+                        
                                 {
                                     title:"Image",
                                     "data": "Image",
@@ -113,19 +114,31 @@ $(document).ready(function (){
                                 },
 
                                 {
+                                    title:"Employee Name",
+                                    data:null,
+                                    render:function(row,type,data,meta){
+                                        return row.FirstName + " " + row.LastName;
+                                    }
+
+                                },
+
+                                {
                                     title:"Employee Number",
                                     data:"EmployeeNumber"
                                 },
 
                                 {
-                                    title:"First Name",
-                                    data:"FirstName"
+                                    title:"Position",
+                                    data:"Position"
                                 },
 
                                 {
-                                    title:"Last Name",
-                                    data:"LastName"
+                                    title:"Total Hours Worked",
+                                    data: "TotalHours",
+                                    
                                 },
+
+                               
 
 
                                 {
@@ -143,10 +156,7 @@ $(document).ready(function (){
                                  },
                                 },
 
-                                {
-                                    title:"Position",
-                                    data:"Position"
-                                },
+                               
 
                                 {
                                     title:"Base Salary",
@@ -164,11 +174,7 @@ $(document).ready(function (){
                                     },
                                 },
 
-                                {
-                                    title:"Total Hours",
-                                    data: "TotalHours",
-                                    
-                                },
+                             
                  
     
                             ],
