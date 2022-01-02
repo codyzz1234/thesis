@@ -278,7 +278,6 @@ $(document).ready(function () {
     //Same as apply.
     $('#applyDate').on('click', function (e,picker) {
         e.preventDefault();
-        alert("Hello world");
         var start = $('#dateRangePicker').data('daterangepicker').startDate;
         var end =  $('#dateRangePicker').data('daterangepicker').endDate;
         start = moment(start).format('YYYY-MM-DD');
