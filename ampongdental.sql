@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2021 at 02:36 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Generation Time: Jan 02, 2022 at 02:30 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$AIxYamY/pAvr8UQaecXfZevnXX7rFHmK00tOFe4hcZ7Io/MOAzS/e', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2021-12-29 13:36:06');
+(1, 'admin12345', '$2y$10$AIxYamY/pAvr8UQaecXfZevnXX7rFHmK00tOFe4hcZ7Io/MOAzS/e', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-01 13:50:44');
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,9 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`AttendanceId`, `EmployeeId`, `EmployeeNumber`, `Date`, `TimeIn`, `TimeOut`, `HoursWorked`, `TimeInStatus`, `TimeOutStatus`) VALUES
-(110, 334, '2021-OTQFFF', '2021-12-28', '2021-12-28 03:14:20', '2021-12-29 03:06:15', '23', 2, 6);
+(110, 334, '2021-OTQFFF', '2021-12-28', '2021-12-28 03:14:20', '2021-12-29 03:06:15', '23', 2, 6),
+(111, 335, '2022-9FOGBZ', '2022-01-01', '2022-01-01 14:16:13', '2022-01-01 14:17:13', '0', 2, 6),
+(112, 334, '2021-OTQFFF', '2022-01-01', '2022-01-01 14:20:40', '2022-01-01 14:20:44', '0', 2, 6);
 
 -- --------------------------------------------------------
 
@@ -150,7 +152,8 @@ CREATE TABLE `employeecalculation` (
 --
 
 INSERT INTO `employeecalculation` (`EmployeeId`, `EmployeeNumber`, `BaseSalary`, `SSS`, `PagIbig`, `PhilHealth`) VALUES
-(334, '2021-OTQFFF', '150000.00', '500.00', '400.00', '350.00');
+(334, '2021-OTQFFF', '20000.00', '500.00', '400.00', '350.00'),
+(335, '2022-9FOGBZ', '10000.00', '0.00', '0.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -197,7 +200,8 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`EmployeeId`, `EmployeeNumber`, `RFID`, `FirstName`, `LastName`, `Address`, `ContactNumber`, `BirthDate`, `HireDate`, `DepartmentId`, `PositionId`, `BranchId`, `ScheduleId`, `TotalHours`, `Status`, `Image`) VALUES
-(334, '2021-OTQFFF', '1561451', 'Kenley', 'So', 'Valencai Street Metro Manila', '09453218471', '1990-02-07', '2021-12-28', 18, 2, 1, 17, 0, 1, './assets/EmployeeImages/default.png');
+(334, '2021-OTQFFF', '1561451', 'Kenley', 'So', 'Valencai Street Metro Manila', '09453218471', '1990-02-07', '2021-12-28', 25, 2, 1, 17, 0, 1, './assets/EmployeeImages/default.png'),
+(335, '2022-9FOGBZ', '535353', 'Cody', 'Yap', 'Quezon City', '9224891495', '1990-06-06', '2022-01-01', 18, 2, 1, 17, 0, 1, './assets/EmployeeImages/default.png');
 
 -- --------------------------------------------------------
 
@@ -502,7 +506,7 @@ ALTER TABLE `adminlogin`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `branches`
@@ -532,7 +536,7 @@ ALTER TABLE `employeelogin`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `EmployeeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=335;
+  MODIFY `EmployeeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=336;
 
 --
 -- AUTO_INCREMENT for table `employeestatus`
