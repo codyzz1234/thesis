@@ -255,6 +255,16 @@ $(document).ready(function (){
         $(this).val('');
     });
 
+    $('#applyDate').on('click', function (e,picker) {
+        e.preventDefault();
+        var start = $('#dateRangePicker').data('daterangepicker').startDate;
+        var end =  $('#dateRangePicker').data('daterangepicker').endDate;
+        start = moment(start).format('YYYY-MM-DD');
+        end = moment(end).format('YYYY-MM-DD');
+        fetch(start,end);
+        
+    });
+
 
 
 });

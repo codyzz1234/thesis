@@ -20,7 +20,7 @@
                                 <div class="input-group">
                                   <input type="text" id = "dateRangePicker" name="daterange"/>
                                      <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id = "appendButton">Button</button>
+                                        <button class="btn btn-info" type="button" id = "applyDate">Apply</button>
                                      </div>
                                 </div>
                             </div>
