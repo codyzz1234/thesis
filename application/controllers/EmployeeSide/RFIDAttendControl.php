@@ -55,13 +55,15 @@ class RFIDAttendControl extends CI_Controller {
 			
 			$recordAttendance = $this->ERFIDAttendModel->timeInOut($employeeId,$employeeNumber,$position,$timeIn,$timeOut);
 
-			if($recordAttendance == false){
+			if($recordAttendance === false){
 				$data = array('response' => "failed",'message'=>"Error Recording Attendance");
 			}
-			else{
+			else if($recordAttendance === true){
 				$data = array('response' => "success",'posts'=>$verify);
 			}
-
+			else if($recordAttendance == "out"){
+				$data = array('response' => "out", 'message'=>"You are outside schedule");
+			}
 		}
 		echo json_encode($data);
 	}

@@ -102,6 +102,11 @@ $(document).ready(function () {
                 else if(data.response == "none"){
                     toastr["info"]("Alert",data.message);
                 }
+
+                else if(data.response == "out"){
+                    toastr["warning"]("Alert",data.message);
+                }
+                
                 else{
                     toastr["error"]("Alert",data.message);
                 }

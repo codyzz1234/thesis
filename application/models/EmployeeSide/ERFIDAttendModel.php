@@ -50,30 +50,30 @@
             $rowCount = count($results->result());
             $message = "";
             if($rowCount <= 0){
-                $this->recordTimeIn($EmployeeId,$EmployeeNumber,$timeIn,$timeOut,$message);
+                $this->recordTimeIn($EmployeeId,$EmployeeNumber,$timeIn,$timeOut);
             }
             else{
                 $this->recordTimeOut($EmployeeId,$EmployeeNumber,$timeIn,$timeOut);
-            
             }
             $affectedRows = $this->db->affected_rows();
             $this->db->trans_complete();
+
             if($affectedRows <= 0){
-                return false;
+                $message = "out";
             }
             else{
                 if($this->db->trans_status() == false){
-                    return false;
+                    $message = false;
                 }
                 else{
-                    return true;
-                }
+                    $message = true;
+               }
             }
+            return $message;
         }
         
-        public function recordTimeIn($EmployeeId,$EmployeeNumber,$timeIn,$timeOut,$message)
+        public function recordTimeIn($EmployeeId,$EmployeeNumber,$timeIn,$timeOut)
         {
-            echo "time in is ".$timeIn;
             if ( (time()< strtotime($timeIn)+1860 && time() >= strtotime($timeIn)) && (time() < strtotime($timeOut)) ){ // 30 mins grace period
                 $status = 1; // on time status
             }
@@ -84,10 +84,8 @@
                 $status = 3; //Late Status;
             }
             else{
-                $message = "Outside Designated Schedule";
+                return;
             }
-            echo "Status is : ".$status;
-            return;
             $sql = "INSERT into `attendance`(`EmployeeId`,`EmployeeNumber`,`TimeInStatus`,`Date`,`TimeIn`) VALUES(?,?,?,CURDATE(),CURRENT_TIMESTAMP)";
             $this->db->query($sql,array($EmployeeId,$EmployeeNumber,$status));
         }
