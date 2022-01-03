@@ -92,12 +92,25 @@
 
         public function recordTimeOut($EmployeeId,$EmployeeNumber,$timeIn,$timeOut)
         {
-            $sql = "UPDATE attendance set TimeOut = CURRENT_TIMESTAMP,
-            HoursWorked = TIMESTAMPDIFF(HOUR,TimeIn,TimeOut)
-            WHERE EmployeeId = ?
-            AND EmployeeNumber = ?
-            AND TimeOut IS NULL";
-            $this->db->query($sql,array($EmployeeId,$EmployeeNumber));
+            $timeIn = strtotime($timeIn);
+            $timeOut = strtotime($timeOut);
+            
+            $sql = "UPDATE attendance 
+            SET TimeOut = CURRENT_TIMESTAMP,
+                HoursWorked = CASE
+                            WHEN (TimeInStatus = 1 OR TimeInStatus = 2) 
+                            THEN TIMESTAMPDIFF(HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP)
+                            END
+     Where EmployeeId = ?
+     AND EmployeeNumber = ?
+     AND TimeOut IS NULL";
+
+
+            $this->db->query($sql,array(
+                $timeIn,
+                $EmployeeId,
+                $EmployeeNumber,
+            ));
             $message = "Out";
 
         }

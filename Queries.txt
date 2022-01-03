@@ -77,6 +77,19 @@ select `ampongdental`.`employees`.`EmployeeId` AS `EmployeeId`,`ampongdental`.`e
 
 
 //Date Format with 30 mins add TIMESTAMP ADD
+
 SELECT DATE_FORMAT(TIMESTAMPADD(MINUTE,30,TimeIn),'%H:%i') as TimeIn
 from attendance
+
+//Timeout WIth cases
+
+UPDATE attendance 
+            SET TimeOut = CURRENT_TIMESTAMP,
+                HoursWorked = CASE
+                            WHEN (TimeInStatus = 1 OR TimeInStatus = 2) 
+                            THEN TIMESTAMPDIFF(HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP)
+                            END
+     Where EmployeeId = ?
+     AND EmployeeNumber = ?
+     AND TimeOut IS NULL
 
