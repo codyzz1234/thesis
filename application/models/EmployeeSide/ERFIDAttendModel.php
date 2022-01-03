@@ -98,15 +98,31 @@
             $sql = "UPDATE attendance 
             SET TimeOut = CURRENT_TIMESTAMP,
                 HoursWorked = CASE
-                            WHEN (TimeInStatus = 1 OR TimeInStatus = 2) 
-                            THEN TIMESTAMPDIFF(HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP)
-                            END
-     Where EmployeeId = ?
-     AND EmployeeNumber = ?
-     AND TimeOut IS NULL";
+                                WHEN (TimeInStatus = 1 OR TimeInStatus = 2) 
+                                     THEN TIMESTAMPDIFF(HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) - 1
+
+                                ELSE
+                                     TIMESTAMPDIFF(HOUR,TimeIn,CURRENT_TIMESTAMP) - 1
+                              END
+                ,OvertimeHours  = CASE
+                                    WHEN (TimeInStatus = 1 OR TimeInStatus = 2) AND ((TIMESTAMPDIFF (HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) - 1) > 8)
+                                        THEN (TIMESTAMPDIFF(HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) - 1) - 8
+
+                                    WHEN (TimeInStatus = 3)  AND ((TIMESTAMPDIFF (HOUR,TimeIn,CURRENT_TIMESTAMP) - 1) > 8)
+                                        THEN (TIMESTAMPDIFF(HOUR,TimeIn,CURRENT_TIMESTAMP) - 1) - 8
+
+                                    ELSE
+                                       0
+                                 END
+            Where EmployeeId = ?
+            AND EmployeeNumber = ?
+            AND TimeOut IS NULL";
+     
 
 
             $this->db->query($sql,array(
+                $timeIn,
+                $timeIn,
                 $timeIn,
                 $EmployeeId,
                 $EmployeeNumber,
