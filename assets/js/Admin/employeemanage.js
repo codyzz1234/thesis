@@ -40,7 +40,6 @@ $(document).ready(function() {
                 if(data.response == "success"){
                     var table;
                     setters = data.posts;
-                    console.log(setters);
                     if($.fn.dataTable.isDataTable('#employeeRecords')) {
                         table = $('#employeeRecords').DataTable();
                         table.clear().draw();

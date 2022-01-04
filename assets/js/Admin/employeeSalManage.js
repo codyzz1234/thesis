@@ -33,7 +33,6 @@ $(document).ready(function () {
             success: function (data) {
                 if(data.response == "success"){
                     var setters = data.posts;
-                    console.log(setters);
 
                     var table;
                     setters = data.posts;
@@ -145,11 +144,9 @@ $(document).ready(function () {
                 }
                 else if(data.response == "none"){
                     toastr["info"]("Alert",data.message);
-                    console.log("no records");
                 }
                 else if (data.resposne == "failed"){
                     toastr["error"]("Alert",data.message);
-                    console.log("Failed to retrieve");
                 }
                 
             }
@@ -215,9 +212,7 @@ $(document).ready(function () {
     $('#editRecord').click(function (e) { 
         e.preventDefault();
         let formData = new FormData($('#editSalaryForm')[0]);
-        for(var pair of formData.entries()){
-            console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
-        }
+   
        
         $.ajax({
             type: "POST",

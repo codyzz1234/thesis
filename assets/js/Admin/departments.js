@@ -173,7 +173,6 @@ $(document).ready(function () {
             success: function (data) {
                 if(data.response == "success"){
                     var setters = data.posts;
-                    console.log(setters);
                     $('#editDepartmentId').val(setters[0].DepartmentId)
                     $('#editDepartmentHeadId').val(setters[0].EmployeeId)
                     $('#editDepartmentName').val(setters[0].Department)
@@ -191,7 +190,6 @@ $(document).ready(function () {
         $('#editResult').html('');
         var searchField = $('#editDepartmentHead').val();
         searchField = searchField.replace(/\s+/g, '');
-        console.log("You searched: " + searchField);
         if (!searchField.length){
             return;
         }
@@ -209,7 +207,6 @@ $(document).ready(function () {
                 var Branch = find[key].Branch;
                 var complete = EmployeeNumber + FirstName + LastName + Department + Position + Branch;
                 complete = complete.replace(/\s+/g, '');
-                console.log("Image is: "+Image);
                 if(complete.match(expression)){
                     var a = '<li class="list-group-item editListResults" data-employeenumber ="'+EmployeeNumber+
                     '" data-employeeid = "'+EmployeeId+
@@ -358,7 +355,6 @@ $(document).ready(function () {
         $('#addResult').html('');
         var searchField = $('#addDepartmentHead').val();
         searchField = searchField.replace(/\s+/g, '');
-        console.log("You searched: " + searchField);
         if (!searchField.length){
             return;
         }

@@ -37,7 +37,6 @@ $(document).ready(function () {
             data: "data",
             dataType: "JSON",
             success: function (data) {
-                console.log("data.respons is " + data.response) 
                 if(data.response == "success"){
                     var table;
                     setters = data.posts;
@@ -129,7 +128,6 @@ $(document).ready(function () {
     $('#addAccountButton').click(function (e) { 
         e.preventDefault();
         loadSearches();
-        console.log(JSON.parse(JSON.stringify(searching.result)));
         $('#addAccountModal').modal('show'); 
     });
 
@@ -187,7 +185,6 @@ $(document).ready(function () {
         $('#result').html('');
         var searchField = $('#searchEmployee').val();
         searchField = searchField.replace(/\s+/g, '');
-        console.log("You searched: " + searchField);
         if (!searchField.length){
             return;
         }
@@ -245,11 +242,9 @@ $(document).ready(function () {
         mouseenter: function () {
             $this =$(this);
             $this.css('background-color','#F0F8FF');
-            console.log("You in")
         },
         mouseleave: function () {
             $this.css('background-color','white');
-            console.log("You out")
         }
     }, ".listResults"); //pass the element as an argument
 
@@ -276,7 +271,6 @@ $(document).ready(function () {
             success: function (data) {
                 if(data.response == "success"){
                     setters = data.posts;
-                    console.log(setters);
                     $('#editEmployeeId').val(setters[0].EmployeeId);
                     $('#editEmployeeNumber').val(setters[0].EmployeeNumber);
                     $('#editFirstName').val(setters[0].FirstName);
@@ -320,7 +314,6 @@ $(document).ready(function () {
     { 
         $this = $(this);
         id = $this.attr('value');
-        console.log(id);
         loadDeleteForm(id);
     });
 
@@ -336,7 +329,6 @@ $(document).ready(function () {
             success: function (data) {
                 if(data.response == "success"){
                     setters = data.posts;
-                    console.log(setters);
                     $('#deleteEmployeeId').val(setters[0].EmployeeId);
                     $('#deleteEmployeeNumber').val(setters[0].EmployeeNumber);
                     $('#deleteFirstName').val(setters[0].FirstName);

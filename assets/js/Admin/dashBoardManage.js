@@ -36,7 +36,6 @@ $(document).ready(function () {
               }
               else{
                     setters = data.posts;
-                    console.log(setters);
                     let totalEmployees = setters.TotalEmployees;
                     let presentEmployees = setters.PresentEmployees;
                     let lateEmployees = setters.LateEmployees; 
@@ -53,8 +52,7 @@ $(document).ready(function () {
       $("#lateEmployees").html(lateEmployees);
 
 
-      console.log("Total Employees is " + totalEmployees);
-      console.log("Present Employees is: " + presentEmployees)
+
     }
 
 

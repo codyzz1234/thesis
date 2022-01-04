@@ -43,7 +43,6 @@ $(document).ready(function () {
                 else{
                     var table;
                     setters = data.posts;
-                    console.log(setters);
                     if($.fn.dataTable.isDataTable('#scheduleTable')) {
                         table = $('#scheduleTable').DataTable();
                         table.clear().draw();
@@ -147,7 +146,6 @@ $(document).ready(function () {
         e.preventDefault();
         $this = $(this);
         var value = $this.attr('value');
-        console.log(value)
         if(value == "1"){
             // using the new format
 
@@ -200,8 +198,7 @@ $(document).ready(function () {
     $('#addRecord').click(function (e) { 
         e.preventDefault();
         toasterOptions();
-        console.log($("#addTimeIn").val());
-        console.log($("#addTimeOut").val());
+ 
         var formData = new FormData();
         formData.append('TimeIn',$('#addTimeIn').val())
         formData.append('TimeOut',$('#addTimeOut').val())
@@ -256,7 +253,6 @@ $(document).ready(function () {
         e.preventDefault();
         $this = $(this);
         var value = $this.attr('value');
-        console.log(value)
         if(value == "1"){
             // using the new format
             $('#editTimeIn').data('TimePicker').options.timeFormat = 'HH:mm';
@@ -350,7 +346,6 @@ $(document).ready(function () {
             'TimeOut':data['TimeOut'],
             }
         deleteModal(dataJson)
-        console.log("Schedule id is "+dataJson['ScheduleId'])
     });
 
     function deleteModal(dataJson)

@@ -31,7 +31,6 @@ $(document).ready(function () {
 
     function fetch()
     {
-        console.log("Fetched")
         toasterOptions();
         $.ajax({
             type: "POST",
@@ -46,10 +45,8 @@ $(document).ready(function () {
                     toastr["info"]("Alert",data.message);
                 }
                 else{
-                    console.log("Here");
                     var table;
                     setters = data.posts;
-                    console.log(setters);
                     if($.fn.dataTable.isDataTable('#positionTable')) {
                         table = $('#positionTable').DataTable();
                         table.clear().draw();
@@ -173,10 +170,7 @@ $(document).ready(function () {
             'Position':data['Position'],
             'Rate':data['Rate'],
             }
-        console.log("Position Id is " + dataJson['PositionId']);
-        console.log("Description is " + dataJson['Description']);
-        console.log("Position Name is " + dataJson['Position']);
-        console.log("Rate  is " + dataJson['Rate']);
+
 
         loadEditForm(dataJson);
     });

@@ -44,7 +44,6 @@ $(document).ready(function () {
                 else{
                     var table;
                     setters = data.posts;
-                    console.log(setters);
                     if($.fn.dataTable.isDataTable('#deductionTable')) {
                         table = $('#deductionTable').DataTable();
                         table.clear().draw();
@@ -168,11 +167,7 @@ $(document).ready(function () {
             'Description':data['Description'],
             'Amount':data['Amount'],
             }
-        console.log("Deduction Id is " + dataJson['DeductionId']);
-        console.log("Deduction is " + dataJson['Deduction']);
-        console.log("Description is " + dataJson['Description']);
-        console.log("Amount  is " + dataJson['Amount']);
-
+   
         loadEditForm(dataJson);
     });
 
