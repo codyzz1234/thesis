@@ -94,30 +94,16 @@ UPDATE attendance
      AND TimeOut IS NULL
 
 
-//payrollquery
-     select EmployeeInfo.EmployeeId,EmployeeInfo.Image,EmployeeInfo.EmployeeNumber,EmployeeHours.TotalHours
-
-                from(
-                   	SELECT employees.EmployeeId as EmployeeId,
-                    employees.EmployeeNumber as EmployeeNumber,
-                    employees.Image as Image
-                    from employees
-     
-                ) as EmployeeInfo
-                
-                left JOIN
-                (
-                    SELECT SUM(attendance.HoursWorked) as TotalHours, attendance.EmployeeId
-                    		from attendance
-                    		GROUP BY Date
-                ) as EmployeeHours on EmployeeInfo.EmployeeId = EmployeeHours.EmployeeId
- 
 
 
-SELECT employees.EmployeeId,employees.EmployeeNumber,employees.FirstName,AttendanceHours.TotalHoursWorked,AttendanceHours.OverTimeHours
+//For Payroll View
+SELECT employees.EmployeeId,employees.EmployeeNumber,employees.FirstName,
+	   AttendanceHours.TotalHoursWorked,AttendanceHours.OverTimeHours,
+       departments.Department
 from employees
 
-left JOIN(
+left JOIN
+(
     		SELECT Hours.EmployeeId, Hours.EmployeeNumber,SUM(Hours.HoursWorked) as TotalHoursWorked, SUM(Hours.OverTimeHours) as OverTimeHours
     		from(
                 SELECT attendance.EmployeeId,attendance.EmployeeNumber,SUM(attendance.HoursWorked) as HoursWorked,
@@ -131,6 +117,57 @@ left JOIN(
             ) as Hours
            GROUP BY Hours.EmployeeId
     	) as AttendanceHours
-        on AttendanceHours.EmployeeId = employees.EmployeeId
+ON AttendanceHours.EmployeeId = employees.EmployeeId
         
-		GROUP BY employees.EmployeeId
+LEFT JOIN 
+departments
+on departments.DepartmentId = employees.DepartmentId
+
+GROUP BY employees.EmployeeId
+
+
+
+
+
+
+
+
+// inner JOIN
+
+
+
+
+
+
+
+SELECT employees.EmployeeId,employees.EmployeeNumber,employees.FirstName,
+	   AttendanceHours.TotalHoursWorked,AttendanceHours.OverTimeHours,
+       departments.Department
+from employees
+
+INNER JOIN
+(
+    		SELECT Hours.EmployeeId, Hours.EmployeeNumber,SUM(Hours.HoursWorked) as TotalHoursWorked, SUM(Hours.OverTimeHours) as OverTimeHours
+    		from(
+                SELECT attendance.EmployeeId,attendance.EmployeeNumber,SUM(attendance.HoursWorked) as HoursWorked,
+                CASE
+                	WHEN SUM(attendance.HoursWorked) - 8 <= 0 THEN 0
+                	ELSE SUM(attendance.HoursWorked) - 8
+                END as OverTimeHours
+                from attendance
+                WHERE attendance.Date BETWEEN '2022-01-04' AND '2022-1-31'
+                GROUP BY attendance.EmployeeId,attendance.Date
+            ) as Hours
+           GROUP BY Hours.EmployeeId
+    	) as AttendanceHours
+ON AttendanceHours.EmployeeId = employees.EmployeeId
+        
+LEFT JOIN 
+departments
+on departments.DepartmentId = employees.DepartmentId
+
+
+
+
+
+

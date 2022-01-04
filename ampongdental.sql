@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2022 at 08:03 AM
+-- Generation Time: Jan 04, 2022 at 02:19 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-04 06:21:52');
+(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-04 07:31:25');
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,8 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`AttendanceId`, `EmployeeId`, `EmployeeNumber`, `Date`, `TimeIn`, `TimeOut`, `HoursWorked`, `OverTimeHours`, `TimeInStatus`, `TimeOutStatus`) VALUES
-(148, 335, '2022-9FOGBZ', '2022-01-04', '2022-01-04 01:20:33', '2022-01-04 06:20:55', '4', 0, 1, 6);
+(153, 334, '2021-OTQFFF', '2022-01-04', '2022-01-04 01:15:54', '2022-01-04 13:16:59', '11', 3, 1, 6),
+(154, 335, '2022-9FOGBZ', '2022-01-04', '2022-01-04 01:15:56', '2022-01-04 10:16:23', '8', 0, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -502,7 +503,7 @@ ALTER TABLE `adminlogin`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT for table `branches`
