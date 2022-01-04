@@ -74,6 +74,7 @@
         
         public function recordTimeIn($EmployeeId,$EmployeeNumber,$timeIn,$timeOut)
         {
+            /*
             
             $sql = "SELECT TimeInStatus,Date from attendance
                     WHERE DATE = CURRENT_DATE
@@ -91,9 +92,9 @@
             else{
                 echo  "New Day <br>";
             }
-            echo "Status is :".$status."<br>";
-            /*
-            else{
+            echo "Status is :".$status."<br>";*/
+            
+            //else{
                 if ( (time()< strtotime($timeIn)+1860 && time() >= strtotime($timeIn)) && (time() < strtotime($timeOut)) ){ // 30 mins grace period
                     $status = 1; // on time status
                 }
@@ -107,9 +108,8 @@
                     return;
                 }
 
-            }
-            */
-            return;
+           // }
+            
             $sql = "INSERT into `attendance`(`EmployeeId`,`EmployeeNumber`,`TimeInStatus`,`Date`,`TimeIn`) VALUES(?,?,?,CURDATE(),CURRENT_TIMESTAMP)";
             $this->db->query($sql,array($EmployeeId,$EmployeeNumber,$status));
         }

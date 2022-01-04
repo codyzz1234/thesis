@@ -93,3 +93,23 @@ UPDATE attendance
      AND EmployeeNumber = ?
      AND TimeOut IS NULL
 
+
+//payrollquery
+     select EmployeeInfo.EmployeeId,EmployeeInfo.Image,EmployeeInfo.EmployeeNumber,EmployeeHours.TotalHours
+
+                from(
+                   	SELECT employees.EmployeeId as EmployeeId,
+                    employees.EmployeeNumber as EmployeeNumber,
+                    employees.Image as Image
+                    from employees
+     
+                ) as EmployeeInfo
+                
+                left JOIN
+                (
+                    SELECT SUM(attendance.HoursWorked) as TotalHours, attendance.EmployeeId
+                    		from attendance
+                    		GROUP BY Date
+                ) as EmployeeHours on EmployeeInfo.EmployeeId = EmployeeHours.EmployeeId
+ 
+
