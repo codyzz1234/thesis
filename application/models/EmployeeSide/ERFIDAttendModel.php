@@ -74,6 +74,21 @@
         
         public function recordTimeIn($EmployeeId,$EmployeeNumber,$timeIn,$timeOut)
         {
+            
+            $sql = "SELECT TimeInStatus,Date from attendance
+                    WHERE DATE = CURRENT_DATE
+                    AND EmployeeId = ?
+                    AND EmployeeNumber = ?";
+
+            $results = $this->db->query($sql,array($EmployeeId,$EmployeeNumber));
+            $rowCount = count($results->result());
+            if($rowCount > 0){
+
+            }
+            else{
+                
+            }
+                    
             if ( (time()< strtotime($timeIn)+1860 && time() >= strtotime($timeIn)) && (time() < strtotime($timeOut)) ){ // 30 mins grace period
                 $status = 1; // on time status
             }
@@ -93,11 +108,17 @@
         public function recordTimeOut($EmployeeId,$EmployeeNumber,$timeIn,$timeOut)
         {
             $timeIn = strtotime($timeIn);
-            $timeOut = strtotime($timeOut);
+           
             
             $sql = "UPDATE attendance 
             SET TimeOut = CURRENT_TIMESTAMP,
                 HoursWorked = CASE
+                                WHEN (TIMESTAMPDIFF(HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) - 1)  < 0
+                                    THEN 0
+                                
+                                WHEN (TIMESTAMPDIFF(HOUR,TimeIn,CURRENT_TIMESTAMP) - 1)  < 0
+                                    THEN 0
+
                                 WHEN (TimeInStatus = 1 OR TimeInStatus = 2) 
                                      THEN TIMESTAMPDIFF(HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) - 1
 
@@ -121,6 +142,7 @@
 
 
             $this->db->query($sql,array(
+                $timeIn,
                 $timeIn,
                 $timeIn,
                 $timeIn,
