@@ -60,6 +60,7 @@ $(document).ready(function () {
                 if(data.response == "success"){
                     var table;
                     setters = data.posts;
+                    console.log(setters);
                     if($.fn.dataTable.isDataTable('#attendanceTable')) {
                         table = $('#attendanceTable').DataTable();
                         table.clear().draw();
@@ -155,9 +156,13 @@ $(document).ready(function () {
                                     "render":function(data,type,row,meta){
                                         render = data.TimeIn+ " ";
                                         if(data.TimeInStatus == "1"){
-                                            render = render + '<span class="badge badge-success pull-right">  On Time</span>'
+                                            render = render + '<span class="badge badge-success pull-right">On Time</span>'
                                         }
-                                        else if (data.TimeInStatus == "2"){
+                                        else if(data.TimeInStatus == "2"){
+                                            render = render + '<span class="badge badge-success pull-right">Early</span>'
+                                        }
+
+                                        else if (data.TimeInStatus == "3"){
                                             render = render + '<span class="badge badge-warning pull-right">  Late</span>';
                                         }
                                         return render;
@@ -167,7 +172,19 @@ $(document).ready(function () {
                                 
                                 {
                                     title:"Time Out",
-                                    data:"TimeOut"
+                                    data:"TimeOut",
+                                    render:function(data,type,row,meta){
+                                        if(data == null){
+                                            render = "";
+                                        }
+                                        else if(row.OverTimeHours != "0" && data != null){
+                                            render = data + '<span class="badge badge-info pull-right">Overtime</span>'
+                                        }
+                                        else{
+                                            render = data;
+                                        }
+                                        return render;
+                                    }
                                 },
 
                                 {
@@ -177,14 +194,27 @@ $(document).ready(function () {
                                         var hoursWorked = data.HoursWorked;
                                         var timeOut = data.TimeOut;
                                         if(hoursWorked == 0 && timeOut == null){ 
-                                            return " "
+                                            return ""
                                         }
                                         else{
                                             return hoursWorked
                                         }
                                   },
                                 },
-                                
+
+                                {
+                                    title:"Overtime Hours",
+                                    data:"OverTimeHours",
+                                    render:function(data,type,row,meta){
+                                        if(data == 0 && row.TimeOut == null){
+                                            return " ";
+                                        }
+                                        else{
+                                            return data;
+                                        }
+                                    }
+                                },
+                              
                                 {
                                     title:"Actions",
                                     data:null,

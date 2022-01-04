@@ -104,7 +104,7 @@
                                 ELSE
                                      TIMESTAMPDIFF(HOUR,TimeIn,CURRENT_TIMESTAMP) - 1
                               END
-                ,OvertimeHours  = CASE
+                ,OverTimeHours  = CASE
                                     WHEN (TimeInStatus = 1 OR TimeInStatus = 2) AND ((TIMESTAMPDIFF (HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) - 1) > 8)
                                         THEN (TIMESTAMPDIFF(HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) - 1) - 8
 
