@@ -113,3 +113,24 @@ UPDATE attendance
                 ) as EmployeeHours on EmployeeInfo.EmployeeId = EmployeeHours.EmployeeId
  
 
+
+SELECT employees.EmployeeId,employees.EmployeeNumber,employees.FirstName,AttendanceHours.TotalHoursWorked,AttendanceHours.OverTimeHours
+from employees
+
+left JOIN(
+    		SELECT Hours.EmployeeId, Hours.EmployeeNumber,SUM(Hours.HoursWorked) as TotalHoursWorked, SUM(Hours.OverTimeHours) as OverTimeHours
+    		from(
+                SELECT attendance.EmployeeId,attendance.EmployeeNumber,SUM(attendance.HoursWorked) as HoursWorked,
+                CASE
+                	WHEN SUM(attendance.HoursWorked) - 8 <= 0 THEN 0
+                	ELSE SUM(attendance.HoursWorked) - 8
+                END as OverTimeHours
+                from attendance
+                WHERE attendance.Date BETWEEN '2022-01-04' AND '2022-1-31'
+                GROUP BY attendance.EmployeeId,attendance.Date
+            ) as Hours
+           GROUP BY Hours.EmployeeId
+    	) as AttendanceHours
+        on AttendanceHours.EmployeeId = employees.EmployeeId
+        
+		GROUP BY employees.EmployeeId
