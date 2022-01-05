@@ -78,29 +78,38 @@
             $sql = "SELECT TimeInStatus,Date from attendance
                     WHERE DATE = CURRENT_DATE
                     AND EmployeeId = ?
-                    AND EmployeeNumber = ?";
+                    AND EmployeeNumber = ?
+                    limit 1";
 
             $results = $this->db->query($sql,array($EmployeeId,$EmployeeNumber));
             $rowCount = count($results->result());
             if($rowCount > 0){
+                foreach($results->result() as $row){
+                    $status = $row->TimeInStatus;
+                }
+            }
+            else{
+                echo  "New Day <br>";
+            }
+            echo "Status is :".$status."<br>";
+            /*
+            else{
+                if ( (time()< strtotime($timeIn)+1860 && time() >= strtotime($timeIn)) && (time() < strtotime($timeOut)) ){ // 30 mins grace period
+                    $status = 1; // on time status
+                }
+                else if( (time()<= strtotime($timeIn)) && (time() < strtotime($timeOut)) ){
+                    $status = 2; // Early Status
+                }
+                else if( (time() > strtotime($timeIn)+1860) && (time() < strtotime($timeOut)) ){
+                    $status = 3; //Late Status;
+                }
+                else{
+                    return;
+                }
 
             }
-            else{
-                
-            }
-                    
-            if ( (time()< strtotime($timeIn)+1860 && time() >= strtotime($timeIn)) && (time() < strtotime($timeOut)) ){ // 30 mins grace period
-                $status = 1; // on time status
-            }
-            else if( (time()<= strtotime($timeIn)) && (time() < strtotime($timeOut)) ){
-                $status = 2; // Early Status
-            }
-            else if( (time() > strtotime($timeIn)+1860) && (time() < strtotime($timeOut)) ){
-                $status = 3; //Late Status;
-            }
-            else{
-                return;
-            }
+            */
+            return;
             $sql = "INSERT into `attendance`(`EmployeeId`,`EmployeeNumber`,`TimeInStatus`,`Date`,`TimeIn`) VALUES(?,?,?,CURDATE(),CURRENT_TIMESTAMP)";
             $this->db->query($sql,array($EmployeeId,$EmployeeNumber,$status));
         }
