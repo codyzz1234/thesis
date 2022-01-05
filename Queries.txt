@@ -167,6 +167,14 @@ departments
 on departments.DepartmentId = employees.DepartmentId
 
 
+//Total Days
+
+   LEFT JOIN 
+            (
+                SELECT COUNT(DISTINCT attendance.Date) as DaysWorked,attendance.EmployeeId from attendance 
+                        WHERE attendance.Date between ? AND ?
+                        GROUP BY attendance.EmployeeId
+            )as DaysWorked on DaysWorked.EmployeeId = employees.EmployeeId
 
 
 

@@ -13,8 +13,20 @@
             employeecalculation.BaseSalary,employeecalculation.SSS,employeecalculation.PagIbig,employeecalculation.PhilHealth,
             departments.Department,
             positions.Position,
-            SUM(attendance.HoursWorked) as TotalHours, COUNT(attendance.EmployeeId) AS DaysWorked
+            SUM(attendance.HoursWorked) as TotalHours,
+            DaysWorked.DaysWorked
             from employees
+
+            LEFT JOIN 
+            (
+                SELECT COUNT(DISTINCT attendance.Date) as DaysWorked,attendance.EmployeeId from attendance 
+                        WHERE attendance.Date between ? AND ?
+                        GROUP BY attendance.EmployeeId
+            )as DaysWorked on DaysWorked.EmployeeId = employees.EmployeeId
+
+            
+       
+
             left JOIN employeecalculation
             On employees.EmployeeId = employeecalculation.EmployeeId
             left join departments
@@ -29,7 +41,13 @@
 
 
             $results = $this->db->query($sql, 
-            array($startDate,$endDate));
+            array(
+                   $startDate,
+                   $endDate,
+                   $startDate,
+                   $endDate
+    
+                ));
 
             $this->db->trans_complete();
             if($this->db->trans_status() === false){

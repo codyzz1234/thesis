@@ -141,7 +141,6 @@ $(document).ready(function (){
                                 {
                                     title:"Total Days Worked",
                                     data:"DaysWorked"
-
                                 },
 
 
