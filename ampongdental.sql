@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2022 at 04:28 PM
+-- Generation Time: Jan 08, 2022 at 12:36 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-05 15:08:08');
+(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-08 07:09:44');
 
 -- --------------------------------------------------------
 
@@ -58,6 +58,7 @@ CREATE TABLE `attendance` (
   `TimeIn` timestamp NULL DEFAULT NULL,
   `TimeOut` timestamp NULL DEFAULT NULL,
   `HoursWorked` decimal(10,0) DEFAULT 0,
+  `OverTimeHours` int(11) NOT NULL DEFAULT 0,
   `TimeInStatus` int(11) DEFAULT 6,
   `TimeOutStatus` int(11) DEFAULT 6
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -66,12 +67,8 @@ CREATE TABLE `attendance` (
 -- Dumping data for table `attendance`
 --
 
-INSERT INTO `attendance` (`AttendanceId`, `EmployeeId`, `EmployeeNumber`, `Date`, `TimeIn`, `TimeOut`, `HoursWorked`, `TimeInStatus`, `TimeOutStatus`) VALUES
-(155, 334, '2021-OTQFFF', '2022-01-04', '2022-01-04 01:00:36', '2022-01-04 05:00:43', '3', 1, 6),
-(156, 334, '2021-OTQFFF', '2022-01-04', '2022-01-04 06:01:46', '2022-01-04 14:01:52', '7', 3, 6),
-(157, 334, '2021-OTQFFF', '2022-01-05', '2022-01-05 02:16:13', '2022-01-05 14:16:18', '11', 3, 6),
-(158, 334, '2021-OTQFFF', '2022-01-06', '2022-01-06 00:19:04', '2022-01-06 12:19:11', '10', 2, 6),
-(159, 335, '2022-9FOGBZ', '2022-01-13', '2022-01-13 00:22:28', '2022-01-13 09:22:32', '7', 2, 6);
+INSERT INTO `attendance` (`AttendanceId`, `EmployeeId`, `EmployeeNumber`, `Date`, `TimeIn`, `TimeOut`, `HoursWorked`, `OverTimeHours`, `TimeInStatus`, `TimeOutStatus`) VALUES
+(160, 334, '2021-OTQFFF', '2022-01-05', '2022-01-05 03:34:01', '2022-01-05 03:35:55', '0', 0, 3, 6);
 
 -- --------------------------------------------------------
 
@@ -505,7 +502,7 @@ ALTER TABLE `adminlogin`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
 -- AUTO_INCREMENT for table `branches`

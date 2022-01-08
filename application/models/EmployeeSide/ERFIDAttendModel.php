@@ -19,8 +19,8 @@
              employees.Image from employees 
              inner JOIN departments on departments.DepartmentId = employees.DepartmentId 
              inner JOIN positions on positions.PositionId = employees.PositionId
-              inner join schedules on schedules.ScheduleId = employees.ScheduleId 
-              where employees.RFID = ?;";
+             inner join schedules on schedules.ScheduleId = employees.ScheduleId 
+             where employees.RFID = ?;";
             $results = $this->db->query($sql,array($rfid));
             $this->db->trans_complete();
             if($this->db->trans_status() === false){
@@ -38,11 +38,11 @@
             return $message;
         }
 
-        public function timeInOut($EmployeeId,$EmployeeNumber,$position,$timeIn,$timeOut)
+        public function timeInOut($EmployeeId,$EmployeeNumber,$timeIn,$timeOut)
         {
             date_default_timezone_set('Asia/Singapore');
             $this->db->trans_start();
-            $sql = "SELECT * from attendance 
+            $sql = "SELECT EmployeeId,EmployeeNumber from attendance 
             WHERE `EmployeeId` = ?
             AND `EmployeeNumber` = ?
             AND `TimeOut` IS NULL";
@@ -74,6 +74,8 @@
         
         public function recordTimeIn($EmployeeId,$EmployeeNumber,$timeIn,$timeOut)
         {
+            
+            
             /*
             
             $sql = "SELECT TimeInStatus,Date from attendance

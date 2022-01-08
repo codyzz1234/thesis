@@ -53,7 +53,7 @@ class RFIDAttendControl extends CI_Controller {
 			$timeIn = date("H:i",strtotime($timeIn));
 			$timeOut = date("H:i",strtotime($timeOut));
 			
-			$recordAttendance = $this->ERFIDAttendModel->timeInOut($employeeId,$employeeNumber,$position,$timeIn,$timeOut);
+			$recordAttendance = $this->ERFIDAttendModel->timeInOut($employeeId,$employeeNumber,$timeIn,$timeOut);
 
 			if($recordAttendance === false){
 				$data = array('response' => "failed",'message'=>"Error Recording Attendance");
