@@ -1,0 +1,87 @@
+1. Login Page
+2. Dashboard
+
+
+Notes:
+1. Absent employees in dashboard
+
+total employees per day and absent.
+
+Hours Worked a day.
+has base salary, then divides per day and per hour.
+
+Online, should be hosted the system. When the pc is turned off, the system cannot be accessed. the client wants to access the system when their local system is turned off.
+
+Payroll calculation:
+1. cut off. 11 days base salary.
+2. Manual add of commission.
+3. Per day, per month.
+4. (Basic Salary + commission) - SSS Pag Ibig Benefits.
+5. 
+
+Things to add:
+1. Number of employees absent.
+2. Add date and time in the dashboard
+3. Add calenddar and highlight it.
+4. Basic Salary, per day, allowance.
+5. Cut off, 12-26 days.
+6. sometimes dentist surpass 20-22 days.
+
+
+Base Salary:
+1. The base salary 
+
+Per Day. Its rare to subtract if there is an undertime.
+
+Leaves: Add leaves. System
+2. In the case of infinite decimal. round up if (1-5) or round down (1-4).
+
+Payroll Page:
+1. Automatic compuation of overtime, 
+ex: Overtime is 16 onwards. if you out in 16 you have 16 minutes ot.
+2. Days/ hours / minute.
+3. Overtime is by minutes.
+4. Overtime = (Daily Rate / Hours / Minutes) * 1.25;
+5. Payroll is calculated based on schedule.
+6. Overtime is 16 mins after scheduled timeout.
+7. And the overtime is calculated by minutes.
+
+Attendance Page:
+1. Remove - Total Hours Worked.
+2. Add - Total Hours Worked.
+3. The day has only one time in/ time out for the day.
+4. Remove overtime hours, then add status Late.
+5. Overtime is late time/in.
+6. Hours are not counted when early.
+7. Overtime hours change to overtime minutes. Since the formula that will be used is by minutes.
+
+Position Page:
+1. NOT REQUIRED.
+2. Notes.
+
+Departments Page:
+1.
+2.
+ 
+
+Leave Page:
+1. Add Employee Leaves.
+2. Add Emergency Leave.
+
+Positions Page:
+1.
+2.
+
+
+
+After schedule and more than 8 hours. Minutes is being attendance.
+
+When the hours worked is calculated. Minutes also count.
+
+
+
+
+ 
+
+
+Dashboard Employee list.
