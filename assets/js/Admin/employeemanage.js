@@ -355,11 +355,10 @@ $('#editImage').change(function (e) {
     });
     
 
-
-    // Add records on hitting enter key
-
     
-
+    $('#ContactNumber').keyup(function (e) { 
+        alert("hello")
+    });
 
     //add records
     $("#addRecords").click(function (e) { 

@@ -109,7 +109,7 @@ class EmployeeManageController extends CI_Controller {
 			
 			$this->form_validation->set_rules('BaseSalary','Base Salary Field','trim|required|numeric|greater_than[0]',
 			array(
-				'numeric' => 'Base Salary must be a in valid currency form'
+				'numeric' => 'Base Salary must be in a valid currency form'
 			));
 
 			if ($this->form_validation->run() == FALSE) {

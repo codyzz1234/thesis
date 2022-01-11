@@ -94,7 +94,7 @@ class AdminManageController extends CI_Controller {
 
 		$this->form_validation->set_rules('LastName', 'LastName', 'trim|required|min_length[2]|max_length[30]');
 
-		$this->form_validation->set_rules('UserName', 'UserName', 'trim|required|min_length[6]|max_length[30]|callback_checkUserName',
+		$this->form_validation->set_rules('UserName', 'UserName', 'trim|required|min_length[2]|max_length[30]|callback_checkUserName',
 	array(
 		'checkUserName'=>'This username has already been taken',
 	));
@@ -151,7 +151,7 @@ class AdminManageController extends CI_Controller {
 
 		$this->form_validation->set_rules('LastName', 'LastName', 'trim|required|min_length[2]|max_length[30]');
 
-		$this->form_validation->set_rules('UserName', 'UserName', 'trim|required|alpha_dash|min_length[6]|max_length[30]|is_unique[adminlogin.Username]',
+		$this->form_validation->set_rules('UserName', 'UserName', 'trim|required|alpha_dash|min_length[2]|max_length[30]|is_unique[adminlogin.Username]',
 	array(
 		'is_unique'=>'This username has already been taken, sad life this is'
 	));
