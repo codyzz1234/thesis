@@ -13,48 +13,65 @@
 
                     <!-- Content Row -->
                     <div class="row">
-                        <div class="card-deck dashboardCards">
 
-                            <div class="card text-white bg-primary mb-3 text-center" style="max-width: 18rem;">
-                                <div class="card-header">
-                                    <h3> Total Employees </h3>
+                        <div class="col">
+                            <div class="card-deck dashboardCards">
+
+                                <div class="card text-white bg-primary mb-3 text-center" style="max-width: 18rem;">
+                                    <div class="card-header">
+                                        <h3> Total Employees </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <i class="fas fa-users fa-5x "></i>
+                                        <h1 class="card-title" id = "totalEmployees"></h1>
+                                    
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                     <i class="fas fa-users fa-5x "></i>
-                                    <h1 class="card-title" id = "totalEmployees"></h1>
-                                  
-                                </div>
-                            </div>
 
 
 
-                           
-                            <div class="card text-white bg-success mb-3 text-center" style="max-width: 18rem;">
-                                <div class="card-header">
-                                    <h3> Present Employees </h3>
-                                </div>
-                                <div class="card-body">
-                                     <i class="fas fa-users fa-5x "></i>
-                                    <h1 class="card-title" id = "presentEmployees"></h1>
-                                  
-                                </div>
-                            </div>
 
-                            
-                            <div class="card text-white bg-danger mb-3 text-center" style="max-width: 18rem;">
-                                <div class="card-header">
-                                    <h3> Late Employees </h3>
+                                <div class="card text-white bg-success mb-3 text-center" style="max-width: 18rem;">
+                                    <div class="card-header">
+                                        <h3> Present Employees </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <i class="fas fa-users fa-5x "></i>
+                                        <h1 class="card-title" id = "presentEmployees"></h1>
+                                    
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                     <i class="fas fa-users fa-5x "></i>
-                                    <h1 class="card-title" id = "lateEmployees"></h1>
-                                  
-                                </div>
-                            </div>
 
-                            
+
+                                <div class="card text-white bg-danger mb-3 text-center" style="max-width: 18rem;">
+                                    <div class="card-header">
+                                        <h3> Late Employees </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <i class="fas fa-users fa-5x "></i>
+                                        <h1 class="card-title" id = "lateEmployees"></h1>
+                                    
+                                    </div>
+                                </div>
+
+
+                                <div class="card text-white bg-danger mb-3 text-center" style="max-width: 18rem;">
+                                    <div class="card-header">
+                                        <h3> Absent Employees </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <i class="fas fa-users fa-5x "></i>
+                                        <h1 class="card-title" id = "lateEmployees"></h1>
+                                    
+                                    </div>
+                                </div>
+                                
                         </div>
+
                     </div>
+
+                  </div>
+
                 </div>
                 <!-- /.container-fluid -->
 
