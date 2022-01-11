@@ -153,7 +153,7 @@ $(document).ready(function (){
                                     title:"Gross pay",
                                     data:null,
                                     render: function(row,type,data,meta){
-                                        return " ";
+                                        return "Java";
                                     },
                                 },
 

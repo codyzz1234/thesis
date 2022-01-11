@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2022 at 12:36 PM
+-- Generation Time: Jan 11, 2022 at 05:04 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,7 +42,8 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-08 07:09:44');
+(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-11 12:48:34'),
+(7, 'athens', '$2y$10$oxOLyObe1feNRYQfD61z2e.NE4dh4AopChEULAkykZg0SrE9cBhQ2', 'last', 'man', '2022-01-11 10:01:34', '2022-01-11 11:58:10');
 
 -- --------------------------------------------------------
 
@@ -68,7 +69,8 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`AttendanceId`, `EmployeeId`, `EmployeeNumber`, `Date`, `TimeIn`, `TimeOut`, `HoursWorked`, `OverTimeHours`, `TimeInStatus`, `TimeOutStatus`) VALUES
-(160, 334, '2021-OTQFFF', '2022-01-05', '2022-01-05 03:34:01', '2022-01-05 03:35:55', '0', 0, 3, 6);
+(160, 334, '2021-OTQFFF', '2022-01-05', '2022-01-05 03:34:01', '2022-01-05 03:35:55', '0', 0, 3, 6),
+(161, 334, '2021-OTQFFF', '2022-01-08', '2022-01-08 01:14:14', '2022-01-08 10:14:28', '8', 0, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -199,7 +201,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`EmployeeId`, `EmployeeNumber`, `RFID`, `FirstName`, `LastName`, `Address`, `ContactNumber`, `BirthDate`, `HireDate`, `DepartmentId`, `PositionId`, `BranchId`, `ScheduleId`, `TotalHours`, `Status`, `Image`) VALUES
-(334, '2021-OTQFFF', '156145152', 'Kenley', 'So', 'Valencai Street Metro Manila', '09453218471', '1990-02-07', '2021-12-28', 25, 2, 1, 17, 0, 1, './assets/EmployeeImages/default.png'),
+(334, '2021-OTQFFF', '156145152', 'Kenley', 'So', 'Valencai Street Metro Manila', '09453218471', '1990-02-07', '2021-12-28', 25, 2, 1, 17, 0, 1, './assets/EmployeeImages/2021-OTQFFF.png'),
 (335, '2022-9FOGBZ', '535353', 'Cody', 'Yap', 'Quezon City', '9224891495', '1990-06-06', '2022-01-01', 18, 2, 1, 17, 0, 1, './assets/EmployeeImages/default.png');
 
 -- --------------------------------------------------------
@@ -496,13 +498,13 @@ ALTER TABLE `schedules`
 -- AUTO_INCREMENT for table `adminlogin`
 --
 ALTER TABLE `adminlogin`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 
 --
 -- AUTO_INCREMENT for table `branches`

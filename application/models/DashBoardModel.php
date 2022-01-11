@@ -32,6 +32,8 @@
                 $lateEmployees = $row['LateEmployees'];
             }
 
+            
+
             $this->db->trans_complete();
 
             $dataArray = array(
