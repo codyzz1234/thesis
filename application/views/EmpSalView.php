@@ -112,6 +112,13 @@
                         <input type = "text" id = "editAmount" class = "form-control" name = "PhilHealth" >
                     </div>
 
+                    <div class = "form-group">
+                        <label for = ""> Cash Advance </label>
+                        <input type = "text" id = "editAmount" class = "form-control" name = "CashAdvance" >
+                    </div>
+
+                    
+
 
 
 

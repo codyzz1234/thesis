@@ -10,7 +10,7 @@
         {
             $message = "";
             $this->db->trans_start();
-            $sql = "SELECT employeecalculation.EmployeeId,employeecalculation.EmployeeNumber,employeecalculation.BaseSalary,employeecalculation.SSS,employeecalculation.PagIbig,employeecalculation.PhilHealth,
+            $sql = "SELECT employeecalculation.EmployeeId,employeecalculation.EmployeeNumber,employeecalculation.BaseSalary,employeecalculation.SSS,employeecalculation.PagIbig,employeecalculation.PhilHealth,employeecalculation.CashAdvance,
             employees.Image,employees.FirstName,employees.LastName
             from employeecalculation
             left JOIN employees

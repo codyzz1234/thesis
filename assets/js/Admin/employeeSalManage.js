@@ -36,7 +36,8 @@ $(document).ready(function () {
 
                     var table;
                     setters = data.posts;
-                
+                    console.log(setters);
+
                     if($.fn.dataTable.isDataTable('#employeeSalTable')) {
                         table = $('#employeeSalTable').DataTable();
                         table.clear().draw();
@@ -88,7 +89,7 @@ $(document).ready(function () {
                                     title:"Image",
                                     data:"Image",
                                     "render": function ( data, type, row, meta ) {
-                                        return '<img src="'+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>'                     
+                                    return '<img src="'+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>'                     
                                     }
                                  },
                                 {
@@ -118,6 +119,11 @@ $(document).ready(function () {
                                 {
                                     title:"SSS Contribution",
                                     data:"SSS",
+                                },
+                                {
+                                    title:"Cash Advance",
+                                    data:"CashAdvance",
+                                    
                                 },
                                 {
                                     title:"Actions",
@@ -168,10 +174,12 @@ $(document).ready(function () {
             'PhilHealth':data['PhilHealth'],
             'PagIbig':data['PagIbig'],
             'SSS':data['SSS'],
+            'CashAdvance':data['CashAdvance'],
             'Image':data['Image'],
             'BaseSalary':data['BaseSalary'],
             'FirstName':data['FirstName'],
             'LastName':data['LastName'],
+            
         };
       
         loadEditForm(dataJson)
@@ -199,6 +207,8 @@ $(document).ready(function () {
 
         $("#editSalaryForm").find('input[name=SSS]').val(dataJson['SSS']);
 
+        $('#editSalaryForm').find('input[name=CashAdvance]').val(dataJson['CashAdvance']);
+
 
 
         $("#editSalaryForm").find('img[name=ImagePreview]').attr('src',dataJson['Image']+"?time"+new Date().getTime());
@@ -212,6 +222,10 @@ $(document).ready(function () {
     $('#editRecord').click(function (e) { 
         e.preventDefault();
         let formData = new FormData($('#editSalaryForm')[0]);
+
+        for(var pair of formData.entries()){
+            console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
+        }
    
        
         $.ajax({
