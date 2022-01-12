@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2022 at 05:04 PM
+-- Generation Time: Jan 12, 2022 at 02:24 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-11 12:48:34'),
+(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-12 12:57:19'),
 (7, 'athens', '$2y$10$oxOLyObe1feNRYQfD61z2e.NE4dh4AopChEULAkykZg0SrE9cBhQ2', 'last', 'man', '2022-01-11 10:01:34', '2022-01-11 11:58:10');
 
 -- --------------------------------------------------------
@@ -145,16 +145,17 @@ CREATE TABLE `employeecalculation` (
   `BaseSalary` decimal(13,2) NOT NULL DEFAULT 0.00,
   `SSS` decimal(13,2) NOT NULL DEFAULT 0.00,
   `PagIbig` decimal(13,2) NOT NULL DEFAULT 0.00,
-  `PhilHealth` decimal(13,2) NOT NULL DEFAULT 0.00
+  `PhilHealth` decimal(13,2) NOT NULL DEFAULT 0.00,
+  `CashAdvance` decimal(13,2) NOT NULL DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `employeecalculation`
 --
 
-INSERT INTO `employeecalculation` (`EmployeeId`, `EmployeeNumber`, `BaseSalary`, `SSS`, `PagIbig`, `PhilHealth`) VALUES
-(334, '2021-OTQFFF', '20000.00', '550.00', '322.00', '600.00'),
-(335, '2022-9FOGBZ', '10000.00', '500.00', '440.00', '320.00');
+INSERT INTO `employeecalculation` (`EmployeeId`, `EmployeeNumber`, `BaseSalary`, `SSS`, `PagIbig`, `PhilHealth`, `CashAdvance`) VALUES
+(334, '2021-OTQFFF', '3000.00', '500.00', '320.00', '650.00', '150.00'),
+(335, '2022-9FOGBZ', '10000.00', '500.00', '440.00', '320.00', '500.00');
 
 -- --------------------------------------------------------
 
