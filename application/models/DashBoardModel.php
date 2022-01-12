@@ -16,9 +16,10 @@
                 $numEmployees = $row['TotalEmployees'];
             }
 
-            $sql = "SELECT COUNT(DISTINCT attendance.EmployeeId) AS PresentEmployees
+            $sql = "SELECT count(distinct attendance.EmployeeId) as PresentEmployees
             from attendance
-            where (attendance.TimeInStatus = 1 OR attendance.TimeInStatus = 2) AND attendance.Date = CURRENT_DATE();";
+            where(attendance.TimeInStatus = 1 OR attendance.TimeInStatus = 2) and attendance.Date = CURRENT_DATE;";
+
             $presentEmployees = $this->db->query($sql);
             foreach($presentEmployees->result_array() as $row){
                 $presentEmployees = $row['PresentEmployees'];
@@ -32,6 +33,20 @@
                 $lateEmployees = $row['LateEmployees'];
             }
 
+            $sql = "SELECT count(employees.EmployeeId) as AbsentEmployees
+            from employees
+            where employees.EmployeeId not in
+             (
+                 SELECT DISTINCT attendance.EmployeeId
+                 FROM attendance
+                 where attendance.Date = CURRENT_DATE
+             )";
+
+             $absentEmployees = $this->db->query($sql);
+             foreach($absentEmployees->result_array() as $row){
+                $absentEmployees = $row['AbsentEmployees'];
+            }
+
             
 
             $this->db->trans_complete();
@@ -39,7 +54,8 @@
             $dataArray = array(
                 'TotalEmployees' => $numEmployees,
                 'PresentEmployees' => $presentEmployees,
-                'LateEmployees' => $lateEmployees
+                'LateEmployees' => $lateEmployees,
+                'AbsentEmployees' =>$absentEmployees
             );
 
 

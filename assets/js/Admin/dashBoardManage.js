@@ -39,6 +39,7 @@ $(document).ready(function () {
                     let totalEmployees = setters.TotalEmployees;
                     let presentEmployees = setters.PresentEmployees;
                     let lateEmployees = setters.LateEmployees; 
+                    let absentEmployees = setters.AbsentEmployees;
                     valueToCards(totalEmployees,presentEmployees,lateEmployees)
               }
           }
