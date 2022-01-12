@@ -94,7 +94,7 @@
                         <input type="text" id="addDepartmentHead" class="form-control">
 
                         <div class="input-group-append">
-                            <button class="btn btn-danger">
+                            <button class="btn btn-danger" id = "addClear">
                                 <i class="far fa-window-close"></i>
                             </button>
                         </div>
@@ -149,7 +149,7 @@
                     <div class="input-group mb-3">
                         <input type="text" id="editDepartmentHead" class="form-control">
                         <div class="input-group-append">
-                            <button class="btn btn-danger">
+                            <button class="btn btn-danger" id = "editClear">
                                 <i class="far fa-window-close"></i>
                             </button>
                         </div>

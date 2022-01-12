@@ -477,6 +477,22 @@ $(document).ready(function () {
         $("#editResult").empty()
     });
 
+    //clear department head
+
+    $('#addClear').click(function (e) { 
+        e.preventDefault();
+        $('#departmentHeadId').val("");
+        $('#addDepartmentHead').val("");
+        $("#addResult").empty();
+
+    });
+
+    $("#editClear").click(function (e) { 
+        e.preventDefault();
+        $('#editDepartmentHeadId').val("");
+        $('#editDepartmentHead').val("");
+        $("#editResult").empty();
+    });
     
 
 
