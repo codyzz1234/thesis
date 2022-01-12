@@ -70,20 +70,20 @@ class EmployeeSalaryControl extends CI_Controller {
 
 
 
-		$this->form_validation->set_rules('BaseSalary', 'Base Salary Field', 'trim|required|numeric');
+		$this->form_validation->set_rules('BaseSalary', 'Base Salary Field', 'trim|required|numeric|greater_than[0]');
 
-		$this->form_validation->set_rules('CashAdvance', 'Cash Advance Field', 'trim|required|numeric');
-
-
-		$this->form_validation->set_rules('PagIbig', 'PagIbig Field', 'trim|required|numeric');
+		$this->form_validation->set_rules('CashAdvance', 'Cash Advance Field', 'trim|required|numeric|greater_than[0]');
 
 
-
-		$this->form_validation->set_rules('SSS', 'SSS Field', 'trim|required|numeric');
+		$this->form_validation->set_rules('PagIbig', 'PagIbig Field', 'trim|required|numeric|greater_than[0]');
 
 
 
-		$this->form_validation->set_rules('PhilHealth', 'PhilHealth Field', 'trim|required|numeric');
+		$this->form_validation->set_rules('SSS', 'SSS Field', 'trim|required|numeric|greater_than[0]');
+
+
+
+		$this->form_validation->set_rules('PhilHealth', 'PhilHealth Field', 'trim|required|numeric|greater_than[0]');
 
 
 
