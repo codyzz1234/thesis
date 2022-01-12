@@ -136,9 +136,17 @@
 
                     <div class = "form-group">
                         <label for = ""> Department Head </label>
-                        <input type = "text" id = "editDepartmentHead" class = "form-control">
-                        <ul class="list-group" id = "editResult">
-                        </ul>
+                        <div class = "input-group mb-3">
+                            <input type = "text" id = "editDepartmentHead" class = "form-control">
+                            <div class = "input-group-append">
+                                <button class = "btn btn-danger">
+                                    <i class="far fa-window-close"></i>
+                                </button>
+                            </div>          
+                            <ul class="list-group" id = "editResult">
+                            </ul>
+                        </div>
+                        
                     </div>
                     
 

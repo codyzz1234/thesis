@@ -43,6 +43,7 @@ $(document).ready(function () {
                 else{
                     var table;
                     setters = data.posts;
+                    console.log(setters);
                     if($.fn.dataTable.isDataTable('#departmentTable')) {
                         table = $('#departmentTable').DataTable();
                         table.clear().draw();
@@ -437,9 +438,10 @@ $(document).ready(function () {
         $this = $(this);
         var employeeId =  $this.attr('data-employeeid');
         var EmployeeNumber = $this.attr('data-employeenumber');
+        let name = $this.attr('data-firstname') + " " + $this.attr('data-lastname')
         $('#departmentHeadId').val(employeeId);
         $("#addResult").empty()
-        $('#addDepartmentHead').val(EmployeeNumber);
+        $('#addDepartmentHead').val(EmployeeNumber + " | " + name );
     });
 
 
@@ -448,9 +450,10 @@ $(document).ready(function () {
         $this = $(this);
         var employeeId =  $this.attr('data-employeeid');
         var EmployeeNumber = $this.attr('data-employeenumber');
+        let name = $this.attr('data-firstname') + " " + $this.attr('data-lastname')
         $('#editDepartmentHeadId').val(employeeId);
         $("#editResult").empty()
-        $('#editDepartmentHead').val(EmployeeNumber);
+        $('#editDepartmentHead').val(EmployeeNumber + " | " + name );
     });
 
 
