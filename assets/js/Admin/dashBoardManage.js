@@ -40,17 +40,18 @@ $(document).ready(function () {
                     let presentEmployees = setters.PresentEmployees;
                     let lateEmployees = setters.LateEmployees; 
                     let absentEmployees = setters.AbsentEmployees;
-                    valueToCards(totalEmployees,presentEmployees,lateEmployees)
+                    valueToCards(totalEmployees,presentEmployees,lateEmployees,absentEmployees)
               }
           }
       });  
     }
 
-    function valueToCards(totalEmployees,presentEmployees,lateEmployees)
+    function valueToCards(totalEmployees,presentEmployees,lateEmployees,absentEmployees)
     {
       $("#totalEmployees").html(totalEmployees);
       $("#presentEmployees").html(presentEmployees);
       $("#lateEmployees").html(lateEmployees);
+      $('#absentEmployees').html(absentEmployees);
 
 
 

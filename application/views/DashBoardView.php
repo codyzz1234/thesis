@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="card-body">
                                         <i class="fas fa-users fa-5x "></i>
-                                        <h1 class="card-title" id = "lateEmployees"></h1>
+                                        <h1 class="card-title" id = "absentEmployees"></h1>
                                     
                                     </div>
                                 </div>
