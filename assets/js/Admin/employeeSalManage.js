@@ -223,9 +223,6 @@ $(document).ready(function () {
         e.preventDefault();
         let formData = new FormData($('#editSalaryForm')[0]);
 
-        for(var pair of formData.entries()){
-            console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
-        }
    
        
         $.ajax({

@@ -142,6 +142,8 @@
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
 
+    <script>var username = '<?php echo $username ?>';</script>
+
     <script src="<?php echo base_url('assets\js\Admin\dashBoardManage.js') ?>"></script>
 
 
