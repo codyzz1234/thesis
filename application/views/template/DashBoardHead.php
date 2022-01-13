@@ -102,7 +102,6 @@
                         <h6 class="collapse-header">Employee Details:</h6>
                         <a class="collapse-item" href="<?php echo base_url('EmployeeManageController')?>">Employee List</a>
                         <a class="collapse-item" href="<?php echo base_url('EmployeeSalaryControl')?>">Employee Salaries</a>
-
                         <a class="collapse-item"href="<?php echo base_url('EmployeeAccountManageController')?>">Employee Accounts</a>
                     </div>
                 </div>
@@ -148,6 +147,8 @@
 
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Payroll Details:</h6>
+                        <a class="collapse-item" href="<?php echo base_url('CommissionControl')?>">Dental Commissions</a>
+
                         <a class="collapse-item" href="<?php echo base_url('PayrollControl')?>">Payroll Management</a>
                     </div>
                 </div>
