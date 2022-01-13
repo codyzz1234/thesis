@@ -43,7 +43,7 @@
                                 </div>
 
 
-                                <div class="card text-white bg-danger mb-3 text-center" style="max-width: 18rem;">
+                                <div class="card text-white bg-warning mb-3 text-center" style="max-width: 18rem;">
                                     <div class="card-header">
                                         <h3> Late Employees </h3>
                                     </div>
