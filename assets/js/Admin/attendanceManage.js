@@ -125,7 +125,8 @@ $(document).ready(function () {
                                     title:"Image",
                                     data:"Image",
                                     render:function(data,type,row,meta){ 
-                                        return '<img src="'+data+'"alt="Error load" class="img-fluid"></img>'         
+                                    
+                                        return '<img src="'+baseurl+data+'"alt="Error load" class="img-fluid"></img>'         
                                     },
                                 },
 

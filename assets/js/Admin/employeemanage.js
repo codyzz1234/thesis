@@ -89,7 +89,7 @@ $(document).ready(function() {
                             columns:[
                                 {"data": "Image",
                                 "render": function ( data, type, row, meta ) {
-                                       return '<img src="'+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>'                     
+                                       return '<img src="'+baseurl+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>'                     
                                     }
                                 },
                                 {"data":"EmployeeNumber"},
@@ -197,7 +197,7 @@ $(document).ready(function() {
 
                         $('#editBranchSelector').val(setters[0].BranchId);
 
-                        $("#editPreview").attr("src",setters[0].Image+"?time"+new Date().getTime());
+                        $("#editPreview").attr("src",baseurl+setters[0].Image+"?time"+new Date().getTime());
 
 
         

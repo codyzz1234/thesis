@@ -378,7 +378,7 @@ $(document).ready(function () {
                     '" data-employeeid = "'+EmployeeId+
                     '" data-firstname = "'+FirstName+
                     '"data-lastname = "'+LastName+'">'+
-                    '<img src="'+Image+'" alt="..." class="img-thumbnail DepartmentHeadImage"> </img>'+
+                    '<img src="'+baseurl+Image+'" alt="..." class="img-thumbnail DepartmentHeadImage"> </img>'+
                     '<span>'+EmployeeNumber+'</span>'+ " | " +
                     '<span>'+FirstName +" "+LastName+'</span>'+" | " +
                     '<span>'+Department+'</span>'+" | " +
