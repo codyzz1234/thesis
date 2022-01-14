@@ -56,7 +56,7 @@
         public function fetch($startDate,$endDate)
         {
             $this->db->trans_start();
-            $sql = "SELECT commissions.CommissionId,commissions.EmployeeId,commissions.Date,commissions.Description,commissions.Amount,employees.FirstName,employees.LastName,employees.Image
+            $sql = "SELECT commissions.CommissionId,commissions.EmployeeId,DATE_FORMAT(commissions.Date,'%m/%d/%Y') as Date,commissions.Description,commissions.Amount,employees.FirstName,employees.LastName,employees.Image,employees.EmployeeNumber
             from commissions
             inner join employees
             on commissions.EmployeeId = employees.EmployeeId
@@ -80,6 +80,30 @@
             return $message;
         }
 
+        public function editRecord($ajax_data)
+        {
+            $message = "";
+            $this->db->trans_start();
+            if($ajax_data['Description'] == ""){
+                $ajax_data['Description'] = null;
+            }
+            $this->db->where('CommissionId',$ajax_data['CommissionId']);
+            $this->db->update('commissions',$ajax_data);
+            $affectedRows = $this->db->affected_rows();
+            $this->db->trans_complete();
+            if($this->db->trans_status() === false){
+                $message = "failed";
+            }
+            else{
+                if($affectedRows <= 0){
+                    $message = "none";
+                }
+                else{
+                    $message = "success";
+                }
+            }
+            return $message;
+        }
     }
 
 ?>  

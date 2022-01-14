@@ -1,8 +1,8 @@
 $(document).ready(function () {
     toasterOptions();
     initialLoad();
-
     setDateRangePicker();
+    fetchSearches();
 
     function toasterOptions()
     {
@@ -48,8 +48,104 @@ $(document).ready(function () {
             cache:false,
             dataType: "JSON",
             success: function (data) {
-                console.log(data.posts);
-               
+                if(data.response == "success"){
+                    var table;
+                    setters = data.posts;
+                    console.log(setters)
+                    if($.fn.dataTable.isDataTable('#commissionsTable')) {
+                        table = $('#commissionsTable').DataTable();
+                        table.clear().draw();
+                        table.rows.add(setters); // Add new data
+                        table.columns.adjust().draw();
+                    }
+                    else{
+                        table = $('#commissionsTable').DataTable({
+                            "destroy": true,
+                            responsive:true,
+                            dom: //'Blfrtip', // if you remove this line you will see the show entries dropdown
+                            'B'+ 
+
+                            "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>"+
+                             "rtip",
+                            buttons: [
+                               // 'copy', 'csv', 'excel', 'pdf', 'print',
+                               {
+                                   text:'Copy Table to Clipboard',
+                                   className: "copy spaceButtons",
+                                   extend:'copy',
+                               },
+                               {
+                                   text:'Export Table To Excel',
+                                   extend:'excel',
+                                   className:"excel spaceButtons"
+                               },
+                               {
+                                   text:'Export Table To CSV',
+                                   extend:'csv',
+                                   className:"csv spaceButtons"
+                               },
+                               
+                               {
+                                    text:'Export Table To PDF',
+                                    extend:'pdf',
+                                    className:"pdf spaceButtons",
+                                    orientation : 'landscape',
+                                    pageSize : 'LEGAL',
+                               },
+    
+                            ],
+                            data:data.posts,
+                            columns:[
+                                {
+                                    title:"Image",
+                                    data: "Image",
+                                    width: "10%",
+                                    render: function ( data, type, row, meta ) {
+                                       return '<img src="'+baseurl+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>'                     
+                                    }
+                                },
+                                {
+                                    title:"Employee Name",
+                                    data:null,
+                                    render:function(data,type,row,meta){
+                                        return row.FirstName + " " + row.LastName
+                                    }
+                                },
+                                {
+                                    title:"Date",
+                                    data:"Date",
+                                },
+                                {
+                                    title:"Description",
+                                    data:"Description"
+                                },
+                                {
+                                    title:"Amount",
+                                    data:"Amount",
+                                },
+                                {
+                                    title:"Actions",
+                                    data:null,
+                                    render:function(data,type,row,meta){
+                                        var editButton = '<a href="#" value = "'+'" class = "btn btn-outline-info editButton"><i class="fas fa-pen-square"></i></a>'
+                                        var deleteButton = '<a href="#" value = "'+'" class = "btn btn-outline-danger deleteButton"><i class="fas fa-trash-alt"></i></a>'
+                                        return editButton+deleteButton
+                                    }
+                                }
+
+                            ],
+
+                        });
+                    }
+                }   
+                else if (data.response == "none"){
+                    toastr["info"]("Alert",data.message);
+
+                }
+                else{
+                    toastr["error"]("Alert",data.message);
+
+                }            
             }
         });
     }
@@ -63,7 +159,6 @@ $(document).ready(function () {
 
     $('#addCommission').click(function (e) { 
         e.preventDefault();
-        fetchSearches();
         console.log(searching.result);
         $('#addForm input[name=DatePicker]').datepicker();
         $('#addModal').modal('show');
@@ -105,6 +200,12 @@ $(document).ready(function () {
                     toastr["success"]("Alert",data.message);
                     $('#addForm')[0].reset();
                     $('#addModal').modal('hide');
+        
+                    let date = $("#dateRangePicker").val();
+                    date= date.split('-');
+                    startDate = date[0];
+                    endDate = date[1];
+                    fetch(startDate,endDate);
                 }
             }
         });
@@ -221,6 +322,147 @@ $(document).ready(function () {
         fetch(start,end);
         
     });
+
+    //Edit Records
+
+    $(document).on('click','tbody .editButton', function(e) 
+    { 
+        e.preventDefault();
+        $this = $(this);
+        var currentRow = $this.closest('tr');
+        var data = $('#commissionsTable').DataTable().row(currentRow).data();
+
+        var dataJson = {
+                'Name': data['FirstName'] +  " " + data['LastName'],
+                'CommissionId':data['CommissionId'],
+                'EmployeeId':data['EmployeeId'],
+                'Amount':data['Amount'],
+                'Date':data['Date'],
+                'Description':data['Description'],
+                'EmployeeNumber':data['EmployeeNumber'],
+                'Image':data['Image'],
+            }
+        loadEditForm(dataJson)
+        $('#editModal').modal('show');
+        
+    });
+    function loadEditForm(dataJson)
+    {
+
+        $('#editForm input[name=DatePicker]').datepicker();
+        $('#editForm img[name=ImagePreview]').attr('src',baseurl+dataJson['Image']);
+        $('#editForm label[for=LabelNumber]').text(dataJson['EmployeeNumber']);
+        $('#editForm label[for=LabelName]').text(dataJson['Name']);
+        $('#editForm input[name=EmployeeNumber]').val(dataJson['EmployeeNumber']);
+        $('#editForm input[name=DatePicker]').val(dataJson['Date']);
+        $('#editForm input[name=Description]').val(dataJson['Description']);
+        $('#editForm input[name=Amount]').val(dataJson['Amount']);
+        $('#editForm input[name=EmployeeId]').val(dataJson['EmployeeId']);
+        $('#editForm input[name=CommissionId]').val(dataJson['CommissionId']);
+
+
+    
+
+    }
+
+    $('#editForm input[name=EmployeeNumber]').keyup(function (e) { 
+        $('#editResult').html('');
+        let searchField = $('#editForm input[name=EmployeeNumber]').val();
+        console.log("Search Field is" + searchField);
+        searchField = searchField.replace(/\s+/g, '');
+        if (!searchField.length){
+            return;
+        }
+        else{
+            let find = searching.result;
+            console.log(find);
+            let expression = new RegExp(searchField,"i");
+            for(let key in find){
+                let Image = find[key].Image;
+                let EmployeeNumber = find[key].EmployeeNumber;
+                let EmployeeId = find[key].EmployeeId;
+                let Name = find[key].Name;
+                let complete = EmployeeNumber+Name+EmployeeId;
+                complete = complete.replace(/\s+/g, '');
+                if(complete.match(expression)){
+                    var a = '<li class  = "list-group-item editListResults" '+
+                            'data-employeeid = "'+EmployeeId+'" '+
+                            'data-employeenumber = "'+EmployeeNumber+'" '+
+                            'data-name = "'+Name+'" '+
+                            'data-image = "'+baseurl+Image+'"'+
+                            '>'+
+                            '<img src = "'+baseurl+Image+'" alt = "..." class = "img-thumbnail CommissionImage"></img>'+
+                            '<span>'+ EmployeeNumber + '</span>'+ " | "+
+                            '<span>' + Name + '</span>'+         
+                            '</li>'
+                                                       
+                    $('#editResult').append(a);
+                }
+                else{
+                    continue;
+                }
+            }
+        }
+    });
+
+    $(document).on('click','.editListResults' ,function () {
+        $this = $(this);
+        console.log("Listing");
+        let EmployeeId = $this.attr('data-employeeid');
+        let EmployeeNumber = $this.attr('data-employeenumber')
+        let Name = $this.attr('data-name');
+        let Image = $this.attr('data-image')
+        
+        $('#editForm input[name=EmployeeId]').val(EmployeeId);
+        $('#editForm input[name=EmployeeNumber]').val(EmployeeNumber);
+        $('#editForm label[for=LabelNumber]').text(EmployeeNumber);
+        $('#editForm label[for=LabelName]').text(Name);
+        $('#editForm img[name=ImagePreview]').attr('src',Image);
+        $('#editResult').empty();
+    });
+
+    $('#editRecord').click(function (e) { 
+        e.preventDefault();
+        let form = $('#editForm')[0];
+        let formData = new FormData(form);
+        for(var pair of formData.entries()){
+            console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
+        }
+        $.ajax({
+            type: "POST",
+            url: baseurl+"CommissionControl/editRecord",
+            data: formData,
+            dataType: "JSON",
+            contentType:false,
+            processData:false,
+            success: function (data) {
+                if(data.response == "failed"){
+                    toastr["error"]("Alert",data.message);
+
+                }
+                else if(data.response == "none"){
+                    toastr["info"]("Alert",data.message);
+
+                }
+                else{
+                    toastr["success"]("Alert",data.message);
+                    let date = $("#dateRangePicker").val();
+                    date= date.split('-');
+                    startDate = date[0];
+                    endDate = date[1];
+                    fetch(startDate,endDate);
+                }
+            }
+        });
+        
+    });
+
+    
+
+
+
+    
+
 
 
 

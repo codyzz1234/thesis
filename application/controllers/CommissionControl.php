@@ -92,6 +92,50 @@ class CommissionControl extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	//Edit Record
+
+	public function editRecord()
+	{
+		$this->form_validation->set_rules('EmployeeId','Employee','trim|numeric|required',
+		array(
+			'numeric' => "Please Select an Employee",
+			'required' => "Please Select an Employee",
+		));
+		$this->form_validation->set_rules('DatePicker','Date Field','trim|required|callback_checkDate',
+		array(
+			'checkDate'=> "input a valid date",
+		));
+		$this->form_validation->set_rules('Amount','Amount Field','trim|required|numeric');
+
+		if($this->form_validation->run() == false){
+			$data = array('response' => 'failed', 'message' => validation_errors());
+		}
+		else{
+			$date = $this->input->post('DatePicker');
+			$date = date('Y-m-d',strtotime($date));
+		
+			$ajax_data = array(
+				'CommissionId' => $this->input->post('CommissionId'),
+				'EmployeeId' => $this->input->post('EmployeeId'),
+				'Date' => $date,
+				'Amount' => $this->input->post('Amount'),
+				'Description' =>$this->input->post('Description')
+			);
+			$this->load->model('CommissionModel');
+			$verify = $this->CommissionModel->editRecord($ajax_data);
+			if($verify === "none"){
+				$data = array('response' => 'none', 'message' => "No Changes Made");
+			}
+			else if($verify === "failed"){
+				$data = array('response' => 'success', 'message' => "There was an error in updating");
+			}
+			else{
+				$data = array('response' => 'success', 'message' => "Commission Edited Successfully");
+			}
+		}
+		echo json_encode($data);
+	}
+
 	public function fetch()
 	{
 		$startDate = $this->input->post('StartDate');
@@ -130,6 +174,8 @@ class CommissionControl extends CI_Controller {
 		$d = DateTime::createFromFormat($format, $date);
 		return $d && $d->format($format) == $date;
 	}
+
+
 	
 
 
