@@ -16,22 +16,39 @@
                                         <button type="button" class="btn btn-success text-left" id = "addCommission">Add Commission</button>
                                     </div>
                             </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="positionTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Position</th>
-                                            <th>Description</th>
-                                            <th>Number Of Employees</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
 
-                                    <tbody>
-                                    </tbody>
-                                </table>
+
+                        <div class="card-body">
+
+                            <div class="row justify-content-start commissionGroup">
+                                <div class="col md-4 lg-5">
+                                    <div class="input-group">
+                                    <input type="text" id = "dateRangePicker" name="daterange"/>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-info" type="button" id = "applyDate">Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            
+
+
+                            
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="positionTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Position</th>
+                                                <th>Description</th>
+                                                <th>Number Of Employees</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
                         </div>
                     </div>
 
@@ -78,7 +95,9 @@
 
                         <div class = "form-group">
                             <div class="text-center">
-                                <img src="..." class="img-fluid" alt="Responsive Image" name = "imagePreview">
+                                <img src="..." class="img-fluid" alt="Responsive Image" name = "ImagePreview">
+                                <label name = "LabelName" ></label>
+                                <label name = "LabelNumber" ></label> 
                             </div>
                         
                         </div>
@@ -214,6 +233,12 @@
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+
+
+    
+    <!-- Date Range Picker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
     <!-- date picker -->
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>

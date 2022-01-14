@@ -463,7 +463,7 @@ $(document).ready(function () {
     $(document).on({
         mouseenter: function () {
             $this =$(this);
-            $this.css('background-color','#F0F8FF');
+            $this.css('background-color','#5F9EA0');
         },
         mouseleave: function () {
             $this.css('background-color','white');

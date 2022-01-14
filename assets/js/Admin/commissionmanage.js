@@ -1,4 +1,30 @@
 $(document).ready(function () {
+    toasterOptions();
+    setDateRangePicker();
+
+    function toasterOptions()
+    {
+        toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-center-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut",
+        "preventDuplicates":true,
+        }
+    }
+
+    
 
    
     //add records
@@ -60,14 +86,13 @@ $(document).ready(function () {
                             'data-employeeid = "'+EmployeeId+'" '+
                             'data-employeenumber = "'+EmployeeNumber+'" '+
                             'data-name = "'+Name+'" '+
+                            'data-image = "'+baseurl+Image+'"'+
                             '>'+
                             '<img src = "'+baseurl+Image+'" alt = "..." class = "img-thumbnail CommissionImage"></img>'+
-                            '<span>'+ EmployeeNumber + '</span>'+ "|"+
-                            '<span>' + Name + '</span>'+
+                            '<span>'+ EmployeeNumber + '</span>'+ " | "+
+                            '<span>' + Name + '</span>'+         
                             '</li>'
-                            
-                    console.log(a)
-                            
+                                                       
                     $('#addResult').append(a);
                 }
                 else{
@@ -77,7 +102,55 @@ $(document).ready(function () {
         }
     });
 
+    //Add Interactivity for list results
+    
+    $(document).on('click','.addListResults' ,function () {
+        $this = $(this);
+        console.log("Listing");
+        let EmployeeId = $this.attr('data-employeeid');
+        let EmployeeNumber = $this.attr('data-employeenumber')
+        let Name = $this.attr('data-name');
+        let Image = $this.attr('data-image')
+        
+        $('#addForm input[name=EmployeeId]').val(EmployeeId);
+        $('#addForm input[name=EmployeeNumber]').val(EmployeeNumber);
+        $('#addForm label[for=LabelNumber]').text(EmployeeNumber);
+        $('#addForm label[for=LabelName]').text(Name);
+        $('#addForm img[name=ImagePreview]').attr('src',Image);
+        $('#addResult').empty();
+    });
 
+
+    $(document).on({
+        mouseenter: function () {
+            $this =$(this);
+            $this.css('background-color','#5F9EA0');
+        },
+        mouseleave: function () {
+            $this.css('background-color','white');
+        }
+    }, ".addListResults,.editListResults"); //pass the element as an argument
+
+
+
+    //Date Range Picker
+    function setDateRangePicker()
+    {
+        var date = new Date();
+        var start = new Date(date.getFullYear(), date.getMonth(), 1);
+        var end = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        $('#dateRangePicker').val(date);
+        $('#dateRangePicker').daterangepicker({
+            startDate:start,
+            endDate:end,
+            "applyButtonClasses": "btn-success",
+            "cancelClass": "btn-danger",
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+    }
+    
 
 
     
