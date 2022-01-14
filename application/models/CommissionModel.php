@@ -29,9 +29,28 @@
             return $message;
         }
 
-        public function addRecord()
+        public function addRecord($ajax_data)
         {
-            
+            $this->db->trans_start();
+            $this->db->set($ajax_data);
+            if($ajax_data['Description'] == ""){
+                $ajax_data['Description'] = null;
+            }
+            $this->db->insert('commissions',$ajax_data);
+            $affectedRows = $this->db->affected_rows();
+            $this->db->trans_complete();
+            if($this->db->trans_status() === false){
+                return false;
+            }
+            else{
+                if($affectedRows > 0){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+
         }
 
     }

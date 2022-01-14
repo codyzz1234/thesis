@@ -71,6 +71,9 @@ $(document).ready(function () {
                 if(data.response == "failed"){
                     toastr["error"]("Alert",data.message);
                 }
+                else{
+                    toastr["success"]("Alert",data.message);
+                }
             }
         });
     });
