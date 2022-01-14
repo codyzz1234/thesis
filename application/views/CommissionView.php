@@ -93,7 +93,7 @@
                         <div class = "form-group">
 
                             <div class="text-center">
-                                <input type = "hidden" name = "EmployeeId" data-employeeid>
+                                <input type = "hidden" class = "form-control" name = "EmployeeId" data-employeeid>
                                 <img src="..." class="img-fluid" alt="Responsive Image" name = "ImagePreview">
                                 <label for = "LabelName" ></label>
                                 <br>

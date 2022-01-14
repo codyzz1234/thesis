@@ -73,6 +73,8 @@ $(document).ready(function () {
                 }
                 else{
                     toastr["success"]("Alert",data.message);
+                    $('#addForm')[0].reset();
+                    $('#addModal').modal('hide');
                 }
             }
         });
@@ -189,5 +191,7 @@ $(document).ready(function () {
         fetch(start,end);
         
     });
+
+
 
 });
