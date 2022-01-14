@@ -86,17 +86,28 @@
                         <div class="form-group">
                             <label for=""> Employee Number </label>
                             <input type="text" class="form-control" name = "EmployeeNumber">
+                            <ul class = "list-group" id = "addResult">
+
+                            </ul>
                         </div>
 
                         <div class="form-group">
                             <label for=""> Date </label>
-                            <input type="text" class="form-control" name = "dateRangePicker">
+                            <input type="text" class="form-control" id = "dateRangePicker" name = "DatePicker">
 
                         </div>
 
+
                         <div class="form-group">
-                            <label for=""> Commission </label>
-                            <input type="text" class="form-control" name = "amount">
+                            <label for=""> Description </label>
+                            <input type="text" class="form-control" name = "Description">
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for=""> Amount </label>
+                            <input type="text" class="form-control" name = "Amount">
                         </div>
 
                   </form>

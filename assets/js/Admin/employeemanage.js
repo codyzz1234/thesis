@@ -356,9 +356,6 @@ $('#editImage').change(function (e) {
     
 
     
-    $('#ContactNumber').keyup(function (e) { 
-        alert("hello")
-    });
 
     //add records
     $("#addRecords").click(function (e) { 
