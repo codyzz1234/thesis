@@ -206,7 +206,7 @@
 
     <!-- date picker -->
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    
+
     <script src="<?php echo base_url('assets\js\Admin\commissionmanage.js') ?>"></script>
 
 

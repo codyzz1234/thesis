@@ -1,10 +1,30 @@
 $(document).ready(function () {
 
+   
+    //add records
+    window.searching = {};
+    searching.result = 0;
+
     $('#addCommission').click(function (e) { 
         e.preventDefault();
-        fetchResults();
+        fetchSearches();
+        console.log(searching.result);
         $('#addModal').modal('show');
     });
+
+    function fetchSearches()
+    {
+        $.ajax({
+            type: "GET",
+            url: baseurl+"CommissionControl/fetchSearches",
+            data: "data",
+            dataType: "JSON",
+            success: function (data) {
+                searching.result = data;
+            }
+        });
+
+    }
 
     $('#addRecord').click(function (e) { 
         e.preventDefault();
@@ -15,10 +35,6 @@ $(document).ready(function () {
         }
     });
 
-    function fetchResults()
-    {
-
-    }
 
 
 
