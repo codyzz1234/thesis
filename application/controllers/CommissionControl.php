@@ -28,8 +28,10 @@ class CommissionControl extends CI_Controller {
 	{
 		$sessionData = $this->session->userdata('username');
 		if($sessionData != ''){
+			$searches = $this->fetchSearches();
 			$data = array(
 				'username' => $sessionData,
+				'searchResults' => $searches,
 			);
 			$this->load->view('template/DashBoardHead',$data);
 			$this->load->view('CommissionView',$data);
@@ -44,9 +46,10 @@ class CommissionControl extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect('Login');
 	}
-    public function fetch()
-    {
-        
-    }
+    private function fetchSearches()
+	{
+		$this->load->model('CommissionModel');
+		
+	}
 
 }
