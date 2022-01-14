@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2022 at 02:24 PM
+-- Generation Time: Jan 14, 2022 at 12:44 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-12 12:57:19'),
+(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-14 11:44:18'),
 (7, 'athens', '$2y$10$oxOLyObe1feNRYQfD61z2e.NE4dh4AopChEULAkykZg0SrE9cBhQ2', 'last', 'man', '2022-01-11 10:01:34', '2022-01-11 11:58:10');
 
 -- --------------------------------------------------------
@@ -69,8 +69,8 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`AttendanceId`, `EmployeeId`, `EmployeeNumber`, `Date`, `TimeIn`, `TimeOut`, `HoursWorked`, `OverTimeHours`, `TimeInStatus`, `TimeOutStatus`) VALUES
-(160, 334, '2021-OTQFFF', '2022-01-05', '2022-01-05 03:34:01', '2022-01-05 03:35:55', '0', 0, 3, 6),
-(161, 334, '2021-OTQFFF', '2022-01-08', '2022-01-08 01:14:14', '2022-01-08 10:14:28', '8', 0, 1, 6);
+(160, NULL, NULL, '2022-01-05', '2022-01-05 03:34:01', '2022-01-05 03:35:55', '0', 0, 3, 6),
+(161, NULL, NULL, '2022-01-08', '2022-01-08 01:14:14', '2022-01-08 10:14:28', '8', 0, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -90,6 +90,47 @@ CREATE TABLE `branches` (
 
 INSERT INTO `branches` (`BranchId`, `Branch`, `Address`) VALUES
 (1, 'QC Branch', 'Somewhere in Qc');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci_sessions`
+--
+
+CREATE TABLE `ci_sessions` (
+  `id` varchar(128) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `data` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
+('p14qkahmjqncpruk0tpg8ipefvusgkik', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136303631373b757365726e616d657c733a31303a2261646d696e3132333435223b);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `commissions`
+--
+
+CREATE TABLE `commissions` (
+  `CommissionId` int(11) NOT NULL,
+  `EmployeeId` int(11) NOT NULL,
+  `Date` date NOT NULL,
+  `Description` varchar(255) DEFAULT NULL,
+  `Amount` decimal(13,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `commissions`
+--
+
+INSERT INTO `commissions` (`CommissionId`, `EmployeeId`, `Date`, `Description`, `Amount`) VALUES
+(14, 336, '2022-01-06', 'Root Canal Surgery ', '1500.00');
 
 -- --------------------------------------------------------
 
@@ -154,8 +195,7 @@ CREATE TABLE `employeecalculation` (
 --
 
 INSERT INTO `employeecalculation` (`EmployeeId`, `EmployeeNumber`, `BaseSalary`, `SSS`, `PagIbig`, `PhilHealth`, `CashAdvance`) VALUES
-(334, '2021-OTQFFF', '3000.00', '500.00', '320.00', '650.00', '150.00'),
-(335, '2022-9FOGBZ', '10000.00', '500.00', '440.00', '320.00', '500.00');
+(336, '2022-DFUK09', '25000.00', '0.00', '0.00', '0.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -202,8 +242,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`EmployeeId`, `EmployeeNumber`, `RFID`, `FirstName`, `LastName`, `Address`, `ContactNumber`, `BirthDate`, `HireDate`, `DepartmentId`, `PositionId`, `BranchId`, `ScheduleId`, `TotalHours`, `Status`, `Image`) VALUES
-(334, '2021-OTQFFF', '156145152', 'Kenley', 'So', 'Valencai Street Metro Manila', '09453218471', '1990-02-07', '2021-12-28', 25, 2, 1, 17, 0, 1, './assets/EmployeeImages/2021-OTQFFF.png'),
-(335, '2022-9FOGBZ', '535353', 'Cody', 'Yap', 'Quezon City', '9224891495', '1990-06-06', '2022-01-01', 18, 2, 1, 17, 0, 1, './assets/EmployeeImages/default.png');
+(336, '2022-DFUK09', '17171847', 'Cody', 'Yap', '#15 Valencia Street San Juan Metro Manila', '9453218471', '2000-02-03', '2022-01-14', 18, 24, 1, 17, 0, 1, './assets/EmployeeImages/2022-DFUK09.png');
 
 -- --------------------------------------------------------
 
@@ -419,6 +458,20 @@ ALTER TABLE `branches`
   ADD PRIMARY KEY (`BranchId`);
 
 --
+-- Indexes for table `ci_sessions`
+--
+ALTER TABLE `ci_sessions`
+  ADD PRIMARY KEY (`id`,`ip_address`),
+  ADD KEY `ci_sessions_timestamp` (`timestamp`);
+
+--
+-- Indexes for table `commissions`
+--
+ALTER TABLE `commissions`
+  ADD PRIMARY KEY (`CommissionId`),
+  ADD KEY `commissions_ibfk_1` (`EmployeeId`);
+
+--
 -- Indexes for table `deductions`
 --
 ALTER TABLE `deductions`
@@ -514,6 +567,12 @@ ALTER TABLE `branches`
   MODIFY `BranchId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `commissions`
+--
+ALTER TABLE `commissions`
+  MODIFY `CommissionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `deductions`
 --
 ALTER TABLE `deductions`
@@ -535,7 +594,7 @@ ALTER TABLE `employeelogin`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `EmployeeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=336;
+  MODIFY `EmployeeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=337;
 
 --
 -- AUTO_INCREMENT for table `employeestatus`
@@ -577,6 +636,12 @@ ALTER TABLE `schedules`
 ALTER TABLE `attendance`
   ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`EmployeeNumber`) REFERENCES `employees` (`EmployeeNumber`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`EmployeeId`) REFERENCES `employees` (`EmployeeId`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `commissions`
+--
+ALTER TABLE `commissions`
+  ADD CONSTRAINT `commissions_ibfk_1` FOREIGN KEY (`EmployeeId`) REFERENCES `employees` (`EmployeeId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `departments`
