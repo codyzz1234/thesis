@@ -92,6 +92,26 @@ class CommissionControl extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function fetch()
+	{
+		$startDate = $this->input->post('StartDate');
+		$endDate =  $this->input->post('EndDate');
+		$this->load->model('CommissionModel');
+		$verify = $this->CommissionModel->fetch($startDate,$endDate);
+		if($verify === "none"){
+			$data = array('response' => "none" , 'message' => "no records found");
+		}
+		else if($verify === false){
+			$data = array('response' => "failed" , 'message' => "no records found");
+
+		}
+		else{
+			$data = array('response' => "success" , 'posts' => $verify);
+
+		}
+		echo json_encode($data);
+	}
+
 	public function checkDate()
 	{
 		$date = $this->input->post('DatePicker');
@@ -110,6 +130,7 @@ class CommissionControl extends CI_Controller {
 		$d = DateTime::createFromFormat($format, $date);
 		return $d && $d->format($format) == $date;
 	}
+	
 
 
 }

@@ -53,6 +53,33 @@
 
         }
 
+        public function fetch($startDate,$endDate)
+        {
+            $this->db->trans_start();
+            $sql = "SELECT commissions.CommissionId,commissions.EmployeeId,commissions.Date,commissions.Description,commissions.Amount,employees.FirstName,employees.LastName,employees.Image
+            from commissions
+            inner join employees
+            on commissions.EmployeeId = employees.EmployeeId
+            WHERE commissions.Date between ? AND ?";
+            $results = $this->db->query($sql,array(
+                $startDate,
+                $endDate
+            ));
+            $this->db->trans_complete();
+            if($this->db->trans_status() === false){
+                $message = "failed";
+            }
+            else{
+                if(count($results->result()) > 0){
+                    $message = $results->result();
+                }
+                else{
+                    $message = "none";
+                }
+            }
+            return $message;
+        }
+
     }
 
 ?>  
