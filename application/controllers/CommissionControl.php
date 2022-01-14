@@ -52,4 +52,21 @@ class CommissionControl extends CI_Controller {
 		echo json_encode($results);
 	}
 
+	//add Record
+	public function addRecord()
+	{
+		$this->form_validation->set_rules('EmployeeId','Employee','trim|numeric|required',
+		array(
+			'numeric' => "Please Select an Employee",
+			'required' => "Please Select an Employee",
+		));
+		if($this->form_validation->run() == false){
+			$data = array('response' => 'failed', 'message' => validation_errors());
+		}
+		else{
+
+		}
+		echo json_encode($data);
+	}
+
 }

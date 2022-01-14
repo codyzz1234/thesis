@@ -35,6 +35,7 @@ $(document).ready(function () {
         e.preventDefault();
         fetchSearches();
         console.log(searching.result);
+        $('#addForm input[name=DatePicker]').datepicker();
         $('#addModal').modal('show');
     });
     //fetch Searches for results
@@ -59,6 +60,19 @@ $(document).ready(function () {
         for(var pair of formData.entries()){
             console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
         }
+        $.ajax({
+            type: "POST",
+            url: baseurl+"CommissionControl/addRecord",
+            data: formData,
+            dataType: "JSON",
+            contentType:false,
+            processData:false,
+            success: function (data) {
+                if(data.response == "failed"){
+                    toastr["error"]("Alert",data.message);
+                }
+            }
+        });
     });
 
     $('#addForm input[name=EmployeeNumber]').keyup(function (e) { 
@@ -150,8 +164,27 @@ $(document).ready(function () {
             }
         });
     }
-    
+     // When apply button is hit
+     $('#dateRangePicker').on('apply.daterangepicker', function(ev, picker) {
+        var startDate = picker.startDate.format('YYYY-MM-DD');
+        var endDate =  picker.endDate.format('YYYY-MM-DD');
+        console.log("start Date is : " + startDate);
+        console.log("end Date is : " + endDate );
+        fetch(startDate,endDate)
+    });
+    // when Clear/Cancel button is hit
+    $('#dateRangePicker').on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
+    });
 
+    $('#applyDate').on('click', function (e,picker) {
+        e.preventDefault();
+        var start = $('#dateRangePicker').data('daterangepicker').startDate;
+        var end =  $('#dateRangePicker').data('daterangepicker').endDate;
+        start = moment(start).format('YYYY-MM-DD');
+        end = moment(end).format('YYYY-MM-DD');
+        fetch(start,end);
+        
+    });
 
-    
 });

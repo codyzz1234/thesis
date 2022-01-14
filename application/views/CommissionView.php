@@ -35,13 +35,10 @@
 
                             
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="positionTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" id="commissionsTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Position</th>
-                                                <th>Description</th>
-                                                <th>Number Of Employees</th>
-                                                <th>Actions</th>
+                                                
                                             </tr>
                                         </thead>
 
@@ -94,10 +91,13 @@
                     <form action = "" method = "post" id = "addForm">
 
                         <div class = "form-group">
+
                             <div class="text-center">
+                                <input type = "hidden" name = "EmployeeId" data-employeeid>
                                 <img src="..." class="img-fluid" alt="Responsive Image" name = "ImagePreview">
-                                <label name = "LabelName" ></label>
-                                <label name = "LabelNumber" ></label> 
+                                <label for = "LabelName" ></label>
+                                <br>
+                                <label for = "LabelNumber" ></label> 
                             </div>
                         
                         </div>
@@ -112,7 +112,7 @@
 
                         <div class="form-group">
                             <label for=""> Date </label>
-                            <input type="text" class="form-control" id = "dateRangePicker" name = "DatePicker">
+                            <input type="text" class="form-control" name = "DatePicker">
 
                         </div>
 

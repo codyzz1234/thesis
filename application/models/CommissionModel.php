@@ -29,6 +29,11 @@
             return $message;
         }
 
+        public function addRecord()
+        {
+            
+        }
+
     }
 
 ?>  
