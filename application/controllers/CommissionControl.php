@@ -63,7 +63,7 @@ class CommissionControl extends CI_Controller {
 		array(
 			'checkDate'=> "input a valid date",
 		));
-		$this->form_validation->set_rules('Amount','Amount Field','trim|required|numeric');
+		$this->form_validation->set_rules('Amount','Amount Field','trim|required|numeric|greater_than[0]');
 
 		if($this->form_validation->run() == false){
 			$data = array('response' => 'failed', 'message' => validation_errors());
@@ -104,7 +104,7 @@ class CommissionControl extends CI_Controller {
 		array(
 			'checkDate'=> "input a valid date",
 		));
-		$this->form_validation->set_rules('Amount','Amount Field','trim|required|numeric');
+		$this->form_validation->set_rules('Amount','Amount Field','trim|required|numeric|greater_than[0]');
 
 		if($this->form_validation->run() == false){
 			$data = array('response' => 'failed', 'message' => validation_errors());
