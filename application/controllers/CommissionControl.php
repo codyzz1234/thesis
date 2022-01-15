@@ -28,7 +28,6 @@ class CommissionControl extends CI_Controller {
 	{
 		$sessionData = $this->session->userdata('username');
 		if($sessionData != ''){
-			
 			$data = array(
 				'username' => $sessionData,
 			);
@@ -173,6 +172,20 @@ class CommissionControl extends CI_Controller {
 	{
 		$d = DateTime::createFromFormat($format, $date);
 		return $d && $d->format($format) == $date;
+	}
+
+	public function deleteRecord()
+	{
+		$commissionId = $this->input->post('CommissionId');
+		$this->load->model('CommissionModel');
+		$verify = $this->CommissionModel->deleteRecord($commissionId);
+		if($verify === false){
+			$data = array('response' => "failed",'message' => "There was an error in deleting the commission");
+		}
+		else{
+			$data = array('response' => "success",'message' => "Commission Deleted Successfully");
+		}
+		echo json_encode($data);
 	}
 
 

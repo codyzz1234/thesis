@@ -359,10 +359,6 @@ $(document).ready(function () {
         $('#editForm input[name=Amount]').val(dataJson['Amount']);
         $('#editForm input[name=EmployeeId]').val(dataJson['EmployeeId']);
         $('#editForm input[name=CommissionId]').val(dataJson['CommissionId']);
-
-
-    
-
     }
 
     $('#editForm input[name=EmployeeNumber]').keyup(function (e) { 
@@ -455,6 +451,71 @@ $(document).ready(function () {
             }
         });
         
+    });
+
+    //Delete Records
+    $(document).on('click','tbody .deleteButton', function(e) 
+    { 
+        e.preventDefault();
+        $this = $(this);
+        var currentRow = $this.closest('tr');
+        var data = $('#commissionsTable').DataTable().row(currentRow).data();
+
+        var dataJson = {
+                'Name': data['FirstName'] +  " " + data['LastName'],
+                'CommissionId':data['CommissionId'],
+                'EmployeeId':data['EmployeeId'],
+                'Amount':data['Amount'],
+                'Date':data['Date'],
+                'Description':data['Description'],
+                'EmployeeNumber':data['EmployeeNumber'],
+                'Image':data['Image'],
+            }
+        loadDeleteForm(dataJson)
+        $('#deleteModal').modal('show');
+    });
+
+    function loadDeleteForm(dataJson)
+    {
+        $('#deleteForm input[name=DatePicker]').val(dataJson['Date']);
+        $('#deleteForm img[name=ImagePreview]').attr('src',baseurl+dataJson['Image']);
+        $('#deleteForm label[name=LabelName]').val(dataJson['Name']);
+        $('#deleteForm label[name=LabelNumber]').val(dataJson['EmployeeNumber']);
+        $('#deleteForm input[name=CommissionId]').val(dataJson['CommissionId']);
+        $('#deleteForm input[name=EmployeeNumber]').val(dataJson['EmployeeNumber']);
+        $('#deleteForm input[name=DatePicker]').val(dataJson['Date']);
+        $('#deleteForm input[name=Description]').val(dataJson['Description']);
+        $('#deleteForm input[name=Amount]').val(dataJson['Amount']);
+
+    }
+
+    $('#deleteRecord').click(function (e) { 
+        e.preventDefault();
+        var commissionId = $('#deleteForm input[name=CommissionId]').val();
+        $.ajax({
+            type: "POST",
+            url: baseurl+"CommissionControl/deleteRecord",
+            data:{
+                CommissionId:commissionId,
+            },
+            dataType: "JSON",
+            success: function (data) {
+                if(data.response == "success"){
+                    toastr["success"]("Alert",data.message);
+                    $('#deleteModal').modal('hide')
+                    let date = $("#dateRangePicker").val();
+                    date= date.split('-');
+                    startDate = date[0];
+                    endDate = date[1];
+                    fetch(startDate,endDate);
+                    
+                }
+                else{
+                    toastr["error"]("Alert",data.message);
+                }
+                
+            }
+        });
     });
 
     

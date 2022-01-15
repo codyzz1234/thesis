@@ -147,7 +147,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Commission</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Commission</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -208,23 +208,63 @@
         </div>
 
 
-        <!-- Delete modal-->
+        <!-- Delete Commission modal-->
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Commission</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <form action = "" method = "post" id = "deleteForm">
+
+                        <div class = "form-group">
+
+                            <div class="text-center">
+                                <input type = "hidden" class = "form-control" name = "CommissionId" data-commissionid>
+
+                                <img src="..." class="img-fluid" alt="Responsive Image" name = "ImagePreview">
+                                <label for = "LabelName" ></label>
+                                <br>
+                                <label for = "LabelNumber" ></label> 
+                            </div>
+                        
+                        </div>
+
+                        <div class="form-group">
+                            <label for=""> Employee Number </label>
+                            <input type="text" class="form-control" name = "EmployeeNumber" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for=""> Date </label>
+                            <input type="text" class="form-control" name = "DatePicker" readonly>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for=""> Description </label>
+                            <input type="text" class="form-control" name = "Description" readonly>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for=""> Amount </label>
+                            <input type="text" class="form-control" name = "Amount" readonly>
+                        </div>
+
+                  </form>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-danger" id = "deleteRecord">Delete Commission</button>
                 </div>
                 </div>
             </div>
