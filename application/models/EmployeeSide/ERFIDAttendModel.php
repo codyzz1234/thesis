@@ -76,21 +76,15 @@
         {
             
     
-            if ((time() <= strtotime($timeIn)) && (time() < strtotime($timeOut))){ 
+            if ((time() <= strtotime($timeIn) + 60) && (time() < strtotime($timeOut))){ 
                 $status = 1; // on time status
             }
-
-            else if((time()<= strtotime($timeIn)) && (time() < strtotime($timeOut))){
-                $status = 2; // Early Status
-            }
-            else if( (time() > strtotime($timeIn)+1860) && (time() < strtotime($timeOut)) ){
-                $status = 3; //Late Status;
+            else if((time() > strtotime($timeIn) + 60) && (time() < strtotime($timeOut)) ){
+                $status = 2; //Late Status;
             }
             else{
                 return;
             }
-
-          
             $sql = "INSERT into `attendance`(`EmployeeId`,`EmployeeNumber`,`TimeInStatus`,`Date`,`TimeIn`) VALUES(?,?,?,CURDATE(),CURRENT_TIMESTAMP)";
             $this->db->query($sql,array($EmployeeId,$EmployeeNumber,$status));
         }
@@ -98,36 +92,7 @@
         public function recordTimeOut($EmployeeId,$EmployeeNumber,$timeIn,$timeOut)
         {
             $timeIn = strtotime($timeIn);
-           
             
-            $sql = "UPDATE attendance 
-            SET TimeOut = CURRENT_TIMESTAMP,
-                HoursWorked = CASE
-                                WHEN (TIMESTAMPDIFF(HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) - 1)  < 0
-                                    THEN 0
-                                
-                                WHEN (TIMESTAMPDIFF(HOUR,TimeIn,CURRENT_TIMESTAMP) - 1)  < 0
-                                    THEN 0
-
-                                WHEN (TimeInStatus = 1 OR TimeInStatus = 2) 
-                                     THEN TIMESTAMPDIFF(HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) - 1
-
-                                ELSE
-                                     TIMESTAMPDIFF(HOUR,TimeIn,CURRENT_TIMESTAMP) - 1
-                              END
-                ,OverTimeHours  = CASE
-                                    WHEN (TimeInStatus = 1 OR TimeInStatus = 2) AND ((TIMESTAMPDIFF (HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) - 1) > 8)
-                                        THEN (TIMESTAMPDIFF(HOUR,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) - 1) - 8
-
-                                    WHEN (TimeInStatus = 3)  AND ((TIMESTAMPDIFF (HOUR,TimeIn,CURRENT_TIMESTAMP) - 1) > 8)
-                                        THEN (TIMESTAMPDIFF(HOUR,TimeIn,CURRENT_TIMESTAMP) - 1) - 8
-
-                                    ELSE
-                                       0
-                                 END
-            Where EmployeeId = ?
-            AND EmployeeNumber = ?
-            AND TimeOut IS NULL";
      
 
 

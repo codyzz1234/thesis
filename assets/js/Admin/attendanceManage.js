@@ -158,11 +158,8 @@ $(document).ready(function () {
                                         if(data.TimeInStatus == "1"){
                                             render = render + '<span class="badge badge-success pull-right">On Time</span>'
                                         }
-                                        else if(data.TimeInStatus == "2"){
-                                            render = render + '<span class="badge badge-success pull-right">Early</span>'
-                                        }
-
-                                        else if (data.TimeInStatus == "3"){
+                                
+                                        else if (data.TimeInStatus == "2"){
                                             render = render + '<span class="badge badge-warning pull-right">  Late</span>';
                                         }
                                         return render;
