@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2022 at 02:15 PM
+-- Generation Time: Jan 19, 2022 at 12:21 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-14 13:12:28'),
+(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-16 20:53:51'),
 (7, 'athens', '$2y$10$oxOLyObe1feNRYQfD61z2e.NE4dh4AopChEULAkykZg0SrE9cBhQ2', 'last', 'man', '2022-01-11 10:01:34', '2022-01-11 11:58:10');
 
 -- --------------------------------------------------------
@@ -55,22 +55,21 @@ CREATE TABLE `attendance` (
   `AttendanceId` int(11) NOT NULL,
   `EmployeeId` int(11) DEFAULT NULL,
   `EmployeeNumber` varchar(255) DEFAULT NULL,
-  `Date` date NOT NULL,
+  `Date` date DEFAULT NULL,
   `TimeIn` timestamp NULL DEFAULT NULL,
   `TimeOut` timestamp NULL DEFAULT NULL,
-  `HoursWorked` decimal(10,0) DEFAULT 0,
-  `OverTimeHours` int(11) NOT NULL DEFAULT 0,
-  `TimeInStatus` int(11) DEFAULT 6,
-  `TimeOutStatus` int(11) DEFAULT 6
+  `MinutesWorked` int(11) DEFAULT 0,
+  `OverTimeMinutes` int(11) DEFAULT 0,
+  `TimeInStatus` int(11) DEFAULT NULL,
+  `TimeOutStatus` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `attendance`
 --
 
-INSERT INTO `attendance` (`AttendanceId`, `EmployeeId`, `EmployeeNumber`, `Date`, `TimeIn`, `TimeOut`, `HoursWorked`, `OverTimeHours`, `TimeInStatus`, `TimeOutStatus`) VALUES
-(160, NULL, NULL, '2022-01-05', '2022-01-05 03:34:01', '2022-01-05 03:35:55', '0', 0, 3, 6),
-(161, NULL, NULL, '2022-01-08', '2022-01-08 01:14:14', '2022-01-08 10:14:28', '8', 0, 1, 6);
+INSERT INTO `attendance` (`AttendanceId`, `EmployeeId`, `EmployeeNumber`, `Date`, `TimeIn`, `TimeOut`, `MinutesWorked`, `OverTimeMinutes`, `TimeInStatus`, `TimeOutStatus`) VALUES
+(3, 336, '2022-DFUK09', '2022-01-19', '2022-01-19 01:24:49', '2022-01-19 10:26:38', 506, 0, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -110,7 +109,9 @@ CREATE TABLE `ci_sessions` (
 
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('0t1b34kmd5rpqnqk878l0akhphr2uihu', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136323739373b757365726e616d657c733a31303a2261646d696e3132333435223b),
+('7shb3ju9ucsqmn5k3t1jqiao1464i60l', '::1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323538393536393b),
 ('8e0neft4nles6aeea5iik584uarn1fjn', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136343639313b757365726e616d657c733a31303a2261646d696e3132333435223b),
+('8qvtp04nj4i6cgld55crimhal9f0k2fu', '::1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323630303836393b),
 ('918mk00qqvc18rndmga611789sfnna7k', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136333137303b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('ced6vu5g4h95mk6lqs218i79a14np598', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136353136313b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('crfd7aktdm0mru0mkpjagd5l4qchcqeh', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136343331363b757365726e616d657c733a31303a2261646d696e3132333435223b),
@@ -119,7 +120,10 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('e82if6i99mak1la4r0ftqcsj7bmtjob5', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136353934343b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('gpe5jh28d0p18iu8lumsiagspg7cqfj6', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136323436383b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('k8pl0b5js89dimr35eh95oq6fcdboa5q', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136353934343b),
+('kgkt0c85lbk8e1ha2pdnmpj65f2r61u4', '::1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323630303836393b),
+('mdjf384nu41mn314j53hah35ehq4g837', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323336363436323b),
 ('n5mo24f5t86jcp1v7a2k0rrqcrk4m1a0', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136313236353b757365726e616d657c733a31303a2261646d696e3132333435223b),
+('nbko7n3dhgf5h10uu7a7hp94kfcdlibo', '::1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323538393536393b),
 ('obha4vft5nfk7ojdcmt88j9ntfnumncj', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136353031383b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('p14qkahmjqncpruk0tpg8ipefvusgkik', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136303934323b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('pl4tfr6q6t00hv1p0mknrtiqdpo2nm17', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136323135323b757365726e616d657c733a31303a2261646d696e3132333435223b),
@@ -211,7 +215,7 @@ CREATE TABLE `employeecalculation` (
 --
 
 INSERT INTO `employeecalculation` (`EmployeeId`, `EmployeeNumber`, `BaseSalary`, `SSS`, `PagIbig`, `PhilHealth`, `CashAdvance`) VALUES
-(337, '2022-B82170', '15000.00', '0.00', '0.00', '0.00', '0.00'),
+(337, '2022-B82170', '15000.00', '0.00', '0.00', '0.00', '200.00'),
 (336, '2022-DFUK09', '25000.00', '0.00', '0.00', '0.00', '0.00');
 
 -- --------------------------------------------------------
@@ -417,18 +421,6 @@ CREATE TABLE `viewemployeeinformation` (
 -- (See below for the actual view)
 --
 CREATE TABLE `viewemployeepayroll` (
-`Image` varchar(255)
-,`EmployeeId` int(11)
-,`EmployeeNumber` varchar(255)
-,`FirstName` varchar(255)
-,`LastName` varchar(255)
-,`BaseSalary` decimal(13,2)
-,`SSS` decimal(13,2)
-,`PagIbig` decimal(13,2)
-,`PhilHealth` decimal(13,2)
-,`Department` varchar(255)
-,`Position` varchar(255)
-,`TotalHours` decimal(32,0)
 );
 
 -- --------------------------------------------------------
@@ -466,7 +458,6 @@ ALTER TABLE `adminlogin`
 --
 ALTER TABLE `attendance`
   ADD PRIMARY KEY (`AttendanceId`),
-  ADD KEY `attendance_ibfk_1` (`EmployeeNumber`),
   ADD KEY `EmployeeId` (`EmployeeId`);
 
 --
@@ -576,7 +567,7 @@ ALTER TABLE `adminlogin`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `AttendanceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `branches`
@@ -652,8 +643,7 @@ ALTER TABLE `schedules`
 -- Constraints for table `attendance`
 --
 ALTER TABLE `attendance`
-  ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`EmployeeNumber`) REFERENCES `employees` (`EmployeeNumber`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`EmployeeId`) REFERENCES `employees` (`EmployeeId`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`EmployeeId`) REFERENCES `employees` (`EmployeeId`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `commissions`
