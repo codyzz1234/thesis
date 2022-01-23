@@ -96,8 +96,7 @@
             $timeIn = strtotime($timeIn);
 
             $sql = "UPDATE attendance 
-            SET TimeOut = CURRENT_TIMESTAMP,
-                MinutesWorked = CASE
+            SET MinutesWorked = CASE
                                 WHEN (TIMESTAMPDIFF(Minute,FROM_UNIXTIME(?),CURRENT_TIMESTAMP))  < 0
                                     THEN 0
                                 
@@ -110,13 +109,6 @@
                                      TIMESTAMPDIFF(Minute,TimeIn,CURRENT_TIMESTAMP) - 60
                               END
 
-              ,OverTimeMinutes = CASE
-                                    WHEN (TIMESTAMPDIFF(Minute,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) > 16) AND (TIMESTAMPDIFF(Minute,FROM
-                                         THEN TIMESTAMPDIFF(Minute,FROM_UNIXTIME(?),CURRENT_TIMESTAMP) 
-                                    ELSE
-                                        0
-                                END
- 
             Where EmployeeId = ?
             AND EmployeeNumber = ?
             AND TimeOut IS NULL";
@@ -124,12 +116,27 @@
             $this->db->query($sql,array(
                 $timeIn,
                 $timeIn,
-                $timeOut,
-                $timeOut,
-                
                 $EmployeeId,
                 $EmployeeNumber,
             ));
+
+            $sql = "UPDATE attendance
+                    SET TimeOut = CURRENT_TIMESTAMP 
+                    ,OverTimeMinutes = CASE
+                                            WHEN MinutesWorked > 496
+                                                 THEN MinutesWorked - 496   
+                                            ELSE
+                                                0
+                                      END
+                    WHERE EmployeeId = ?
+                    AND EmployeeNumber = ?
+                    And TimeOut IS NULL ";
+
+            $this->db->query($sql,array(
+                $EmployeeId,
+                $EmployeeNumber
+            ));
+
             $message = "Out";
 
         }
