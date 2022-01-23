@@ -127,7 +127,16 @@
                                                  THEN MinutesWorked - 496   
                                             ELSE
                                                 0
-                                      END
+                                       END
+                                
+                    ,TimeOutStatus = CASE
+                                        WHEN MinutesWorked <= 496
+                                            THEN 1
+                                        ELSE
+                                            2
+                                     END
+
+                                        
                     WHERE EmployeeId = ?
                     AND EmployeeNumber = ?
                     And TimeOut IS NULL ";

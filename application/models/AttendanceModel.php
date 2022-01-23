@@ -9,7 +9,7 @@
         {
             $message = "";
             $this->db->trans_start();
-            $sql = "SELECT attendance.AttendanceId,attendance.EmployeeNumber,attendance.TimeIn,attendance.TimeOut,attendance.HoursWorked,attendance.Date,attendance.TimeInStatus,attendance.TimeOutStatus,attendance.OverTimeHours,employees.FirstName,employees.LastName,employees.Image, departments.Department, positions.Position from attendance 
+            $sql = "SELECT attendance.AttendanceId,attendance.EmployeeNumber,attendance.TimeIn,attendance.TimeOut,attendance.MinutesWorked,attendance.Date,attendance.TimeInStatus,attendance.TimeOutStatus,attendance.MinutesWorked,attendance.OverTimeMinutes,employees.FirstName,employees.LastName,employees.Image, departments.Department, positions.Position from attendance 
             left JOIN employees on attendance.EmployeeId = employees.EmployeeId 
             left join departments on employees.DepartmentId = departments.DepartmentId 
             left join positions on employees.PositionId = positions.PositionId

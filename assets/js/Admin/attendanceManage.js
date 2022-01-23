@@ -60,6 +60,7 @@ $(document).ready(function () {
                 if(data.response == "success"){
                     var table;
                     setters = data.posts;
+                    console.log(setters)
                     if($.fn.dataTable.isDataTable('#attendanceTable')) {
                         table = $('#attendanceTable').DataTable();
                         table.clear().draw();
@@ -174,44 +175,33 @@ $(document).ready(function () {
                                         if(data == null){
                                             render = "";
                                         }
-                                        else if(row.OverTimeHours != "0" && data != null){
-                                            render = data + '<span class="badge badge-info pull-right">Overtime</span>'
+                                        else if(row.OverTimeMinutes != "0" && data != null){
+                                            render = data + '<span class="badge badge-info pull-right"> Overtime</span>'
                                         }
                                         else{
-                                            render = data;
+                                            render = data +'<span class="badge badge-success pull-right"> On Time</span>'
+                                    
                                         }
                                         return render;
                                     }
                                 },
 
                                 {
-                                   title:"Total Hours Worked",
+                                   title:"Minutes Worked",
                                    data:null,
                                    render:function(data,type,row,meta){
-                                        var hoursWorked = data.HoursWorked;
+                                        var minutesWorked = data.MinutesWorked;
                                         var timeOut = data.TimeOut;
-                                        if(hoursWorked == 0 && timeOut == null){ 
+                                        if(minutesWorked == 0 && timeOut == null){ 
                                             return ""
                                         }
                                         else{
-                                            return hoursWorked
+                                            return minutesWorked
                                         }
                                   },
                                 },
 
-                                {
-                                    title:"Overtime Hours",
-                                    data:"OverTimeHours",
-                                    render:function(data,type,row,meta){
-                                        if(data == 0 && row.TimeOut == null){
-                                            return " ";
-                                        }
-                                        else{
-                                            return data;
-                                        }
-                                    }
-                                },
-                              
+                             
                            
                             ],
     
