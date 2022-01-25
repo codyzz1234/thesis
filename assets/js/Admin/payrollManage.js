@@ -40,8 +40,7 @@ $(document).ready(function (){
     {  
         start = moment(start).format('YYYY-MM-DD');
         end = moment(end).format('YYYY-MM-DD');
-        console.log("Start date is: " + start);
-        console.log("End Date is: " + end);
+       
         $.ajax({
             type: "POST",
             url: baseurl + "PayrollControl/fetch" ,
@@ -245,8 +244,7 @@ $(document).ready(function (){
     $('#dateRangePicker').on('apply.daterangepicker', function(ev, picker) {
         var startDate = picker.startDate.format('YYYY-MM-DD');
         var endDate =  picker.endDate.format('YYYY-MM-DD');
-        console.log("start Date is : " + startDate);
-        console.log("end Date is : " + endDate );
+
         fetch(startDate,endDate)
     });
     // when Clear/Cancel button is hit
