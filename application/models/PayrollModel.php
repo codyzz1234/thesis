@@ -12,10 +12,12 @@
             $sql = "SELECT employees.Image,employees.EmployeeId,employees.EmployeeNumber,employees.FirstName,employees.LastName,
             employeecalculation.BaseSalary,employeecalculation.SSS,employeecalculation.PagIbig,employeecalculation.PhilHealth,
             departments.Department,
-            positions.Position,
+            positions.Position, 
             SUM(attendance.MinutesWorked) as TotalMinutes,
             SUM(attendance.OverTimeMinutes) as OverTime,
-            DaysWorked.DaysWorked
+            DaysWorked.DaysWorked,
+            DentalCommissions.TotalCommissions
+
             from employees
 
             LEFT JOIN 
@@ -25,17 +27,31 @@
                         GROUP BY attendance.EmployeeId
             )as DaysWorked on DaysWorked.EmployeeId = employees.EmployeeId
 
+            LEFT JOIN
+            (
+                SELECT commissions.EmployeeId,SUM(commissions.Amount) as TotalCommissions
+                   from commissions
+                   where commissions.Date BETWEEN ? AND ?
+                   GROUP BY commissions.EmployeeId
+            ) as DentalCommissions on DentalCommissions.EmployeeId = employees.EmployeeId
             
        
 
             left JOIN employeecalculation
             On employees.EmployeeId = employeecalculation.EmployeeId
+
             left join departments
-            on employees.DepartmentId = departments.DepartmentId
+            On employees.DepartmentId = departments.DepartmentId
+
             left join positions
-            on employees.PositionId = positions.PositionId
+            On employees.PositionId = positions.PositionId
+
             left join attendance
-            on attendance.EmployeeId = employees.EmployeeId
+            On attendance.EmployeeId = employees.EmployeeId
+            
+            left join commissions 
+            On commissions.EmployeeId = employees.EmployeeId
+
             where attendance.Date BETWEEN ? AND ?
             GROUP by employees.EmployeeId;";
 
@@ -45,6 +61,12 @@
             array(
                    $startDate,
                    $endDate,
+
+                   $startDate,
+                   $endDate,
+
+                  
+
                    $startDate,
                    $endDate
     

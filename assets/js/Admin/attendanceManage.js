@@ -161,7 +161,7 @@ $(document).ready(function () {
                                         }
                                 
                                         else if (data.TimeInStatus == "2"){
-                                            render = render + '<span class="badge badge-warning pull-right">  Late</span>';
+                                            render = render + '<span class="badge badge-warning pull-right"> Late</span>';
                                         }
                                         return render;
                                     },
