@@ -90,6 +90,7 @@ $(document).ready(function () {
 
                             ],
                             data:data.posts,
+                            order:[[0,"asc"]],
                             columns:[
                                 {
                                     title:"Branch",
@@ -161,6 +162,66 @@ $(document).ready(function () {
             }
         });
     });
+    
+    //edit branch
+    $(document).on('click','tbody .editButton',function (e) {
+        e.preventDefault();
+        $this = $(this);
+        var currentRow = $this.closest('tr');
+        var data = $('#branchTable').DataTable().row(currentRow).data();
+        
+        var dataJson = {
+            'BranchId':data['BranchId'],
+            'BranchName':data['Branch'],
+            'Address':data['Address'],
+            }
+        console.log(dataJson)
+        loadEditForm(dataJson);
+        
+    });
+
+    function loadEditForm(dataJson)
+    {
+        $("#editForm input[name=BranchName]").val(dataJson['BranchName']);
+        $("#editForm input[name=Address]").val(dataJson['Address']);
+        $("#editForm input[name=BranchId]").val(dataJson['BranchId']);
+
+        $('#editBranchModal').modal('show');
+
+    }
+
+    $(document).on('click','#editRecord', function (e) {
+        let form = $('#editForm')[0];2
+        let formData = new FormData(form);
+        for(var pair of formData.entries()){
+            console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
+        }
+        $.ajax({
+            type: "POST",
+            url: baseurl+"BranchControl/editRecord",
+            data: formData,
+            dataType: "JSON",
+            contentType:false,
+            processData:false,
+            success: function (data) {
+                if(data.response == "none"){
+                    toastr["info"]("Alert",data.message);
+
+                }
+                else if(data.response == "failed"){
+                    toastr["error"]("Alert",data.message);
+
+                }
+                else{
+                    toastr["success"]("Alert",data.message);
+                    fetch();
+                }
+            }
+        });
+
+    });
+
+
 
 
 

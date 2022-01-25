@@ -96,12 +96,61 @@ class BranchControl extends CI_Controller {
 				$data = array('response' => 'failed', 'message' => "Failed To Insert Record");
 			}
 			else{
-				$data = array('response' => 'success', 'message' => "Failed To Insert Record");
+				$data = array('response' => 'success', 'message' => "Successfully Inserted Record");
 
 			}
 
         }
         echo json_encode($data);
+    }
+
+    public function editRecord()
+    {
+        $this->form_validation->set_rules('BranchName','Branch Name Field','required|min_length[1]',
+        array(
+            'required'=> "Please assign a branch Name",
+            'min_length' => "Branch name should at least be 1 character in length"
+        ));
+
+        $this->form_validation->set_rules('Address','Address Field','required|min_length[1]',
+        array(
+            'required'=> "Please assign an Address",
+            'min_length' => "Address should at least be 1 character in length"
+        ));
+
+
+
+        if($this->form_validation->run() == false){
+			$data = array('response' => 'failed', 'message' => validation_errors());
+		}
+
+        else{
+			$ajax_data = array(
+                'BranchId' => $this->input->post('BranchId'),
+				'Branch' => $this->input->post('BranchName'),
+				'Address' => $this->input->post('Address'),
+			);
+			$this->load->model('BranchModel');
+			$verify = $this->BranchModel->editRecord($ajax_data);
+            
+			if($verify === false){
+				$data = array('response' => 'failed', 'message' => "Failed To Insert Record");
+			}
+            else if($verify === "none"){
+                $data = array('response' => 'none', 'message' => "No Changes Made");
+            }
+			else{
+				$data = array('response' => 'success', 'message' => "Successfully To Insert Record");
+			}
+
+        }
+        echo json_encode($data);
+    }
+
+	
+    public function deleteRecord()
+    {
+
     }
    
 

@@ -87,9 +87,9 @@
         </div>
      </div>
 
-        <!-- Edit Deduction Modal -->
+        <!-- Edit Branch Modal -->
 
-        <div class="modal fade" id="editDeductionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editBranchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -99,22 +99,22 @@
                 </button>
             </div>
             <div class="modal-body">
-            <input type = "hidden" id = "editId" class = "form-control">
-                    <div class = "form-group">
-                        <label for = ""> Deduction Name </label>
-                        <input type = "text" id = "editName" class = "form-control">
-                    </div>
+                    <form id = "editForm">
+                        <input type = "hidden"  class = "form-control" name = "BranchId">
+
+                        <div class = "form-group">
+                            <label for = ""> Branch Name </label>
+                            <input type = "text"  class = "form-control" name = "BranchName">
+                        </div>
                     
-                    <div class = "form-group">
-                        <label for = ""> Description </label>
-                        <input type = "text" id = "editDesc" class = "form-control">
-                    </div>
+                        <div class = "form-group">
+                            <label for = ""> Address </label>
+                            <input type = "text" id = "editDesc" class = "form-control" name = "Address">
+                        </div>
 
-                    <div class = "form-group">
-                        <label for = ""> Amount </label>
-                        <input type = "text" id = "editAmount" class = "form-control">
-                    </div>
+                    </form>
 
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -123,6 +123,44 @@
             </div>
         </div>
         </div>
+
+
+    <!-- Delete Department Modal -->
+    <div class="modal fade" id="delBranchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Branch</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <form id = "deleteForm">
+                        <input type = "hidden"  class = "form-control" name = "BranchId">
+
+                        <div class = "form-group">
+                            <label for = ""> Branch Name </label>
+                            <input type = "text"  class = "form-control" name = "BranchName" readonly>
+                        </div>
+                    
+                        <div class = "form-group">
+                            <label for = ""> Address </label>
+                            <input type = "text" id = "editDesc" class = "form-control" name = "Address" readonly>
+                        </div>
+
+                    </form>
+
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" id = "deleteRecord">Delete Record</button>
+            </div>
+            </div>
+        </div>
+        </div>
+        
         
 
 
