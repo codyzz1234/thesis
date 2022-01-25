@@ -1,4 +1,4 @@
-<?php
+ <?php
     class PayrollModel extends CI_Model{
         public function __construct()
         {
@@ -13,7 +13,8 @@
             employeecalculation.BaseSalary,employeecalculation.SSS,employeecalculation.PagIbig,employeecalculation.PhilHealth,
             departments.Department,
             positions.Position,
-            SUM(attendance.HoursWorked) as TotalHours,
+            SUM(attendance.MinutesWorked) as TotalMinutes,
+            SUM(attendance.OverTimeMinutes) as OverTime,
             DaysWorked.DaysWorked
             from employees
 

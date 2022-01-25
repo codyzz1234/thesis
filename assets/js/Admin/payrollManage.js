@@ -133,8 +133,8 @@ $(document).ready(function (){
                                 },
 
                                 {
-                                    title:"Total Hours Worked",
-                                    data: "TotalHours",
+                                    title:"Minutes Worked",
+                                    data: "MinutesWorked",
                                     
                                 },
 

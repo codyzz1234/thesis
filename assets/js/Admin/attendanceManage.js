@@ -157,7 +157,7 @@ $(document).ready(function () {
                                     "render":function(data,type,row,meta){
                                         render = data.TimeIn+ " ";
                                         if(data.TimeInStatus == "1"){
-                                            render = render + '<span class="badge badge-success pull-right">On Time</span>'
+                                            render = render + '<span class="badge badge-success pull-right"> On Time</span>'
                                         }
                                 
                                         else if (data.TimeInStatus == "2"){
@@ -179,7 +179,7 @@ $(document).ready(function () {
                                             render = data + '<span class="badge badge-info pull-right"> Overtime</span>'
                                         }
                                         else{
-                                            render = data +'<span class="badge badge-success pull-right"> On Time</span>'
+                                            render = data +'<span class="badge badge-success pull-right"> Regular Hour</span>'
                                     
                                         }
                                         return render;
