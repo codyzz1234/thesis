@@ -38,7 +38,6 @@ $(document).ready(function () {
             success: function (data) {
                 if(data.response == "failed"){
                     toastr["error"]("Alert",data.message);
-                    alert(data.message);
                 }
                 else{
                     var table;
