@@ -174,6 +174,7 @@ $(document).ready(function (){
                                     },
                                 },
 
+
                              
                  
     
@@ -204,19 +205,6 @@ $(document).ready(function (){
     }
 
 
-
-    $(document).on('click','.editButton', function(e) 
-    { 
-
-        e.preventDefault();
-        $this = $(this);
-        var currentRow = $this.closest('tr');
-        var data = $('#payrollRecords').DataTable().row(currentRow).data();
-        var dataJson = {
-            'EmployeeId':data['AttendanceId'],
-            }
-        console.log(data['EmployeeId']);
-    });
 
     
     //Initialize Date Range Picker

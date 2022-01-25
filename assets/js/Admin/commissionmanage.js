@@ -124,13 +124,19 @@ $(document).ready(function () {
                                        return '<img src="'+baseurl+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>'                     
                                     }
                                 },
+                                
                                 {
-                                    title:"Employee Name",
-                                    data:null,
-                                    render:function(data,type,row,meta){
-                                        return row.FirstName + " " + row.LastName
-                                    }
+                                    title:"First Name",
+                                    data:"FirstName",
+                                  
                                 },
+
+                                {
+                                    title:"Last Name",
+                                    data:"LastName",
+
+                                },
+
                                 {
                                     title:"Date",
                                     data:"Date",

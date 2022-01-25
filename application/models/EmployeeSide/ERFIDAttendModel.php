@@ -74,12 +74,11 @@
         
         public function recordTimeIn($EmployeeId,$EmployeeNumber,$timeIn,$timeOut)
         {
-            
-    
-            if ((time() <= strtotime($timeIn) + 60) && (time() < strtotime($timeOut))){ 
+        
+            if ((time() <= (strtotime($timeIn) + 60)) && (time() < strtotime($timeOut))){ 
                 $status = 1; // on time status
             }
-            else if((time() > strtotime($timeIn) + 60) && (time() < strtotime($timeOut)) ){
+            else if((time() > (strtotime($timeIn) + 60)) && (time() < strtotime($timeOut)) ){
                 $status = 2; //Late Status;
             }
             else{
