@@ -114,6 +114,12 @@
                     <span>Departments</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('BranchControl')?>">
+                <i class="fas fa-warehouse"></i>   
+                <span>Branches</span></a>
+            </li>
+
 
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('PositionControl')?>">
@@ -138,7 +144,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#PayrollNavSection"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-money-check"></i>
+                    <i class="fas fa-landmark"></i>
                     <span>Payroll</span>
                 </a>
 
