@@ -92,7 +92,6 @@ $(document).ready(function () {
                             ],
                             data:data.posts,
                             columns:[
-                               // {data:"Position"},
                                 {
                                     title:"Position",         
                                     data:"Position"
@@ -100,7 +99,14 @@ $(document).ready(function () {
 
                                 {data:"Description"},
                               
-                                {data:"NumberOfEmployees"},
+                                {
+                                    data:"NumberOfEmployees",
+                                    render:function(data,type,row,meta){
+                                        var a = '<div class = "text-center"><h6>'+data+'</h6> </div>'
+                                        return a;
+                                    }
+                                },
+
                                 {data:null,
                                  render:function(data,type,row,meta){
                               

@@ -115,16 +115,22 @@ $(document).ready(function () {
                                     data:"Address"
                                     
                                 },
+
                                 {
                                     title:"Number Of Employees",
                                     data:"NumEmp",
+                                    render:function(data,type,row,meta){
+                                        var a = '<div class = "text-center"><h6>'+data+'</h6> </div>'
+                                        return a;
+                                    },
                                     width:"10%"
                                 },
+                                
                                 {
                                     title:"Actions",
                                     data:null,
                                     width:"5%",
-                                    render:function(type,data,meta,row){
+                                    render:function(data,type,row,meta){
                                         var editButton = '<a href="#" value = "'+'" class = "btn btn-outline-info editButton"><i class="fas fa-pen-square"></i></a>'
                                         var deleteButton = '<a href="#" value = "'+'" class = "btn btn-outline-danger deleteButton"><i class="fas fa-trash-alt"></i></a>'
                                         return editButton+deleteButton
