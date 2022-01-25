@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2022 at 02:10 PM
+-- Generation Time: Jan 25, 2022 at 02:17 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-25 12:57:29');
+(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-25 13:11:19');
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,7 @@ CREATE TABLE `ci_sessions` (
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('00vugq5aa4rhdor57ss4uos3sf3udm91', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323934313430383b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('03c2eqf46rakj38q07t2i89jus2348vi', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323935323533373b757365726e616d657c733a31303a2261646d696e3132333435223b),
-('0838u9fdjsleq01ch1rni8lqvvdcordc', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333131363136363b),
+('0838u9fdjsleq01ch1rni8lqvvdcordc', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333131363537343b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('0kfvdcgej0mip39fji66remk0e673g78', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323934363332373b),
 ('0t1b34kmd5rpqnqk878l0akhphr2uihu', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136323739373b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('1212ntiji01eo1175l8qcba0m30um5tl', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323935323534383b),
@@ -151,6 +151,7 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('kr0phqjo5lh89k05rvrglbctjj5g4mft', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323934303236363b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('m4p28b8roe2cclvudaoioupesb1kaq4u', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333131353037363b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('mdjf384nu41mn314j53hah35ehq4g837', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323336363436323b),
+('mm1gr396ccngpv8b5ui9p0s7gsc4kfp1', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333131363539313b),
 ('n5mo24f5t86jcp1v7a2k0rrqcrk4m1a0', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136313236353b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('nbko7n3dhgf5h10uu7a7hp94kfcdlibo', '::1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323538393536393b),
 ('ntubcmtp3fjp0bbo1spuev9leu8smlsl', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333039353935323b757365726e616d657c733a31303a2261646d696e3132333435223b),
@@ -225,14 +226,6 @@ CREATE TABLE `departments` (
   `Description` varchar(255) DEFAULT NULL,
   `DepartmentHead` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `departments`
---
-
-INSERT INTO `departments` (`DepartmentId`, `Department`, `Description`, `DepartmentHead`) VALUES
-(18, 'Lab Tech', 'Handles lab analysis and stuffzzyy', NULL),
-(25, 'Security', 'Security Department', NULL);
 
 -- --------------------------------------------------------
 
@@ -390,15 +383,6 @@ CREATE TABLE `positions` (
   `Description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `positions`
---
-
-INSERT INTO `positions` (`PositionId`, `Position`, `Description`) VALUES
-(2, 'Lab Tech Head and stuff', 'In charge of other lab techs and other stuff'),
-(24, 'Security Head', 'In Charge of Security'),
-(28, 'Security Manager', 'Manages the security');
-
 -- --------------------------------------------------------
 
 --
@@ -410,14 +394,6 @@ CREATE TABLE `schedules` (
   `TimeIn` time DEFAULT NULL,
   `TimeOut` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `schedules`
---
-
-INSERT INTO `schedules` (`ScheduleId`, `TimeIn`, `TimeOut`) VALUES
-(17, '09:00:00', '18:00:00'),
-(19, '09:00:00', '17:00:00');
 
 -- --------------------------------------------------------
 
