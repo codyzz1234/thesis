@@ -144,6 +144,7 @@ $(document).ready(function () {
             processData: false,
             success: function (data) {
                 if(data.response == "success"){
+                    $('#addForm')[0].reset();
                     $('#addPositionModal').modal('hide'); 
                     toastr["success"]("Alert",data.message);
                     fetch();

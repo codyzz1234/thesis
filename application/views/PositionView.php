@@ -74,15 +74,19 @@
                 </button>
             </div>
             <div class="modal-body">
-                    <div class = "form-group">
-                        <label for = ""> Position Name </label>
-                        <input type = "text" id = "addPositionName" class = "form-control">
-                    </div>
-                    
-                    <div class = "form-group">
-                        <label for = ""> Position Description </label>
-                        <input type = "text" id = "addPositionDescription" class = "form-control">
-                    </div>
+                    <form id = "addForm">
+                        <div class = "form-group">
+                            <label for = ""> Position Name </label>
+                            <input type = "text" id = "addPositionName" class = "form-control">
+                        </div>
+                        
+                        <div class = "form-group">
+                            <label for = ""> Position Description </label>
+                            <input type = "text" id = "addPositionDescription" class = "form-control">
+                        </div>
+                
+                    </form>
+                   
 
 
             </div>

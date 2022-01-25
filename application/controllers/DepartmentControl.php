@@ -96,7 +96,7 @@ class DepartmentControl extends CI_Controller {
 		$this->load->model('DepartmentModel');
 		$verify = $this->DepartmentModel->loadSearches();
 		if($verify == false){
-			$data = array('response'=>"failed",'message'=>"An Error occured, unable to add to search for department heads at the moment");
+			$data = array('response'=>"failed",'message'=>"An Error occured, unable to search for employees at the moment");
 
 		}
 		else{
