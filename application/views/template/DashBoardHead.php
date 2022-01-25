@@ -156,23 +156,7 @@
 
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#DeductionNavSection"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-money-check"></i>
-                    <span>Deductions</span>
-                </a>
-
-                <div id="DeductionNavSection" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Deductions:</h6>
-                        <a class="collapse-item" href="<?php echo base_url('DeductionControl')?>">Deductions</a>
-                        <a class="collapse-item" href="<?php echo base_url('DeductionControl')?>">Phil Health</a>
-                        <a class="collapse-item" href="<?php echo base_url('DeductionControl')?>">SSS</a>
-                        <a class="collapse-item" href="<?php echo base_url('DeductionControl')?>">Pag Ibig</a>
-                    </div>
-                  </div>
-            </li>
+         
 
             <!-- Nav Item - Utilities Collapse Menu -->
     
