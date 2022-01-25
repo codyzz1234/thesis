@@ -149,12 +149,13 @@ $(document).ready(function () {
             success: function (data) {
                 if(data.response == "failed"){
                     toastr["error"]("Alert",data.message);
-                    
+
                 }
                 else{
                     toastr["success"]("Alert",data.message);
+                    $('#addForm')[0].reset();
+                    $('#addBranchModal').modal('hide');
                     fetch();
-
                 }
                 
             }

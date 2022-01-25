@@ -61,6 +61,7 @@ class BranchControl extends CI_Controller {
 		}
 		echo json_encode($data);
 	}
+
     public function addRecord()
     {
         $this->form_validation->set_rules('BranchName','Branch Name Field','required|min_length[1]',
@@ -82,12 +83,25 @@ class BranchControl extends CI_Controller {
         if($this->form_validation->run() == false){
 			$data = array('response' => 'failed', 'message' => validation_errors());
 		}
+
         else{
+			$ajax_data = array(
+				'Branch' => $this->input->post('BranchName'),
+				'Address' => $this->input->post('Address'),
+
+			);
+			$this->load->model('BranchModel');
+			$verify = $this->BranchModel->addRecord($ajax_data);
+			if($verify === false){
+				$data = array('response' => 'failed', 'message' => "Failed To Insert Record");
+			}
+			else{
+				$data = array('response' => 'success', 'message' => "Failed To Insert Record");
+
+			}
 
         }
         echo json_encode($data);
-
-
     }
    
 
