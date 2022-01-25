@@ -199,7 +199,15 @@ $(document).ready(function (){
                         
                                         let netPay  = Number(grossPay - deductions);
                                         return netPay;
+                                    },
+                                },
 
+                                {
+                                    title:"Actions",
+                                    data:null,
+                                    render:function(data,type,row,meta){
+                                        let viewButton = '<a href="#" value = "'+'" class = "btn btn-outline-info viewButton"><i class="far fa-eye"></i></a>'
+                                        return viewButton;
                                     },
                                 },
 
@@ -271,6 +279,13 @@ $(document).ready(function (){
         start = moment(start).format('YYYY-MM-DD');
         end = moment(end).format('YYYY-MM-DD');
         fetch(start,end);
+        
+    });
+
+
+    //View More info
+    $(document).on('click','tbody .viewButton', function () {
+        alert("Clicked View Button")
         
     });
 
