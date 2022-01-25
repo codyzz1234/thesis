@@ -58,20 +58,35 @@ $(document).ready(function () {
 
                             buttons: [
                                // 'copy', 'csv', 'excel', 'pdf', 'print',
-                               {
+                            {
                                 text:'Copy Table to Clipboard',
                                 className: "btn btn-secondary spaceButtons",
                                 extend:'copy',
+                                orientation : 'landscape',
+                                 pageSize : 'LEGAL',
+                                 exportOptions: {
+                                           columns: [0,1,2]
+                                      }
                             },
                             {
                                 text:'Export Table To Excel',
                                 extend:'excel',
-                                className:"btn btn-success spaceButtons"
+                                className:"btn btn-success spaceButtons",
+                                orientation : 'landscape',
+                                 pageSize : 'LEGAL',
+                                 exportOptions: {
+                                           columns: [0,1,2]
+                                      }
                             },
                             {
                                 text:'Export Table To CSV',
                                 extend:'csv',
-                                className:"btn btn-info spaceButtons"
+                                className:"btn btn-info spaceButtons",
+                                orientation : 'landscape',
+                                 pageSize : 'LEGAL',
+                                 exportOptions: {
+                                           columns: [0,1,2]
+                                      }
                             },
                             
                             {

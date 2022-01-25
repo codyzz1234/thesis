@@ -115,7 +115,7 @@ $(document).ready(function (){
                                 {
                                     title:"Employee Name",
                                     data:null,
-                                    render:function(row,type,data,meta){
+                                    render:function(data,type,row,meta){
                                         return row.FirstName + " " + row.LastName;
                                     }
 
@@ -147,7 +147,7 @@ $(document).ready(function (){
                                 {
                                     title:"Gross pay",
                                     data:null,
-                                    render: function(row,type,data,meta){
+                                    render: function(data,type,row,meta){
                                         return ;
                                     },
                                 },
@@ -155,7 +155,7 @@ $(document).ready(function (){
                                 {
                                     title:"Net Pay",
                                     data:null,
-                                    render: function(row,type,data,meta){
+                                    render: function(data,type,row,meta){
                                         return " ";
                                     },
                                 },

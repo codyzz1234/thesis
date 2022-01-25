@@ -62,87 +62,115 @@ $(document).ready(function () {
                              "rtip",
                             buttons: [
                                // 'copy', 'csv', 'excel', 'pdf', 'print',
-                               {
-                                   text:'Copy Table to Clipboard',
-                                   className: "copy spaceButtons",
-                                   extend:'copy',
-                               },
-                               {
-                                   text:'Export Table To Excel',
-                                   extend:'excel',
-                                   className:"excel spaceButtons"
-                               },
-                               {
-                                   text:'Export Table To CSV',
-                                   extend:'csv',
-                                   className:"csv spaceButtons"
-                               },
-                               
-                               {
-                                    text:'Export Table To PDF',
-                                    extend:'pdf',
-                                    className:"pdf spaceButtons",
-                                    orientation : 'landscape',
-                                    pageSize : 'LEGAL',
-                                    exportOptions: {
-                                              columns: [ 0,1,2,3,4,5,6,7,8,9]
-                                         }
-                               },
+                            {
+                                text:'Copy Table to Clipboard',
+                                className: "btn btn-secondary spaceButtons",
+                                extend:'copy',
+                                orientation : 'landscape',
+                                pageSize : 'LEGAL',
+                                exportOptions: {
+                                          columns: [0,1,2,3]
+                                     }
+                            },
+
+                            {
+                                text:'Export Table To Excel',
+                                extend:'excel',
+                                className:"btn btn-success spaceButtons",
+                                orientation : 'landscape',
+                                pageSize : 'LEGAL',
+                                exportOptions: {
+                                          columns: [0,1,2,3]
+                                     }
+ 
+                            },
+                            {
+                                text:'Export Table To CSV',
+                                extend:'csv',
+                                className:"btn btn-info spaceButtons",
+                                orientation : 'landscape',
+                                pageSize : 'LEGAL',
+                                exportOptions: {
+                                          columns: [0,1,2,3]
+                                     }
+                            },
+                            
+                            {
+                                 text:'Export Table To PDF',
+                                 extend:'pdf',
+                                 className:"btn btn-warning spaceButtons",
+                                 orientation : 'landscape',
+                                 pageSize : 'LEGAL',
+                                 exportOptions: {
+                                           columns: [0,1,2,3]
+                                      }
+                            },
+
     
                             ],
     
-                            "data":data.posts,
+                            data:data.posts,
                             columns:[
-                                {"data": "Department",
-                                    "render":function(data,type,row,met){
+                                {
+                                    title:"Department",
+                                    data:"Department",
+                                    render:function(data,type,row,meta){
                                         var a = '<div class = "text-center"><h6>'+data+'</h6> </div>'
                                         return a;
-                                    },    
+                                    }
                                 },
-                                {"data": "Description",
-                                 "render":function(data,type,row,met){
-                                    var a = '<div class = "text-center"><h6>'+data+'</h6> </div>'
-                                    return a;
-                                },    
-                              },
-                            ],
-                            columnDefs: [
-                                { 
-                                   "targets": 2,
-                                  "data":null,
-                                  "render": function ( data, type, row, meta ) {
-                                      var a;
-                     
-                                      if(data.Head == null){
-                                        a = '<div class = "text-center"><h6> This Department Has No Manager</h6> </div>'
-                                      }
-                                      else{
-                                        a = '<div class = "text-center">'+
-                                        '<h6>'+data.Head+'</h6>'+
-                                        '<h6>'+data.EmployeeNumber+'</h6>'+
-                                        '</div>'
-                                      }
-                                      return a;
-                                  },
-                                },
-                                { 
-                                   "targets": 3,
-                                   "data": null,
-                                   "render":function(data,type,row,met){
-                                    var a = '<div class = "text-center"><h6>'+data.NumberOfEmployees+'</h6> </div>'
-                                    return a;
-                                  },    
-                                },
+
                                 {
-                                    "targets":4,
-                                    "data":"DepartmentId",
+                                    title:"Description",
+                                    data: "Description",
+                                    render:function(data,type,row,meta){
+                                        var a = '<div class = "text-center"><h6>'+data+'</h6> </div>'
+                                        return a;
+                                    },
+
+                                },
+
+                                {
+                                    title:"Department Head",
+                                    data:null,
+                                    render:function(data,type,row,meta){
+                                        var a;
+                                      
+                                
+                                        if(row.Head == null){
+                                          a = '<div class = "text-center"><h6> This Department Has No Manager</h6> </div>'
+                                        }
+                                        else{
+                                          a = '<div class = "text-center">'+
+                                          '<h6>'+row.Head+'</h6>'+
+                                          '<h6>'+row.EmployeeNumber+'</h6>'+
+                                          '</div>'
+                                        }
+                                        return a;
+
+                                    }
+
+                                },
+
+                                {
+                                    title:"Number Of Employees",
+                                    data:"NumberOfEmployees",
                                     "render":function(data,type,row,meta){
+                                        var a = '<div class = "text-center"><h6>'+data+'</h6> </div>'
+                                        return a;
+                                      },    
+                                },
+
+                                {
+                                    data:"DepartmentId",
+                                    render:function(data,type,row,meta){
                                         var editButton = '<a href="#" value = "'+data+'" class = "btn btn-outline-info editButton"><i class="fas fa-pen-square"></i></a>'
                                         var deleteButton = '<a href="#" value = "'+data+'" class = "btn btn-outline-danger deleteButton"><i class="fas fa-trash-alt"></i></a>'
                                         return editButton+deleteButton
-                                    },
-                                }
+                                    }
+                                },
                             ],
+                       
                         })
                     }
                 }

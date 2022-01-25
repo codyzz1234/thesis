@@ -33,8 +33,8 @@
                                             <th>Department</th> 
                                             <th>Branch</th> 
                                             <th>Position</th> 
-                                            <th>Schedule Time In</th> 
-                                            <th>Schedule Time Out</th>
+                                            <th>Scheduled Time In</th> 
+                                            <th>Scheduled Time Out</th>
                                             <th>Actions</th>
                                         </tr> 
                                     </thead>

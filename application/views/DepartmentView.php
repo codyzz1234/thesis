@@ -20,11 +20,7 @@
                 <table class="table table-bordered" id="departmentTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Department</th>
-                            <th>Description</th>
-                            <th>Department Head</th>
-                            <th>Number Of Employees</th>
-                            <th>Actions</th>
+                            
                         </tr>
                     </thead>
 
