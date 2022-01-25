@@ -131,11 +131,7 @@ $(document).ready(function (){
                                     data:"Position"
                                 },
 
-                                {
-                                    title:"Minutes Worked",
-                                    data: "MinutesWorked",
-                                    
-                                },
+                               
 
                                 {
                                     title:"Total Days Worked",
@@ -152,7 +148,7 @@ $(document).ready(function (){
                                     title:"Gross pay",
                                     data:null,
                                     render: function(row,type,data,meta){
-                                        return "Java";
+                                        return ;
                                     },
                                 },
 
