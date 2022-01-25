@@ -94,7 +94,7 @@
 
                             <div class="text-center">
                                 <input type = "hidden" class = "form-control" name = "EmployeeId" data-employeeid>
-                                <img src="..." class="img-fluid" alt="Responsive Image" name = "ImagePreview">
+                                <img src="..." class="img-fluid" alt="" name = "ImagePreview">
                                 <label for = "LabelName" ></label>
                                 <br>
                                 <label for = "LabelNumber" ></label> 
@@ -161,7 +161,7 @@
                                 <input type = "hidden" class = "form-control" name = "CommissionId" data-commissionid>
                                 <input type = "hidden" class = "form-control" name = "EmployeeId" data-employeeid>
 
-                                <img src="..." class="img-fluid" alt="Responsive Image" name = "ImagePreview">
+                                <img src="..." class="img-fluid" alt="" name = "ImagePreview">
                                 <label for = "LabelName" ></label>
                                 <br>
                                 <label for = "LabelNumber" ></label> 
@@ -227,7 +227,7 @@
                             <div class="text-center">
                                 <input type = "hidden" class = "form-control" name = "CommissionId" data-commissionid>
 
-                                <img src="..." class="img-fluid" alt="Responsive Image" name = "ImagePreview">
+                                <img src="..." class="img-fluid" alt="" name = "ImagePreview">
                                 <label for = "LabelName" ></label>
                                 <br>
                                 <label for = "LabelNumber" ></label> 
