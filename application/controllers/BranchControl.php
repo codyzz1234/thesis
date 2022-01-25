@@ -50,15 +50,16 @@ class BranchControl extends CI_Controller {
 		$this->load->model('BranchModel');
 		$verify = $this->BranchModel->fetch();
 		if($verify === "none"){
-
+			$data = array('response' => "none" , 'message' => "no records found");
 		}
-		else if ($verify === false){
+		else if($verify === false){
+			$data = array('response' => "failed" , 'message' => "no records found");
 
 		}
 		else{
-
+			$data = array('response' => "success" , 'posts' => $verify);
 		}
-		echo json_encode($verify);
+		echo json_encode($data);
 	}
    
 
