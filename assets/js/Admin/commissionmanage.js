@@ -119,7 +119,7 @@ $(document).ready(function () {
                                 {
                                     title:"Image",
                                     data: "Image",
-                                    width: "10%",
+                                    width: "5%",
                                     render: function ( data, type, row, meta ) {
                                        return '<img src="'+baseurl+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>'                     
                                     }

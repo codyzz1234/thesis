@@ -201,7 +201,7 @@ $(document).ready(function (){
                                         return netPay;
                                     },
                                 },
-
+                                /*
                                 {
                                     title:"Actions",
                                     data:null,
@@ -210,7 +210,7 @@ $(document).ready(function (){
                                         return viewButton;
                                     },
                                 },
-
+                                */
                              
                  
     
