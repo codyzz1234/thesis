@@ -61,35 +61,31 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Deduction</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Branch</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                    <div class = "form-group">
-                        <label for = ""> Deduction Name </label>
-                        <input type = "text" id = "addDeductName" class = "form-control">
-                    </div>
-                    
-                    <div class = "form-group">
-                        <label for = ""> Description </label>
-                        <input type = "text" id = "addDeductDesc" class = "form-control">
-                    </div>
-
-                    <div class = "form-group">
-                        <label for = ""> Amount </label>
-                        <input type = "text" id = "addDeductAmount" class = "form-control">
-                    </div>
-
+                    <form id = "addForm">
+                        <div class = "form-group">
+                            <label for = ""> Branch Name </label>
+                            <input type = "text"  class = "form-control" name = "BranchName">
+                        </div>
+                        
+                        <div class = "form-group">
+                            <label for = ""> Address </label>
+                            <input type = "text"  class = "form-control" name = "Address">
+                        </div>
+                    </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" id = "addRecord">Add Deduction</button>
+                <button type="button" class="btn btn-success" id = "addRecord">Add Branch</button>
             </div>
             </div>
         </div>
-        </div>
+     </div>
 
         <!-- Edit Deduction Modal -->
 

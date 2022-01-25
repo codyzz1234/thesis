@@ -62,29 +62,32 @@ $(document).ready(function () {
                             buttons: [
                                // 'copy', 'csv', 'excel', 'pdf', 'print',
                                {
-                                   text:'Copy Table to Clipboard',
-                                   className: "copy spaceButtons",
-                                   extend:'copy',
-                               },
-                               {
-                                   text:'Export Table To Excel',
-                                   extend:'excel',
-                                   className:"excel spaceButtons"
-                               },
-                               {
-                                   text:'Export Table To CSV',
-                                   extend:'csv',
-                                   className:"csv spaceButtons"
-                               },
-                               
-                               {
-                                    text:'Export Table To PDF',
-                                    extend:'pdf',
-                                    className:"pdf spaceButtons",
-                                    orientation : 'landscape',
-                                    pageSize : 'LEGAL',
-                               },
-    
+                                text:'Copy Table to Clipboard',
+                                className: "btn btn-secondary spaceButtons",
+                                extend:'copy',
+                            },
+                            {
+                                text:'Export Table To Excel',
+                                extend:'excel',
+                                className:"btn btn-success spaceButtons"
+                            },
+                            {
+                                text:'Export Table To CSV',
+                                extend:'csv',
+                                className:"btn btn-info spaceButtons"
+                            },
+                            
+                            {
+                                 text:'Export Table To PDF',
+                                 extend:'pdf',
+                                 className:"btn btn-warning spaceButtons",
+                                 orientation : 'landscape',
+                                 pageSize : 'LEGAL',
+                                 exportOptions: {
+                                           columns: [0,1,2]
+                                      }
+                            },
+
                             ],
                             data:data.posts,
                             columns:[
@@ -124,5 +127,40 @@ $(document).ready(function () {
             }
         });
     }
+
+    //Add Branch
+    $(document).on('click','#addBranch' ,function () {
+        $('#addBranchModal').modal('show');
+    });
+
+    $(document).on('click','#addRecord', function () {
+        let form = $('#addForm')[0];
+        let formData = new FormData(form);
+        for(var pair of formData.entries()){
+            console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
+        }
+        $.ajax({
+            type: "POST",
+            url: baseurl+"BranchControl/addRecord",
+            data: formData,
+            dataType: "JSON",
+            contentType:false,
+            processData:false,
+            success: function (data) {
+                if(data.response == "failed"){
+                    toastr["error"]("Alert",data.message);
+                    
+                }
+                else{
+                    toastr["success"]("Alert",data.message);
+                    fetch();
+
+                }
+                
+            }
+        });
+    });
+
+
 
 });

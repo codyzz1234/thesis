@@ -61,6 +61,34 @@ class BranchControl extends CI_Controller {
 		}
 		echo json_encode($data);
 	}
+    public function addRecord()
+    {
+        $this->form_validation->set_rules('BranchName','Branch Name Field','required|min_length[1]',
+        array(
+            'required'=> "Please assign a branch Name",
+            'min_length' => "Branch name should at least be 1 character in length"
+        ));
+
+        $this->form_validation->set_rules('Address','Address Field','required|min_length[1]',
+        array(
+            'required'=> "Please assign an Address",
+            'min_length' => "Address should at least be 1 character in length"
+        ));
+
+
+
+
+
+        if($this->form_validation->run() == false){
+			$data = array('response' => 'failed', 'message' => validation_errors());
+		}
+        else{
+
+        }
+        echo json_encode($data);
+
+
+    }
    
 
 }

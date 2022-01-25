@@ -81,7 +81,7 @@ class EmployeeManageController extends CI_Controller {
 			array('checkBirthDate' => 'Please Enter A Valid BirthDate'
 			));	
 
-			$this->form_validation->set_rules('Address', 'Address', 'required|min_length[10]|max_length[150]');
+			$this->form_validation->set_rules('Address', 'Address', 'required|min_length[1]|max_length[150]');
 
 			$this->form_validation->set_rules('RFID', 'RFID', 'trim|required|alpha_numeric|is_unique[employees.RFID]',
 			array('alpha_numeric'=> 'RFID cannot contain special symbols',
@@ -289,7 +289,7 @@ class EmployeeManageController extends CI_Controller {
 			array('checkBirthDate' => 'Please Enter A Valid BirthDate'
 			));	
 
-			$this->form_validation->set_rules('Address', 'Address', 'required|min_length[10]|max_length[150]');
+			$this->form_validation->set_rules('Address', 'Address', 'required|min_length[1]|max_length[150]');
 
 			$this->form_validation->set_rules('RFID', 'RFID', 'trim|required|alpha_numeric|callback_checkRFID',
 			array('alpha_numeric'=> 'RFID cannot contain special symbols',
