@@ -40,6 +40,7 @@ $(document).ready(function() {
                 if(data.response == "success"){
                     var table;
                     setters = data.posts;
+                    console.log(setters)
                     if($.fn.dataTable.isDataTable('#employeeRecords')) {
                         table = $('#employeeRecords').DataTable();
                         table.clear().draw();
@@ -87,10 +88,11 @@ $(document).ready(function() {
     
                             "data":data.posts,
                             columns:[
-                                {"data": "Image",
-                                "render": function ( data, type, row, meta ) {
-                                       return '<img src="'+baseurl+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>'                     
-                                    }
+                                {
+                                    "data": "Image",
+                                    "render": function ( data, type, row, meta ) {
+                                        return '<img src="'+baseurl+data+"?time"+new Date().getTime()+'"alt="Error load" class="img-fluid"></img>'                     
+                                        }
                                 },
                                 {"data":"EmployeeNumber"},
                                 {"data":"FirstName"},

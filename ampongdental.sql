@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2022 at 02:17 PM
+-- Generation Time: Jan 25, 2022 at 02:24 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-25 13:11:19');
+(1, 'admin12345', '$2y$10$QieAU65kEx9to8u0yJBxC.IdBJQijnlyIEx1kW193dA1rA1BXrxCu', 'Manuelyy', 'Quezon', '2021-07-20 16:07:11', '2022-01-25 13:24:02');
 
 -- --------------------------------------------------------
 
@@ -151,7 +151,7 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('kr0phqjo5lh89k05rvrglbctjj5g4mft', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323934303236363b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('m4p28b8roe2cclvudaoioupesb1kaq4u', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333131353037363b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('mdjf384nu41mn314j53hah35ehq4g837', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323336363436323b),
-('mm1gr396ccngpv8b5ui9p0s7gsc4kfp1', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333131363539313b),
+('mm1gr396ccngpv8b5ui9p0s7gsc4kfp1', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333131373034333b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('n5mo24f5t86jcp1v7a2k0rrqcrk4m1a0', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136313236353b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('nbko7n3dhgf5h10uu7a7hp94kfcdlibo', '::1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323538393536393b),
 ('ntubcmtp3fjp0bbo1spuev9leu8smlsl', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333039353935323b757365726e616d657c733a31303a2261646d696e3132333435223b),
@@ -170,6 +170,7 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('qsf7pfeu6f6qpjkij4cm55qfdaqaj262', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333130333537353b757365726e616d657c733a31313a22617468656e613132333435223b),
 ('r6ukff1ort8l62cpq0b7s1k3qe37s1at', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323933323034393b),
 ('rdc6vjv03sgnbggp146l5eq7vctnfj7j', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323136313635333b757365726e616d657c733a31303a2261646d696e3132333435223b),
+('rnadkjrm1okg6htd512auoj5nohubjk0', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333131373034333b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('rs6rqppl5n2vc664k074ijh2ql9en626', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333130323636313b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('s18nrucjsl7acmd8m6a163t78pajam5k', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333131353933323b757365726e616d657c733a31303a2261646d696e3132333435223b),
 ('sigj22l5rjtoa13e62c0rq8cuggnis3m', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333039333834303b),
@@ -394,53 +395,6 @@ CREATE TABLE `schedules` (
   `TimeIn` time DEFAULT NULL,
   `TimeOut` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `viewemployeeinformation`
--- (See below for the actual view)
---
-CREATE TABLE `viewemployeeinformation` (
-`EmployeeId` int(11)
-,`EmployeeNumber` varchar(255)
-,`FirstName` varchar(255)
-,`LastName` varchar(255)
-,`ContactNumber` varchar(255)
-,`Image` varchar(255)
-,`Department` varchar(255)
-,`Branch` varchar(255)
-,`Position` varchar(255)
-,`TimeIn` time
-,`TimeOut` time
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `viewemployeepayroll`
--- (See below for the actual view)
---
-CREATE TABLE `viewemployeepayroll` (
-);
-
--- --------------------------------------------------------
-
---
--- Structure for view `viewemployeeinformation`
---
-DROP TABLE IF EXISTS `viewemployeeinformation`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `viewemployeeinformation`  AS SELECT `employees`.`EmployeeId` AS `EmployeeId`, `employees`.`EmployeeNumber` AS `EmployeeNumber`, `employees`.`FirstName` AS `FirstName`, `employees`.`LastName` AS `LastName`, `employees`.`ContactNumber` AS `ContactNumber`, `employees`.`Image` AS `Image`, `departments`.`Department` AS `Department`, `branches`.`Branch` AS `Branch`, `positions`.`Position` AS `Position`, `schedules`.`TimeIn` AS `TimeIn`, `schedules`.`TimeOut` AS `TimeOut` FROM ((((`employees` left join `departments` on(`employees`.`DepartmentId` = `departments`.`DepartmentId`)) left join `positions` on(`employees`.`PositionId` = `positions`.`PositionId`)) left join `schedules` on(`employees`.`ScheduleId` = `schedules`.`ScheduleId`)) left join `branches` on(`employees`.`BranchId` = `branches`.`BranchId`)) ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `viewemployeepayroll`
---
-DROP TABLE IF EXISTS `viewemployeepayroll`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `viewemployeepayroll`  AS SELECT `employees`.`Image` AS `Image`, `employees`.`EmployeeId` AS `EmployeeId`, `employees`.`EmployeeNumber` AS `EmployeeNumber`, `employees`.`FirstName` AS `FirstName`, `employees`.`LastName` AS `LastName`, `employeecalculation`.`BaseSalary` AS `BaseSalary`, `employeecalculation`.`SSS` AS `SSS`, `employeecalculation`.`PagIbig` AS `PagIbig`, `employeecalculation`.`PhilHealth` AS `PhilHealth`, `departments`.`Department` AS `Department`, `positions`.`Position` AS `Position`, sum(`attendance`.`HoursWorked`) AS `TotalHours` FROM ((((`employees` left join `employeecalculation` on(`employees`.`EmployeeId` = `employeecalculation`.`EmployeeId`)) left join `departments` on(`employees`.`DepartmentId` = `departments`.`DepartmentId`)) left join `positions` on(`employees`.`PositionId` = `positions`.`PositionId`)) left join `attendance` on(`attendance`.`EmployeeId` = `employees`.`EmployeeId`)) WHERE `attendance`.`Date` = curdate() GROUP BY `employees`.`EmployeeId` ;
 
 --
 -- Indexes for dumped tables

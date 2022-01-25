@@ -265,7 +265,7 @@ class EmployeeManageController extends CI_Controller {
 		$employeeId = $this->input->post('employeeId');
 		$this->load->model('EmployeeManageModel');
 		$verify = $this->EmployeeManageModel->loadEditForm($employeeId);
-		if($verify == false){
+		if($verify === false){
 			$data = array('response'=>"failed",'message'=> "there was a failure in retrieval of data, try again later");
 		}
 		else{

@@ -93,7 +93,24 @@
         {
             $message = "";
             $this->db->trans_start();
-            $sql = "SELECT * from viewemployeeinformation";
+            $sql = "SELECT employees.EmployeeId,employees.Image,employees.EmployeeNumber,employees.FirstName,employees.LastName,employees.ContactNumber
+            ,departments.Department,branches.Branch,
+            positions.Position,
+            schedules.TimeIn,schedules.TimeOut
+            from employees
+            
+            left join departments
+            on departments.DepartmentId = employees.DepartmentId
+            
+            left join positions
+            on positions.PositionId = employees.PositionId
+            
+            left join schedules
+            on schedules.ScheduleId = employees.ScheduleId
+            
+            left join branches
+            on branches.BranchId = employees.BranchId";
+
             $results = $this->db->query($sql);
             $this->db->trans_complete();           
             if($this->db->trans_status() == false){
