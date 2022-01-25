@@ -40,16 +40,13 @@ $(document).ready(function () {
                 else{
                     var table;
                     setters = data.posts;
-                    console.log(setters);
                     if($.fn.dataTable.isDataTable('#branchTable')) {
-                        console.log("drew it!");
                         table = $('#branchTable').DataTable();
                         table.clear().draw();
                         table.rows.add(setters); // Add new data
                         table.columns.adjust().draw();
                     }
                     else{
-                        console.log("generate it");
                         table = $('#branchTable').DataTable({
                             destroy:true,
                             response:true,
@@ -137,9 +134,7 @@ $(document).ready(function () {
     $(document).on('click','#addRecord', function () {
         let form = $('#addForm')[0];
         let formData = new FormData(form);
-        for(var pair of formData.entries()){
-            console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
-        }
+ 
         $.ajax({
             type: "POST",
             url: baseurl+"BranchControl/addRecord",
@@ -175,16 +170,15 @@ $(document).ready(function () {
             'BranchName':data['Branch'],
             'Address':data['Address'],
             }
-        console.log(dataJson)
         loadEditForm(dataJson);
         
     });
 
     function loadEditForm(dataJson)
     {
-        $("#editForm input[name=BranchName]").val(dataJson['BranchName']);
+        $('#editForm input[name=BranchId]').data('branchid',dataJson['BranchId']);
         $("#editForm input[name=Address]").val(dataJson['Address']);
-        $("#editForm input[name=BranchId]").val(dataJson['BranchId']);
+        $("#editForm input[name=BranchName]").val(dataJson['BranchName']);
 
         $('#editBranchModal').modal('show');
 
@@ -193,9 +187,11 @@ $(document).ready(function () {
     $(document).on('click','#editRecord', function (e) {
         let form = $('#editForm')[0];2
         let formData = new FormData(form);
-        for(var pair of formData.entries()){
-            console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
-        }
+        let branchId = $('#editForm input[name=BranchId]').data('branchid');
+        formData.append('BranchId',branchId)
+
+    
+  
         $.ajax({
             type: "POST",
             url: baseurl+"BranchControl/editRecord",
@@ -219,6 +215,59 @@ $(document).ready(function () {
             }
         });
 
+    });
+
+    //delete branch
+
+    $(document).on('click','tbody .deleteButton', function(e) 
+    { 
+        e.preventDefault();
+        $this = $(this);
+        var currentRow = $this.closest('tr');
+        var data = $('#branchTable').DataTable().row(currentRow).data();
+
+        var dataJson = {
+                'BranchId':data['BranchId'],
+                'BranchName':data['Branch'],
+                'Address':data['Address'],
+            }
+        loadDeleteForm(dataJson);
+    });
+
+    function loadDeleteForm(dataJson)
+    {
+        $('#deleteForm input[name=BranchId]').data('branchid',dataJson['BranchId']);
+        $('#deleteForm input[name=BranchName]').val(dataJson['BranchName']);
+        $('#deleteForm input[name=Address]').val(dataJson['Address']);
+        $('#delBranchModal').modal('show');
+    }
+
+    $(document).on('click','#deleteRecord'  ,function () {
+
+        let branchID =  $('#deleteForm input[name=BranchId]').data('branchid');
+        let form = $('#deleteForm')[0];
+        let formData = new FormData(form);
+        formData.append('BranchId',branchID);
+    
+        
+        $.ajax({
+            type: "POST",
+            url: baseurl+"BranchControl/deleteRecord",
+            data: formData,
+            dataType: "JSON",
+            contentType:false,
+            processData:false,
+            success: function (data) {
+                if(data.response == "failed"){
+                    toastr["error"]("Alert",data.message);
+                }
+                else{
+                    toastr["success"]("Alert",data.message);
+                    $('#delBranchModal').modal('hide');
+                    fetch();
+                }
+            }
+        });
     });
 
 

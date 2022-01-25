@@ -134,13 +134,13 @@ class BranchControl extends CI_Controller {
 			$verify = $this->BranchModel->editRecord($ajax_data);
             
 			if($verify === false){
-				$data = array('response' => 'failed', 'message' => "Failed To Insert Record");
+				$data = array('response' => 'failed', 'message' => "Failed Edit Record");
 			}
             else if($verify === "none"){
                 $data = array('response' => 'none', 'message' => "No Changes Made");
             }
 			else{
-				$data = array('response' => 'success', 'message' => "Successfully To Insert Record");
+				$data = array('response' => 'success', 'message' => "Successfully To Edited Record");
 			}
 
         }
@@ -150,7 +150,29 @@ class BranchControl extends CI_Controller {
 	
     public function deleteRecord()
     {
+        $this->form_validation->set_rules('BranchId','Branch Id Field','required|numeric|min_length[1]',
+        array(
+            'required'=> "Please reload the page, there was an error loading data",
+            'min_length' => "Please reload the page, there was an error loading data"
+        ));
+        if($this->form_validation->run() == false){
+			$data = array('response' => 'failed', 'message' => validation_errors());
+		}
 
+        else{
+            $ajax_data = array(
+                'BranchId' => $this->input->post('BranchId'),
+			);
+			$this->load->model('BranchModel');
+			$verify = $this->BranchModel->deleteRecord($ajax_data);
+            if($verify === false){
+				$data = array('response' => 'failed', 'message' => "Failed To Delete Record");
+            }
+            else{
+				$data = array('response' => 'success', 'message' => "Successfully Deleted Record");
+            }
+            echo json_encode($data);
+        }
     }
    
 
