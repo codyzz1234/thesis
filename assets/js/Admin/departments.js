@@ -39,6 +39,9 @@ $(document).ready(function () {
                 if(data.response == "failed"){
                     toastr["error"]("Alert",data.message);
                 }
+                else if(data.response == "none"){
+                    toastr["info"]("Alert",data.message);
+                }
                 else{
                     var table;
                     setters = data.posts;

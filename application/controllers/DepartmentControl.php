@@ -44,7 +44,7 @@ class DepartmentControl extends CI_Controller {
         $this->load->model('DepartmentModel');
         $verify = $this->DepartmentModel->fetch();
 		if($verify == "none"){
-			$data = array('response'=>"failed",'message'=> "No records Found");
+			$data = array('response'=>"none",'message'=> "No records Found");
 		}
 		else if($verify == "failed"){
 			$data = array('response'=>"failed",'message'=> "An Error has occurred, failed to retrieve records");
