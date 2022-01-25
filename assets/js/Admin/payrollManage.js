@@ -35,6 +35,12 @@ $(document).ready(function (){
         fetch(start,end)
     }
 
+    //calculate Gross pay
+    function grossPay()
+    {
+
+    }
+
 
     function fetch(start,end)
     {  
@@ -145,10 +151,36 @@ $(document).ready(function (){
                                 },
 
                                 {
+                                    title:"Dental Commissions",
+                                    data:"TotalCommissions",
+                                    render:function(data,type,row,meta){
+                                        if(data == null){
+                                            return "";
+                                        }
+                                        else{
+                                            return data;
+                                        }
+                                    }
+                                },
+
+                                {
                                     title:"Gross pay",
                                     data:null,
-                                    render: function(data,type,row,meta){
-                                        return ;
+                                    render:function(data,type,row,meta){
+                                            let daysWorked = Number(row.DaysWorked);
+                                            let dailyRate = Number(row.BaseSalary);
+                                            let overTime = Number(row.OverTime);
+                                            let commissions = Number(row.TotalCommissions);
+
+
+                                            let baseRate = Number((daysWorked * dailyRate) + commissions);
+                                            let overTimeRate = Number(((dailyRate/8/60) * overTime));
+
+                                       
+
+                                            let grossPay = Number(baseRate + overTimeRate);
+
+                                            return grossPay;
                                     },
                                 },
 
@@ -156,24 +188,20 @@ $(document).ready(function (){
                                     title:"Net Pay",
                                     data:null,
                                     render: function(data,type,row,meta){
-                                        return " ";
+                                        let daysWorked = Number(row.DaysWorked);
+                                        let dailyRate = Number(row.BaseSalary);
+                                        let overTime = Number(row.OverTime);
+                                        let commissions = Number(row.TotalCommissions);
+                                        let deductions =  Number(row.SSS) + Number(row.PagIbig) + Number(row.PhilHealth) + Number(row.CashAdvance);
+                                        let baseRate = Number((daysWorked * dailyRate) + commissions);
+                                        let overTimeRate = Number(((dailyRate/8/60) * overTime));
+                                        let grossPay = Number(baseRate + overTimeRate);
+                        
+                                        let netPay  = Number(grossPay - deductions);
+                                        return netPay;
+
                                     },
                                 },
-
-
-
-
-                                {
-                                    title:"Hourly Rate",
-                                    data:"BaseSalary",
-                                    render:function(data,type,row,meta){
-                                        var hourlyRate = parseFloat(data);
-                                        hourlyRate = ((hourlyRate * 12)/313) /8;
-                                        return hourlyRate;
-                                    
-                                    },
-                                },
-
 
                              
                  

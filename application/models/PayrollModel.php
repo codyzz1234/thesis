@@ -10,7 +10,7 @@
             $message = "";
             $this->db->trans_start();
             $sql = "SELECT employees.Image,employees.EmployeeId,employees.EmployeeNumber,employees.FirstName,employees.LastName,
-            employeecalculation.BaseSalary,employeecalculation.SSS,employeecalculation.PagIbig,employeecalculation.PhilHealth,
+            employeecalculation.BaseSalary,employeecalculation.SSS,employeecalculation.PagIbig,employeecalculation.PhilHealth,employeecalculation.CashAdvance,
             departments.Department,
             positions.Position, 
             SUM(attendance.MinutesWorked) as TotalMinutes,
