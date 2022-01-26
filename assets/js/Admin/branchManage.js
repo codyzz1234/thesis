@@ -63,30 +63,32 @@ $(document).ready(function () {
                                 className: "btn btn-secondary spaceButtons",
                                 extend:'copy',
                                 orientation : 'landscape',
-                                 pageSize : 'LEGAL',
-                                 exportOptions: {
-                                           columns: [0,1,2]
-                                      }
+                                pageSize : 'LEGAL',
+                                exportOptions: {
+                                          columns: [0,1,2,3]
+                                     }
                             },
+
                             {
                                 text:'Export Table To Excel',
                                 extend:'excel',
                                 className:"btn btn-success spaceButtons",
                                 orientation : 'landscape',
-                                 pageSize : 'LEGAL',
-                                 exportOptions: {
-                                           columns: [0,1,2]
-                                      }
+                                pageSize : 'LEGAL',
+                                exportOptions: {
+                                          columns: [0,1,2,3]
+                                     }
+ 
                             },
                             {
                                 text:'Export Table To CSV',
                                 extend:'csv',
                                 className:"btn btn-info spaceButtons",
                                 orientation : 'landscape',
-                                 pageSize : 'LEGAL',
-                                 exportOptions: {
-                                           columns: [0,1,2]
-                                      }
+                                pageSize : 'LEGAL',
+                                exportOptions: {
+                                          columns: [0,1,2,3]
+                                     }
                             },
                             
                             {
@@ -96,7 +98,7 @@ $(document).ready(function () {
                                  orientation : 'landscape',
                                  pageSize : 'LEGAL',
                                  exportOptions: {
-                                           columns: [0,1,2]
+                                           columns: [0,1,2,3]
                                       }
                             },
 
@@ -125,7 +127,7 @@ $(document).ready(function () {
                                     },
                                     width:"10%"
                                 },
-                                
+
                                 {
                                     title:"Actions",
                                     data:null,
