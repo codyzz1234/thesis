@@ -13,8 +13,7 @@
             employeecalculation.BaseSalary,employeecalculation.SSS,employeecalculation.PagIbig,employeecalculation.PhilHealth,employeecalculation.CashAdvance,
             departments.Department,
             positions.Position, 
-            SUM(attendance.MinutesWorked) as TotalMinutes,
-            SUM(attendance.OverTimeMinutes) as OverTime,
+            OverTimeMinutes.OverTime,
             DaysWorked.DaysWorked,
             DentalCommissions.TotalCommissions
 
@@ -26,6 +25,15 @@
                         WHERE attendance.Date between ? AND ?
                         GROUP BY attendance.EmployeeId
             )as DaysWorked on DaysWorked.EmployeeId = employees.EmployeeId
+
+
+            LEFT JOIN
+            (
+                SELECT SUM(attendance.OverTimeMinutes) as OverTime, attendance.EmployeeId
+                        from attendance
+                        WHERE attendance.Date between ? AND ?
+                        Group By attendance.EmployeeId
+            ) as OverTimeMinutes on OverTimeMinutes.EmployeeId = employees.EmployeeId
 
             LEFT JOIN
             (
@@ -65,7 +73,8 @@
                    $startDate,
                    $endDate,
 
-                  
+                   $startDate,
+                   $endDate,
 
                    $startDate,
                    $endDate

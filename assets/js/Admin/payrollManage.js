@@ -162,6 +162,7 @@ $(document).ready(function (){
                                         }
                                     }
                                 },
+                              
 
                                 {
                                     title:"Gross pay",
