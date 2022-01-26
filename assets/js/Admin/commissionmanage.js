@@ -69,29 +69,49 @@ $(document).ready(function () {
                              "rtip",
                             buttons: [
                                // 'copy', 'csv', 'excel', 'pdf', 'print',
-                               {
-                                   text:'Copy Table to Clipboard',
-                                   className: "copy spaceButtons",
-                                   extend:'copy',
-                               },
-                               {
-                                   text:'Export Table To Excel',
-                                   extend:'excel',
-                                   className:"excel spaceButtons"
-                               },
-                               {
-                                   text:'Export Table To CSV',
-                                   extend:'csv',
-                                   className:"csv spaceButtons"
-                               },
-                               
-                               {
-                                    text:'Export Table To PDF',
-                                    extend:'pdf',
-                                    className:"pdf spaceButtons",
-                                    orientation : 'landscape',
-                                    pageSize : 'LEGAL',
-                               },
+                            {
+                                text:'Copy Table to Clipboard',
+                                className: "btn btn-secondary spaceButtons",
+                                extend:'copy',
+                                orientation : 'landscape',
+                                pageSize : 'LEGAL',
+                                exportOptions: {
+                                          columns: [0,1,2,3,4]
+                                     }
+                            },
+
+                            {
+                                text:'Export Table To Excel',
+                                extend:'excel',
+                                className:"btn btn-success spaceButtons",
+                                orientation : 'landscape',
+                                pageSize : 'LEGAL',
+                                exportOptions: {
+                                     columns: [0,1,2,3,4]
+                                }
+ 
+                            },
+                            {
+                                text:'Export Table To CSV',
+                                extend:'csv',
+                                className:"btn btn-info spaceButtons",
+                                orientation : 'landscape',
+                                pageSize : 'LEGAL',
+                                exportOptions: {
+                                    columns: [0,1,2,3,4]
+                                }
+                            },
+                            
+                            {
+                                 text:'Export Table To PDF',
+                                 extend:'pdf',
+                                 className:"btn btn-warning spaceButtons",
+                                 orientation : 'landscape',
+                                 pageSize : 'LEGAL',
+                                 exportOptions: {
+                                    columns: [0,1,2,3,4]
+                                }
+                            },
     
                             ],
                             data:data.posts,
