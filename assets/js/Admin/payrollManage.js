@@ -179,6 +179,7 @@ $(document).ready(function (){
                                        
 
                                             let grossPay = Number(baseRate + overTimeRate);
+                                            grossPay = grossPay.toFixed(2);
 
                                             return grossPay;
                                     },
@@ -198,6 +199,7 @@ $(document).ready(function (){
                                         let grossPay = Number(baseRate + overTimeRate);
                         
                                         let netPay  = Number(grossPay - deductions);
+                                        netPay = netPay.toFixed(2)
                                         return netPay;
                                     },
                                 },
