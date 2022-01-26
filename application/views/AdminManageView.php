@@ -183,31 +183,29 @@
         </button>
       </div>
       <div class="modal-body">
-            <div class = "text-center">
-                <img src="<?php echo base_url('assets/adminManagement/images/XImage.png') ?>" alt="..." class="img-thumbnail text-center">
-            </div>
+    
             <div class = "text-center">
                 <p> ARE YOU SURE YOU WANT TO DELETE THIS ENTRY??</p>
             <div class = "text-center">
          
         <form action ="" method = "post" id = "deleteForm">
                 <div class = "form-group" >
-                        <input type ="hidden" id ="deleteId" class = "form-control">
+                        <input type ="hidden" id ="deleteId" class = "form-control" readonly>
                 </div>
                 <div class = "form-group">
                     <label for = ""> Username </label>
-                    <input type = "text" id = "deleteUserName" class = "form-control">
+                    <input type = "text" id = "deleteUserName" class = "form-control" readonly>
                 </div>
 
 
                 <div class = "form-group">
                     <label for = ""> First Name </label>
-                    <input type = "text" id = "deleteFirstName" class = "form-control">
+                    <input type = "text" id = "deleteFirstName" class = "form-control" readonly>
                 </div>
 
                 <div class = "form-group">
                     <label for = ""> Last Name </label>
-                    <input type = "text" id = "deleteLastName" class = "form-control">
+                    <input type = "text" id = "deleteLastName" class = "form-control" readonly>
                 </div>
         </form>
       </div>
