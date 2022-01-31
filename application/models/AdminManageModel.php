@@ -101,7 +101,8 @@
                 ));
             if ($this->db->affected_rows() > 0) {
                 $data = array('response'=>"success",'message'=>'Data Updated');
-                $this->activity($ajax_data);
+                $type = 2;
+                $this->activity($ajax_data,$type);
             } 
             else {
                 if ($this->db->trans_status() == FALSE) {
@@ -132,6 +133,8 @@
                 return false;
             }
             else{
+                $type = 1;
+                $this->activity($ajax_data,$type);
                 return true;
             }
     
@@ -151,12 +154,17 @@
                 }
         }
 
-        private function activity($ajax_data)
+        private function activity($ajax_data,$type)
         {
             $username = $this->session->userdata('username');
 			$adminId = $this->session->userdata('adminId');
+            if($type == 1){
+                $activity = "Inserted New Administrator ". '"'.$ajax_data['UserName'].'"';
+            }
+            if($type == 2){
+                $activity = "Updated Administrator ".'"'.$ajax_data['UserName'].'"'. " Credentials";
+            }
 
-            $activity = "Updated Administrator ".'"'.$ajax_data['UserName'].'"'. " Credentials";
             $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";
             $this->db->query($sql,array($adminId,$username,$activity));
         }
