@@ -140,11 +140,17 @@
     
         }
         
-        public function deleteAdmin($id)
+        public function deleteAdmin($ajax_data)
         {
             $this->db->trans_start();
+            
+
             $sql = "DELETE from `adminlogin` where `Id` = ?";
-            $this->db->query($sql,array($id));
+            $this->db->query($sql,array(
+                $ajax_data['id'],
+            ));
+            $type = 3;
+            $this->activity($ajax_data,$type);
             $this->db->trans_complete();
                 if ($this->db->trans_status() == FALSE) {
                     return false;
@@ -159,10 +165,13 @@
             $username = $this->session->userdata('username');
 			$adminId = $this->session->userdata('adminId');
             if($type == 1){
-                $activity = "Inserted New Administrator ". '"'.$ajax_data['UserName'].'"';
+                $activity = "Added New Administrator ". '"'.$ajax_data['UserName'].'"';
             }
-            if($type == 2){
+            else if($type == 2){
                 $activity = "Updated Administrator ".'"'.$ajax_data['UserName'].'"'. " Credentials";
+            }
+            else if($type == 3){
+                $activity = "Deleted Administrator ".'"'.$ajax_data['UserName'].'"';
             }
 
             $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";

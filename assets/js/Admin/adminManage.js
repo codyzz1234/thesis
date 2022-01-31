@@ -243,11 +243,13 @@ $('#deleteRecord').click(function (e) {
     toasterOptions();
     e.preventDefault();
     var id =  $('#deleteId').val();
+    let username = $('#deleteUserName').val();
     $.ajax({
         type: "POST",
         url: "AdminManageController/deleteAdmin",
         data: {
-            id:id
+            id:id,
+            username:username,
         },
         dataType: "JSON",
         success: function (data) {

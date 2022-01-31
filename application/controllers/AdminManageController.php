@@ -119,7 +119,7 @@ class AdminManageController extends CI_Controller {
 			$adminId = $this->session->userdata('adminId');
 
 			$this->load->model('AdminManageModel');
-			$verify = $this->AdminManageModel->updateAdmin($ajax_data);
+			$verify = $this->AdminManageModel->updateAdmin($ajax_data,$adminId);
 			if($verify['response'] == "success"){
 				$data = array('response'=>"success",'message'=>'Data Updated');
 			}
@@ -189,8 +189,13 @@ class AdminManageController extends CI_Controller {
 	public function deleteAdmin()
 	{
 		$id = $this->input->post('id');
+		$ajax_data = array(
+			'id' =>  $this->input->post('id'),
+			'UserName' => $this->input->post('username'),
+		);
+
 		$this->load->model('AdminManageModel');
-		$verify = $this->AdminManageModel->deleteAdmin($id);
+		$verify = $this->AdminManageModel->deleteAdmin($ajax_data);
 		if($verify == false){
 			$data = array('response'=>'failed','message'=>'There was in deleting administrator');
 		}
