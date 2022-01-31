@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2022 at 10:02 PM
+-- Generation Time: Jan 31, 2022 at 04:58 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminlogin` (
 --
 
 INSERT INTO `adminlogin` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `createdOn`, `LastLogin`) VALUES
-(1, 'admin12345', '$2y$10$.Tu7hwPxU8ZLU6JvOFa42.Rae6M5r7cY/pSHZyyUXwJsriQb/NE/u', 'Manuel', 'Quezon', '2021-07-20 16:07:11', '2022-01-25 21:00:18'),
+(1, 'admin12345', '$2y$10$.Tu7hwPxU8ZLU6JvOFa42.Rae6M5r7cY/pSHZyyUXwJsriQb/NE/u', 'Manuel', 'Quezon', '2021-07-20 16:07:11', '2022-01-31 15:21:50'),
 (9, 'athena', '$2y$10$VyO2fAPUC.LUNyrwg8Iwr.FukxkgjBsj8gSa0TAmutIfbfsPLML7.', 'Athena', 'Quezon', '2022-01-25 21:00:48', '2022-01-25 21:01:06');
 
 -- --------------------------------------------------------
@@ -94,7 +94,13 @@ CREATE TABLE `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('csptdfvihmh6rbk14qvu3p2vt01hvnsu', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333134343436313b757365726e616d657c733a363a22617468656e61223b);
+('5ojpvtekgk2f1hqan4o4s2jjphoogji8', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333634343539363b757365726e616d657c733a31303a2261646d696e3132333435223b),
+('csptdfvihmh6rbk14qvu3p2vt01hvnsu', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333134343436313b757365726e616d657c733a363a22617468656e61223b),
+('fki93rpq9ssc88q3qjjjv3bd55qek06g', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333634313433323b),
+('hq9r3ovicjmo6u9lhjrc87oqd6ik3t2q', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333634343539363b757365726e616d657c733a31303a2261646d696e3132333435223b),
+('mtvn57k7e9voiq8riuj8p80hgl5pv7g1', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333634343132353b757365726e616d657c733a31303a2261646d696e3132333435223b),
+('o1711j8ji8lbh6pd33uegfap2qov5v1i', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333634323439393b),
+('t69st94l6pcg1tmimtoshnk6r1j2pnm9', '127.0.0.1', '0000-00-00 00:00:00', 0x5f5f63695f6c6173745f726567656e65726174657c693a313634333634333438393b757365726e616d657c733a31303a2261646d696e3132333435223b);
 
 -- --------------------------------------------------------
 
@@ -162,21 +168,6 @@ CREATE TABLE `employeecalculation` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employeelogin`
---
-
-CREATE TABLE `employeelogin` (
-  `id` int(11) NOT NULL,
-  `EmployeeId` int(11) NOT NULL,
-  `EmployeeNumber` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  `LastLogin` timestamp NULL DEFAULT current_timestamp(),
-  `DateCreated` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `employees`
 --
 
@@ -220,72 +211,6 @@ INSERT INTO `employeestatus` (`id`, `status`) VALUES
 (1, 'On Time'),
 (5, 'Overtime'),
 (4, 'Regular Hours');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `imagepath`
---
-
-CREATE TABLE `imagepath` (
-  `imagePath` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `imagepath`
---
-
-INSERT INTO `imagepath` (`imagePath`) VALUES
-('2021-454XAY1.jpg'),
-('assets/EmployeeImages/2021-454XAY.png'),
-('assets/EmployeeImages/2021-454XAY.jpg'),
-('assets/EmployeeImages/2021-454XAY1.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `leaveallocation`
---
-
-CREATE TABLE `leaveallocation` (
-  `LeaveId` int(11) NOT NULL,
-  `EmployeeId` int(11) DEFAULT NULL,
-  `LeaveAllocated` int(11) NOT NULL DEFAULT 0,
-  `LeaveUse` int(11) NOT NULL,
-  `LeaveBalance` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `leaveallocation`
---
-
-INSERT INTO `leaveallocation` (`LeaveId`, `EmployeeId`, `LeaveAllocated`, `LeaveUse`, `LeaveBalance`) VALUES
-(4, NULL, 50, 0, 50),
-(8, NULL, 12, 0, 12),
-(9, NULL, 15, 0, 15),
-(10, NULL, 46, 0, 46);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `leavetype`
---
-
-CREATE TABLE `leavetype` (
-  `LeaveId` int(11) NOT NULL,
-  `Type` varchar(255) NOT NULL,
-  `Description` varchar(255) NOT NULL,
-  `DaysAllocated` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `leavetype`
---
-
-INSERT INTO `leavetype` (`LeaveId`, `Type`, `Description`, `DaysAllocated`) VALUES
-(27, 'Medical Leave', 'Medical Leaving', 52),
-(29, 'Vacation Leave', 'Leaving For A Vacation', 23),
-(30, 'Vacation Leave', 'Leaving For A Vacation', 23);
 
 -- --------------------------------------------------------
 
@@ -371,14 +296,6 @@ ALTER TABLE `employeecalculation`
   ADD KEY `EmployeId` (`EmployeeId`);
 
 --
--- Indexes for table `employeelogin`
---
-ALTER TABLE `employeelogin`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `EmployeeId` (`EmployeeId`),
-  ADD UNIQUE KEY `EmployeeNumber` (`EmployeeNumber`);
-
---
 -- Indexes for table `employees`
 --
 ALTER TABLE `employees`
@@ -397,19 +314,6 @@ ALTER TABLE `employees`
 ALTER TABLE `employeestatus`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `status` (`status`);
-
---
--- Indexes for table `leaveallocation`
---
-ALTER TABLE `leaveallocation`
-  ADD PRIMARY KEY (`LeaveId`),
-  ADD UNIQUE KEY `EmployeeId` (`EmployeeId`);
-
---
--- Indexes for table `leavetype`
---
-ALTER TABLE `leavetype`
-  ADD PRIMARY KEY (`LeaveId`);
 
 --
 -- Indexes for table `positions`
@@ -464,12 +368,6 @@ ALTER TABLE `departments`
   MODIFY `DepartmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `employeelogin`
---
-ALTER TABLE `employeelogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
@@ -480,18 +378,6 @@ ALTER TABLE `employees`
 --
 ALTER TABLE `employeestatus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `leaveallocation`
---
-ALTER TABLE `leaveallocation`
-  MODIFY `LeaveId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `leavetype`
---
-ALTER TABLE `leavetype`
-  MODIFY `LeaveId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `positions`
@@ -535,13 +421,6 @@ ALTER TABLE `employeecalculation`
   ADD CONSTRAINT `employeecalculation_ibfk_2` FOREIGN KEY (`EmployeeId`) REFERENCES `employees` (`EmployeeId`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `employeelogin`
---
-ALTER TABLE `employeelogin`
-  ADD CONSTRAINT `employeelogin_ibfk_1` FOREIGN KEY (`EmployeeId`) REFERENCES `employees` (`EmployeeId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `employeelogin_ibfk_2` FOREIGN KEY (`EmployeeNumber`) REFERENCES `employees` (`EmployeeNumber`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `employees`
 --
 ALTER TABLE `employees`
@@ -550,12 +429,6 @@ ALTER TABLE `employees`
   ADD CONSTRAINT `employees_ibfk_4` FOREIGN KEY (`ScheduleId`) REFERENCES `schedules` (`ScheduleId`),
   ADD CONSTRAINT `employees_ibfk_5` FOREIGN KEY (`Status`) REFERENCES `employeestatus` (`id`),
   ADD CONSTRAINT `employees_ibfk_6` FOREIGN KEY (`DepartmentId`) REFERENCES `departments` (`DepartmentId`) ON DELETE SET NULL;
-
---
--- Constraints for table `leaveallocation`
---
-ALTER TABLE `leaveallocation`
-  ADD CONSTRAINT `leaveallocation_ibfk_1` FOREIGN KEY (`EmployeeId`) REFERENCES `employees` (`EmployeeId`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
