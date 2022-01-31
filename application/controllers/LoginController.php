@@ -59,16 +59,24 @@ class LoginController extends CI_Controller {
 		else{
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
+			$adminId = "";
 			$this->load->model('LoginModel');
 			$result = $this->LoginModel->loginVerify($username);
 			foreach ($result->result() as $row){
 						if(password_verify($password, $row->Password)) {
 							$session_data = array(
 								'username' => $username,
+								'adminId' => $row->Id, 
 							);
-							$this->LoginModel->loginUpdate($username);
-							$this->session->set_userdata($session_data);
-							$data = array('response' => 'success', 'message' => 'Logging In..');
+							$adminId = $row->Id;
+							$verify = $this->LoginModel->loginUpdate($username,$adminId);
+							if($verify === true){
+								$this->session->set_userdata($session_data);
+								$data = array('response' => 'success', 'message' => 'Logging In..');
+							}
+							else{
+								$data = array('response' => 'failed', 'message' => 'There was an error recording the data');
+							}
 						}
 						else{
 							$data = array('response' => 'failed', 'message' => 'Wrong Password');

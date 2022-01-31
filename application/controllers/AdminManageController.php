@@ -30,6 +30,7 @@ class AdminManageController extends CI_Controller {
 		if($sessionData != ''){
 			$data = array(
 				'username' => $sessionData,
+				'adminId' => $this->session->userdata('adminId')
 			);
 			$this->load->view('template/DashBoardHead',$data);
 			$this->load->view('AdminManageView',$data);
@@ -114,6 +115,9 @@ class AdminManageController extends CI_Controller {
 				'UserName' => $this->input->post('UserName'),
 				'Password' => $password,
 			);
+			$username = $this->session->userdata('username');
+			$adminId = $this->session->userdata('adminId');
+
 			$this->load->model('AdminManageModel');
 			$verify = $this->AdminManageModel->updateAdmin($ajax_data);
 			if($verify['response'] == "success"){
