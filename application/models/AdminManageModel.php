@@ -143,8 +143,6 @@
         public function deleteAdmin($ajax_data)
         {
             $this->db->trans_start();
-            
-
             $sql = "DELETE from `adminlogin` where `Id` = ?";
             $this->db->query($sql,array(
                 $ajax_data['id'],

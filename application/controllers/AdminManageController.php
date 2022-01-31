@@ -199,6 +199,9 @@ class AdminManageController extends CI_Controller {
 		if($verify == false){
 			$data = array('response'=>'failed','message'=>'There was in deleting administrator');
 		}
+		else if($verify === "loggedIn"){
+			$data = array('response'=>'failed','message'=>'You Are Currently Logged Ina');
+		}
 		else{
 			$data = array('response'=>'success','message'=>'Administrator Deleted');
 		}
