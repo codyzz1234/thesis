@@ -101,6 +101,7 @@ function fetch()
                         ],
                         "data":data.posts,
                         columns:[
+                            {"data":"Id"},
                             {"data":"Username"},
                             {"data":"FirstName"},
                             {"data":"LastName"},

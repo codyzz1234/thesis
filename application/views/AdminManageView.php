@@ -16,6 +16,7 @@
                             <table class="table table-bordered" id="adminManageTable" width="100%" cellspacing="0">
                                 <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>UserName</th>
                                             <th>First Name</th>
                                             <th>Last Name</th>
