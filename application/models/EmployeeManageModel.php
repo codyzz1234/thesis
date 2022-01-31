@@ -61,7 +61,6 @@
 
             $affectedRows = $this->db->affected_rows();
             $this->db->trans_complete();
-    
             if ($this->db->trans_status() === FALSE) {
                 return false;
             } 
@@ -70,6 +69,8 @@
                     return false;
                 }
                 else{
+                    $type = 1;
+                    $this->activity($ajax_data,$type);
                     return true; 
                 }
             }
@@ -236,6 +237,8 @@
             }
             if ($this->db->affected_rows() > 0) {
                 $data = array('response'=>"success",'message'=>'Data Updated');
+                $type = 2;
+                $this->activity($ajax_data,$type);
             } 
             else {
                 if ($this->db->trans_status() == FALSE) {
@@ -302,6 +305,25 @@
                     }
                 }
             }
+        }
+
+        private function activity($ajax_data,$type)
+        {
+            $activity = "";
+            $username = $this->session->userdata('username');
+			$adminId = $this->session->userdata('adminId');
+            if($type == 1){
+                $activity = "Added New Employee ".'"'.$ajax_data['EmployeeNumber'].'"';
+            }
+            else if($type == 2){
+                $activity = "Updated Employee ".'"'.$ajax_data['EmployeeNumber'].'"';
+            }
+            else if ($type == 3){
+
+            }
+            $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";
+            $this->db->query($sql,array($adminId,$username,$activity));
+
         }
 
 }

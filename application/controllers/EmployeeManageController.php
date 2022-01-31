@@ -31,6 +31,7 @@ class EmployeeManageController extends CI_Controller {
 		if($sessionData != ''){
 			$data = array(
 				'username' => $sessionData,
+				'adminId' => $this->session->userdata('adminId')
 			);
 			$this->load->view('template/DashBoardHead',$data);
 			$this->load->view('EmployeeManageView',$data);
@@ -342,6 +343,7 @@ class EmployeeManageController extends CI_Controller {
 						'DepartmentId' => $this->input->post('DepartmentId'),
 						'BranchId' => $this->input->post('BranchId'),
 						'EmployeeId' => $this->input->post('EmployeeId'),
+						'EmployeeNumber' => $this->input->post('EmployeeNumber'),
 						);
 					$this->load->model('EmployeeManageModel');
 					$verify = $this->EmployeeManageModel->updateRecords($ajax_data,$imagePath);
