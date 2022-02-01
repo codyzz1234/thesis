@@ -105,7 +105,7 @@ function fetch()
                             {"data":"Username"},
                             {"data":"FirstName"},
                             {"data":"LastName"},
-                            {"data":"createdOn"},
+                            {"data":"CreatedOn"},
                             {"data":"LastLogin"},
                             {"data":"Id",
                             "render": function ( data, type, row, meta ) {
