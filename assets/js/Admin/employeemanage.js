@@ -126,6 +126,27 @@ $(document).ready(function() {
                                      width:"8%"
 
                                 },
+
+                                {
+                                    "data": "StatusId",
+                                    render: function (data,type,row,meta){
+                                     let render = "";
+                                     console.log(row.Status + " Is");
+                                     if(data == 1){
+                                        render = render + '<span class="badge badge-success pull-right">'+ row.Status+ '</span>'
+                                     }
+                                     else if(data == 2){
+                                        render = render + '<span class="badge badge-warning pull-right">'+ row.Status+'</span>';
+                                     }
+                                     else if(data == 5){
+                                        render = render + '<span class="badge badge-info pull-right">'+ row.Status+'</span>';
+
+                                     }
+                                     return render;
+                                
+                                    }
+
+                                },
                                
                                 {"data":"EmployeeId",
                                 "render": function ( data, type, row, meta ) {
@@ -134,6 +155,7 @@ $(document).ready(function() {
                                     return editButton+deleteButton
                                     }
                                  },
+                                
                             ],
                             columnDefs: [
                                 { "targets": 0,

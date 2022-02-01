@@ -97,7 +97,8 @@
             $sql = "SELECT employees.EmployeeId,employees.Image,employees.EmployeeNumber,employees.FirstName,employees.LastName,employees.ContactNumber
             ,departments.Department,branches.Branch,
             positions.Position,
-            schedules.TimeIn,schedules.TimeOut
+            schedules.TimeIn,schedules.TimeOut,
+            employeestatus.Id as StatusId, employeestatus.status as Status
             from employees
             
             left join departments
@@ -110,7 +111,12 @@
             on schedules.ScheduleId = employees.ScheduleId
             
             left join branches
-            on branches.BranchId = employees.BranchId";
+            on branches.BranchId = employees.BranchId
+            
+            left join employeestatus
+            on employeestatus.Id = employees.Status";
+
+            
 
             $results = $this->db->query($sql);
             $this->db->trans_complete();           
@@ -135,7 +141,7 @@
             $sql = "SELECT `EmployeeId`, `EmployeeNumber`, `RFID`, `FirstName`, `Image`,
             `LastName`, `Address`, `ContactNumber`, 
             DATE_FORMAT(BirthDate,'%m/%d/%Y') AS 'BirthDate', `HireDate`, 
-            `DepartmentId`, `PositionId`, `BranchId`, `ScheduleId`, `status` FROM `employees` 
+            `DepartmentId`, `PositionId`, `BranchId`, `ScheduleId` FROM `employees` 
             where EmployeeId = ?";
 
             $results = $this->db->query($sql,array($employeeId));
@@ -258,7 +264,7 @@
             $sql = "SELECT `EmployeeId`, `EmployeeNumber`, `RFID`, `FirstName`, 
             `LastName`, `Address`, `ContactNumber`, 
             DATE_FORMAT(BirthDate,'%m/%d/%Y') AS 'BirthDate', `HireDate`, 
-            `DepartmentId`, `PositionId`, `BranchId`, `ScheduleId`, `status`,`Image` FROM `employees` 
+            `DepartmentId`, `PositionId`, `BranchId`, `ScheduleId`,`Image` FROM `employees` 
             where EmployeeId = ?";
 
             $result = $this->db->query($sql,array($id));

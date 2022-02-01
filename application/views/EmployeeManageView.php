@@ -35,6 +35,7 @@
                                             <th>Position</th> 
                                             <th>Scheduled Time In</th> 
                                             <th>Scheduled Time Out</th>
+                                            <th>Status</th>
                                             <th>Actions</th>
                                         </tr> 
                                     </thead>
