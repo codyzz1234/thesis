@@ -167,8 +167,12 @@ class DepartmentControl extends CI_Controller {
 	public function deleteRecord()
 	{
 		$departmentId = $this->input->post('DepartmentId');
+		$ajax_data = array(
+			'DepartmentId' => $this->input->post('DepartmentId'),
+			'Department' => $this->input->post('DepartmentName')
+		);
 		$this->load->model('DepartmentModel');
-		$verify = $this->DepartmentModel->deleteDepartment($departmentId);
+		$verify = $this->DepartmentModel->deleteDepartment($ajax_data);
 		if($verify == false){
 			$data = array('response' => 'failed', 'message' => "There was an error deleting department");
 		}

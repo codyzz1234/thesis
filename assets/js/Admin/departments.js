@@ -320,6 +320,8 @@ $(document).ready(function () {
         e.preventDefault();
         var formData = new FormData();
         formData.append('DepartmentId',$('#deleteDepartmentId').val() );
+        formData.append('DepartmentName',$('#deleteDepartmentName').val() );
+
         $.ajax({
             type: "POST",
             url: baseurl+"DepartmentControl/deleteRecord",
