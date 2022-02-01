@@ -337,6 +337,7 @@ $(document).ready(function () {
                 }
                 else{
                     toastr["error"]("Alert",data.message);
+                    
                 }
             }
         });
