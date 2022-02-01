@@ -315,6 +315,11 @@ $(document).ready(function () {
         $('#deleteDepartmentModal').modal('show');
         
     }
+    $(document).on('click','#launchConfModal', function (e) {
+        e.preventDefault();
+        $("#confirmModal").modal('show');
+        
+    });
 
     $('#deleteRecords').click(function (e) { 
         e.preventDefault();
@@ -332,6 +337,7 @@ $(document).ready(function () {
             success: function (data) {
                 if(data.response == "success"){
                     toastr["success"]("Alert",data.message);
+                    $("#confirmModal").modal('hide');
                     $('#deleteDepartmentModal').modal('hide');
                     fetch();
                 }
