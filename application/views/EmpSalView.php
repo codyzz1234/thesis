@@ -88,33 +88,39 @@
                     </div>
 
                     <div class = "form-group">
-                        <label for = ""> Base Salary </label>
+                        <label for = ""> Base Salary * </label>
                         <input type = "text" id = "editAmount" class = "form-control" name = "BaseSalary" >
                     </div>
 
       
                     <div class = "form-group">
-                        <label for = ""> Pag Ibig </label>
+                        <label for = ""> Pag Ibig * </label>
                         <input type = "text" id = "editAmount" class = "form-control" name = "PagIbig" >
                     </div>
 
 
 
                     <div class = "form-group">
-                        <label for = ""> SSS </label>
+                        <label for = ""> SSS * </label>
                         <input type = "text" id = "editAmount" class = "form-control" name = "SSS" >
                     </div>
 
 
 
                     <div class = "form-group">
-                        <label for = ""> Phil Health </label>
+                        <label for = ""> Phil Health * </label>
                         <input type = "text" id = "editAmount" class = "form-control" name = "PhilHealth" >
                     </div>
 
                     <div class = "form-group">
-                        <label for = ""> Cash Advance </label>
+                        <label for = ""> Cash Advance * </label>
                         <input type = "text" id = "editAmount" class = "form-control" name = "CashAdvance" >
+                    </div>
+
+                    <div class = "form-group">
+                        <div class="text-right">
+                            <label for = ""> All fields marked with * are required </label> 
+                        </div>
                     </div>
 
                     
