@@ -66,6 +66,18 @@
                 return $dataArray;
             }
         }
+
+        public function logOut()
+        {
+            $activity = "Logged Out";
+            $username = $this->session->userdata('username');
+			$adminId = $this->session->userdata('adminId');
+            $this->db->trans_start();
+            $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";
+            $this->db->query($sql,array($adminId,$username,$activity));  
+            $this->db->trans_complete();   
+        }
+
 }
 
 ?>

@@ -43,6 +43,8 @@ class DashBoardController extends CI_Controller {
 	
 	public function logOut()
 	{
+		$this->load->model('DashBoardModel');
+		$this->DashBoardModel->logOut();
 		$this->session->sess_destroy();
 		redirect('Login');
 	}
