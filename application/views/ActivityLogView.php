@@ -11,11 +11,7 @@
 
                     <!-- Content Row -->
                     <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                    <div class="row">
-                                        <button type="button" class="btn btn-success text-left" id = "addCommission">Add Commission</button>
-                                    </div>
-                            </div>
+                         
 
 
                         <div class="card-body">
@@ -78,198 +74,15 @@
 
     <!-- Add Commission Modal -->
 
-        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Commission</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action = "" method = "post" id = "addForm">
-
-                        <div class = "form-group">
-
-                            <div class="text-center">
-                                <input type = "hidden" class = "form-control" name = "EmployeeId" data-employeeid>
-                                <img src="..." class="img-fluid" alt="" name = "ImagePreview">
-                                <label for = "LabelName" ></label>
-                                <br>
-                                <label for = "LabelNumber" ></label> 
-                            </div>
-                        
-                        </div>
-
-                        <div class="form-group">
-                            <label for=""> Employee Number </label>
-                            <input type="text" class="form-control" name = "EmployeeNumber">
-                            <ul class = "list-group" id = "addResult">
-
-                            </ul>
-                        </div>
-
-                        <div class="form-group">
-                            <label for=""> Date </label>
-                            <input type="text" class="form-control" name = "DatePicker">
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for=""> Description </label>
-                            <input type="text" class="form-control" name = "Description">
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for=""> Amount </label>
-                            <input type="text" class="form-control" name = "Amount">
-                        </div>
-
-                  </form>
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" id = "addRecord">Add Commission</button>
-                </div>
-                </div>
-            </div>
-        </div>
-
 
         <!-- Edit Commission Modal -->
         
-        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Commission</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action = "" method = "post" id = "editForm">
-
-                        <div class = "form-group">
-
-                            <div class="text-center">
-                                <input type = "hidden" class = "form-control" name = "CommissionId" data-commissionid>
-                                <input type = "hidden" class = "form-control" name = "EmployeeId" data-employeeid>
-
-                                <img src="..." class="img-fluid" alt="" name = "ImagePreview">
-                                <label for = "LabelName" ></label>
-                                <br>
-                                <label for = "LabelNumber" ></label> 
-                            </div>
-                        
-                        </div>
-
-                        <div class="form-group">
-                            <label for=""> Employee Number </label>
-                            <input type="text" class="form-control" name = "EmployeeNumber">
-                            <ul class = "list-group" id = "editResult">
-
-                            </ul>
-                        </div>
-
-                        <div class="form-group">
-                            <label for=""> Date </label>
-                            <input type="text" class="form-control" name = "DatePicker">
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for=""> Description </label>
-                            <input type="text" class="form-control" name = "Description">
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for=""> Amount </label>
-                            <input type="text" class="form-control" name = "Amount">
-                        </div>
-
-                  </form>
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-info" id = "editRecord">Edit Commission</button>
-                </div>
-                </div>
-            </div>
-        </div>
+     
 
 
         <!-- Delete Commission modal-->
 
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Delete Commission</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action = "" method = "post" id = "deleteForm">
-
-                        <div class = "form-group">
-
-                            <div class="text-center">
-                                <input type = "hidden" class = "form-control" name = "CommissionId" data-commissionid>
-
-                                <img src="..." class="img-fluid" alt="" name = "ImagePreview">
-                                <label for = "LabelName" ></label>
-                                <br>
-                                <label for = "LabelNumber" ></label> 
-                            </div>
-                        
-                        </div>
-
-                        <div class="form-group">
-                            <label for=""> Employee Number </label>
-                            <input type="text" class="form-control" name = "EmployeeNumber" readonly>
-                        </div>
-
-                        <div class="form-group">
-                            <label for=""> Date </label>
-                            <input type="text" class="form-control" name = "DatePicker" readonly>
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for=""> Description </label>
-                            <input type="text" class="form-control" name = "Description" readonly>
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for=""> Amount </label>
-                            <input type="text" class="form-control" name = "Amount" readonly>
-                        </div>
-
-                  </form>
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger" id = "deleteRecord">Delete Commission</button>
-                </div>
-                </div>
-            </div>
-        </div>
-
+       
 
 
 
