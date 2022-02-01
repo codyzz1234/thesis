@@ -74,4 +74,17 @@ $(document).ready(function () {
             }
         });
     });
+
+    $(document).on('click','#showPass', function () {
+        if($("#PasswordField").attr('type') == "password"){
+            $("#PasswordField").attr('type','text')
+            $("#showPassIcon").attr('class','fas fa-eye-slash');
+        }
+        else{
+            $("#PasswordField").attr('type','password')
+            $("#showPassIcon").attr('class','fas fa-eye');
+    
+        }
+        
+    });
 });

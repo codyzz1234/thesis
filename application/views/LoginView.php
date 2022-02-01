@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <link rel = "stylesheet" href="<?php echo base_url('assets/toastr/toastr.css') ?>" type="text/css" />
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
         
     </head>
     <body>
@@ -31,9 +33,16 @@
                         <input class="form-control" id="UsernameField" aria-describedby="userNameHelp" placeholder="Enter Username">
                         </div>
                         <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="PasswordField" placeholder="Enter Password">
-                        </div>
+                            <label for="exampleInputPassword1">Password</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="PasswordField" placeholder="Enter Password">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-info" type="button" id = "showPass">
+                                            <i class="fas fa-eye" id = "showPassIcon"></i>
+                                        </button>
+                                    </div>  
+                                </div>
+                            </div>
                         <br>
                         <button type="submit"  class="btn btn-primary btn-lg btn-block loginButton" id = "loginButton">Login</button>
                     </div>
