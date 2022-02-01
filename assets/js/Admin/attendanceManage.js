@@ -37,7 +37,8 @@ $(document).ready(function () {
         var date = new Date();
         var start = new Date(date.getFullYear(), date.getMonth(), 1);
         var end = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-        
+        start = moment(start).format('YYYY-MM-DD');
+        end = moment(end).format('YYYY-MM-DD');
         fetch(start,end)
         
     }
@@ -275,7 +276,8 @@ $(document).ready(function () {
     $('#dateRangePicker').on('apply.daterangepicker', function(ev, picker) {
         var startDate = picker.startDate.format('YYYY-MM-DD');
         var endDate =  picker.endDate.format('YYYY-MM-DD');
- 
+        console.log("start Date is : " + startDate);
+        console.log("end Date is : " + endDate );
         fetch(startDate,endDate)
     });
     // when Clear/Cancel button is hit
@@ -284,12 +286,17 @@ $(document).ready(function () {
     });
 
     //Same as apply.
-    $('#applyDate').on('click', function (e,picker) {
+    $('#applyDate').on('click', function (e) {
         e.preventDefault();
-        var start = $('#dateRangePicker').data('daterangepicker').startDate;
-        var end =  $('#dateRangePicker').data('daterangepicker').endDate;
-       
-        fetch(start,end);
+        let date = $("#dateRangePicker").val();
+        date= date.split('-');
+        let startDate = date[0];
+        let endDate = date[1];
+
+        console.log("start Date is : " + startDate);
+        console.log("end Date is : " + endDate );
+
+        fetch(startDate,endDate);
         
     });
 

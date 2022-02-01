@@ -30,12 +30,14 @@ $(document).ready(function () {
         var date = new Date();
         var start = new Date(date.getFullYear(), date.getMonth(), 1);
         var end = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        start = moment(start).format('YYYY-MM-DD');
+        end = moment(end).format('YYYY-MM-DD');
         fetch(start,end)
     }
     
     function fetch(start,end)
     {
-    
+
         $.ajax({
             type: "POST",
             url: baseurl+"CommissionControl/fetch",
@@ -183,7 +185,6 @@ $(document).ready(function () {
 
     $('#addCommission').click(function (e) { 
         e.preventDefault();
-        console.log(searching.result);
         $('#addForm input[name=DatePicker]').datepicker();
         $('#addModal').modal('show');
     });
@@ -208,10 +209,7 @@ $(document).ready(function () {
         let formData = new FormData(form);
 
         formData.append('LabelNumber',$('#addForm label[for=LabelNumber]').text())
-        for(var pair of formData.entries()){
-            console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
-        }
-
+     
         $.ajax({
             type: "POST",
             url: baseurl+"CommissionControl/addRecord",
@@ -242,14 +240,12 @@ $(document).ready(function () {
         
         $('#addResult').html('');
         let searchField = $('#addForm input[name=EmployeeNumber]').val();
-        console.log("Search Field is" + searchField);
         searchField = searchField.replace(/\s+/g, '');
         if (!searchField.length){
             return;
         }
         else{
             let find = searching.result;
-            console.log(find);
             let expression = new RegExp(searchField,"i");
             for(let key in find){
                 let Image = find[key].Image;
@@ -283,7 +279,6 @@ $(document).ready(function () {
     
     $(document).on('click','.addListResults' ,function () {
         $this = $(this);
-        console.log("Listing");
         let EmployeeId = $this.attr('data-employeeid');
         let EmployeeNumber = $this.attr('data-employeenumber')
         let Name = $this.attr('data-name');
@@ -331,8 +326,6 @@ $(document).ready(function () {
      $('#dateRangePicker').on('apply.daterangepicker', function(ev, picker) {
         var startDate = picker.startDate.format('YYYY-MM-DD');
         var endDate =  picker.endDate.format('YYYY-MM-DD');
-        console.log("start Date is : " + startDate);
-        console.log("end Date is : " + endDate );
         fetch(startDate,endDate)
     });
     // when Clear/Cancel button is hit
@@ -342,10 +335,14 @@ $(document).ready(function () {
 
     $('#applyDate').on('click', function (e,picker) {
         e.preventDefault();
-        var start = $('#dateRangePicker').data('daterangepicker').startDate;
-        var end =  $('#dateRangePicker').data('daterangepicker').endDate;
+        let date = $("#dateRangePicker").val();
+        date= date.split('-');
+        let start = date[0];
+        let end = date[1];
+
+    
+
         fetch(start,end);
-        
     });
 
     //Edit Records
@@ -389,14 +386,12 @@ $(document).ready(function () {
     $('#editForm input[name=EmployeeNumber]').keyup(function (e) { 
         $('#editResult').html('');
         let searchField = $('#editForm input[name=EmployeeNumber]').val();
-        console.log("Search Field is" + searchField);
         searchField = searchField.replace(/\s+/g, '');
         if (!searchField.length){
             return;
         }
         else{
             let find = searching.result;
-            console.log(find);
             let expression = new RegExp(searchField,"i");
             for(let key in find){
                 let Image = find[key].Image;
@@ -428,7 +423,6 @@ $(document).ready(function () {
 
     $(document).on('click','.editListResults' ,function () {
         $this = $(this);
-        console.log("Listing");
         let EmployeeId = $this.attr('data-employeeid');
         let EmployeeNumber = $this.attr('data-employeenumber')
         let Name = $this.attr('data-name');
@@ -448,9 +442,6 @@ $(document).ready(function () {
         let formData = new FormData(form);
         formData.append('LabelNumber',$('#editForm label[for=LabelNumber]').text())
 
-        for(var pair of formData.entries()){
-            console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
-        }
         $.ajax({
             type: "POST",
             url: baseurl+"CommissionControl/editRecord",
