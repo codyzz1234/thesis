@@ -321,7 +321,7 @@ $(document).ready(function () {
         
     });
 
-    $('#deleteRecords').click(function (e) { 
+    $('#deleteRecord').click(function (e) { 
         e.preventDefault();
         var formData = new FormData();
         formData.append('DepartmentId',$('#deleteDepartmentId').val() );
