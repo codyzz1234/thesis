@@ -149,7 +149,7 @@ class CommissionControl extends CI_Controller {
 			$data = array('response' => "none" , 'message' => "no records found");
 		}
 		else if($verify === false){
-			$data = array('response' => "failed" , 'message' => "no records found");
+			$data = array('response' => "failed" , 'message' => "There was an error retrieving the records");
 
 		}
 		else{

@@ -43,6 +43,22 @@ class LogController extends CI_Controller {
 
     public function fetch()
     {
+		$startDate = $this->input->post('StartDate');
+		$endDate =  $this->input->post('EndDate');
+		$this->load->model('LogModel');
+		$verify = $this->LogModel->fetch($startDate,$endDate);
+		if($verify === "none"){
+			$data = array('response' => "none" , 'message' => "no records found");
+		}
+		else if($verify === false){
+			$data = array('response' => "failed" , 'message' => "There was an error in retrieving the records");
+
+		}
+		else{
+			$data = array('response' => "success" , 'posts' => $verify);
+
+		}
+		echo json_encode($data);
 		
     }
 }
