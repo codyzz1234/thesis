@@ -88,6 +88,11 @@
           
             $sql = "INSERT into `attendance`(`EmployeeId`,`EmployeeNumber`,`TimeInStatus`,`Date`,`TimeIn`) VALUES(?,?,?,CURDATE(),CURRENT_TIMESTAMP)";
             $this->db->query($sql,array($EmployeeId,$EmployeeNumber,$status));
+
+            $sql = "UPDATE employees
+                    SET status = ?
+                    WHERE EmployeeId = ?";
+            $this->db->query($sql,array($status,$EmployeeId));
         }
 
         public function recordTimeOut($EmployeeId,$EmployeeNumber,$timeIn,$timeOut)
@@ -130,9 +135,9 @@
                                 
                     ,TimeOutStatus = CASE
                                         WHEN MinutesWorked <= 496
-                                            THEN 1
+                                            THEN 3
                                         ELSE
-                                            2
+                                            4
                                      END
 
                                         
@@ -143,6 +148,14 @@
             $this->db->query($sql,array(
                 $EmployeeId,
                 $EmployeeNumber
+            ));
+
+            $sql  = "UPDATE employees
+                     SET status = 5
+                     WHERE EmployeeId = ?";
+
+            $this->db->query($sql,array(
+                $EmployeeId,
             ));
 
             $message = "Out";

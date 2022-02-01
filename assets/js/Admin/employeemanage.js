@@ -97,7 +97,10 @@ $(document).ready(function() {
                                 {"data":"EmployeeNumber"},
                                 {"data":"FirstName"},
                                 {"data": "LastName"},
-                                {"data": "ContactNumber"},
+                                {
+                                    "data": "ContactNumber",
+                                     width: "5%"
+                                },
                                 {"data": "Department",
                                  "render":function(data,type,row,meta){
                                      var a;
@@ -129,7 +132,7 @@ $(document).ready(function() {
                                 },
                                 {
                                   "targets":10,
-                                  "width":"10%",
+                                  "width":"8%",
                                 },
 
                             ],
