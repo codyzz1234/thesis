@@ -394,7 +394,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" id = "loadConfirmModal">Delete Record</button>
+        <button type="button" class="btn btn-danger" id = "launchConfModal">Delete Record</button>
       </div>
     </div>
   </div>

@@ -365,11 +365,11 @@ $('#editImage').change(function (e) {
         });
     }
 
-    $('#launchConfModal').click(function (e) { 
+  
+    $(document).on('click','#launchConfModal',function (e) {
         e.preventDefault();
-        console.log("hello");
+        $('#confirmModal').modal('show');
     });
-
     
 
 
@@ -388,7 +388,8 @@ $('#editImage').change(function (e) {
             success: function (data) {
                 if(data.response == "success"){
                     toastr["success"]("Alert",data.message);
-                    $('#deleteEmployeeModal').modal('hide'); 
+                    $('#deleteEmployeeModal').modal('hide');
+                    $('#confirmModal').modal('hide');
                     fetch();
                     
                 }
