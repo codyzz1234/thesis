@@ -143,6 +143,13 @@ class CommissionControl extends CI_Controller {
 	{
 		$startDate = $this->input->post('StartDate');
 		$endDate =  $this->input->post('EndDate');
+
+		
+		$startDate = date("Y-m-d",strtotime($startDate));
+		$endDate = date("Y-m-d",strtotime($endDate));
+
+
+
 		$this->load->model('CommissionModel');
 		$verify = $this->CommissionModel->fetch($startDate,$endDate);
 		if($verify === "none"){

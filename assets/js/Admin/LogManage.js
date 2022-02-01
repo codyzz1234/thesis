@@ -116,6 +116,15 @@ $(document).ready(function () {
                                     columns: [0,1,2,3,4]
                                 }
                             },
+
+                            {
+                                text:'Purge Activity Log',
+                                className:"btn btn-danger spaceButtons",
+                                action:function(e,dt,node,config){
+                                    $('#purgeModal').modal('show');
+                                }
+
+                            },
     
                             ],
                             data:data.posts,
@@ -173,12 +182,12 @@ $(document).ready(function () {
      //Date Range Picker
      function setDateRangePicker()
      {
-
-        
          var date = new Date();
          var start = new Date(date.getFullYear(), date.getMonth(), 1);
          var end = new Date(date.getFullYear(), date.getMonth() + 1, 0);
          $('#dateRangePicker').val(date);
+         $('#dateRangePicker2').val(date);
+
          $('#dateRangePicker').daterangepicker({
              startDate:start,
              endDate:end,
@@ -188,7 +197,19 @@ $(document).ready(function () {
                  cancelLabel: 'Clear'
              }
          });
+
+
+         $('#dateRangePicker2').daterangepicker({
+            startDate:start,
+            endDate:end,
+            "applyButtonClasses": "btn-success",
+            "cancelClass": "btn-danger",
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
      }
+
       // When apply button is hit
       $('#dateRangePicker').on('apply.daterangepicker', function(ev, picker) {
          var startDate = picker.startDate.format('YYYY-MM-DD');
@@ -201,6 +222,11 @@ $(document).ready(function () {
      $('#dateRangePicker').on('cancel.daterangepicker', function(ev, picker) {
          $(this).val('');
      });
+
+     $('#dateRangePicker2').on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
+    });
+
  
      $('#applyDate').on('click', function (e,picker) {
          e.preventDefault();
@@ -209,8 +235,32 @@ $(document).ready(function () {
          start = moment(start).format('YYYY-MM-DD');
          end = moment(end).format('YYYY-MM-DD');
          fetch(start,end);
-         
      });
+
+     //Purge Records
+     $(document).on('click','#purgeRecords', function (e) {
+         e.preventDefault();
+         let date = $('#dateRangePicker2').val();
+         date = date.split('-');
+         let startDate = date[0];
+         let endDate = date[1];
+         startDate = moment(startDate).format('YYYY-MM-DD');
+         endDate = moment(endDate).format('YYYY-MM-DD');
+         
+         purgeActivityRecords(startDate,endDate);
+
+     });
+
+     function purgeActivityRecords(startDate,endDate)
+     {
+         console.log('start date is ' + startDate);
+         console.log('end date is ' + endDate);
+         
+     }
+
+
+
+
  
     
 

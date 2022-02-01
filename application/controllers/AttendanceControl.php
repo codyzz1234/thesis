@@ -44,7 +44,12 @@ class AttendanceControl extends CI_Controller {
 	{
 		$start = $this->input->post('StartDate');
 		$end = $this->input->post('EndDate');
-	
+
+
+		$start = date("Y-m-d",strtotime($start));
+		$end = date("Y-m-d",strtotime($end));
+
+		
 		$this->load->model('AttendanceModel');
 		$verify = $this->AttendanceModel->fetch($start,$end);
 		if($verify == "failed"){

@@ -30,15 +30,12 @@ $(document).ready(function () {
         var date = new Date();
         var start = new Date(date.getFullYear(), date.getMonth(), 1);
         var end = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-        start = moment(start).format('YYYY-MM-DD');
-        end = moment(end).format('YYYY-MM-DD');
         fetch(start,end)
     }
     
     function fetch(start,end)
     {
-        start = moment(start).format('YYYY-MM-DD');
-        end = moment(end).format('YYYY-MM-DD');
+    
         $.ajax({
             type: "POST",
             url: baseurl+"CommissionControl/fetch",
@@ -347,8 +344,6 @@ $(document).ready(function () {
         e.preventDefault();
         var start = $('#dateRangePicker').data('daterangepicker').startDate;
         var end =  $('#dateRangePicker').data('daterangepicker').endDate;
-        start = moment(start).format('YYYY-MM-DD');
-        end = moment(end).format('YYYY-MM-DD');
         fetch(start,end);
         
     });
