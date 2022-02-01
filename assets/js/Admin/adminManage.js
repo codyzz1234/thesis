@@ -240,6 +240,10 @@ function loadDeleteForm(id)
     $('#deleteAdminModal').modal('show'); 
 }
 
+$(document).on('click','#launchConfModal', function () {
+    $('#confirmModal').modal('show');
+});
+
 
 $('#deleteRecord').click(function (e) { 
     toasterOptions();
@@ -257,7 +261,8 @@ $('#deleteRecord').click(function (e) {
         success: function (data) {
             if(data.response == "success"){
                 toastr["success"]("Alert",data.message);
-                $('#deleteAdminModal').modal('hide'); 
+                $('#deleteAdminModal').modal('hide');
+                $('#confirmModal').modal('hide');
                 fetch();
             }
             else{

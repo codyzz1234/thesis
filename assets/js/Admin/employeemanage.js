@@ -365,6 +365,13 @@ $('#editImage').change(function (e) {
         });
     }
 
+    $('#launchConfModal').click(function (e) { 
+        e.preventDefault();
+        console.log("hello");
+    });
+
+    
+
 
     $('#deleteRecords').click(function (e) { 
         var id = $('#deleteEmployeeId').val();
