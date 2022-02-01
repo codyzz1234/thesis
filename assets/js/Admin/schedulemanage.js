@@ -377,6 +377,10 @@ $(document).ready(function () {
         $('#deleteScheduleModal').modal('show'); 
     }
 
+    $(document).on('click','#launchConfModal',function (e) {
+        e.preventDefault();
+        $("#confirmModal").modal('show');
+    });
 
     $("#deleteRecord").click(function (e) { 
         e.preventDefault();
@@ -392,6 +396,7 @@ $(document).ready(function () {
             success: function (data) {
                 if(data.response == "success"){
                     toastr["success"]("Alert",data.message);
+                    $("#confirmModal").modal('hide');
                     $('#deleteScheduleModal').modal('hide'); 
                     fetch();
                 }
