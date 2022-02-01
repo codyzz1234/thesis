@@ -74,12 +74,12 @@
                 <input type="hidden" id="departmentHeadId" class="form-control">
 
                 <div class="form-group">
-                    <label for=""> Department Name </label>
+                    <label for=""> Department Name * </label>
                     <input type="text" id="addDepartmentName" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for=""> Department Description </label>
+                    <label for=""> Department Description * </label>
                     <input type="text" id="addDepartmentDescription" class="form-control">
                 </div>
 
@@ -99,8 +99,13 @@
 
                         </ul>
                     </div>
+                </div>
 
 
+                <div class = "form-group">
+                    <div class="text-right">
+                        <label for = ""> All fields marked with * are required </label> 
+                    </div>
                 </div>
 
             </div>
@@ -130,12 +135,12 @@
                 <input type="hidden" id="editDepartmentHeadId" class="form-control">
 
                 <div class="form-group">
-                    <label for=""> Department Name </label>
+                    <label for=""> Department Name * </label>
                     <input type="text" id="editDepartmentName" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for=""> Description </label>
+                    <label for=""> Description * </label>
                     <input type="text" id="editDepartmentDescription" class="form-control">
                 </div>
 
@@ -153,6 +158,12 @@
                         </ul>
                     </div>
 
+                </div>
+
+                <div class = "form-group">
+                    <div class="text-right">
+                        <label for = ""> All fields marked with * are required </label> 
+                    </div>
                 </div>
 
 
@@ -182,12 +193,12 @@
 
 
                 <div class="form-group">
-                    <label for=""> Department Name </label>
+                    <label for=""> Department Name  </label>
                     <input type="text" id="deleteDepartmentName" class="form-control" readonly>
                 </div>
 
                 <div class="form-group">
-                    <label for=""> Description </label>
+                    <label for=""> Description  </label>
                     <input type="text" id="deleteDepartmentDescription" class="form-control" readonly>
                 </div>
 
@@ -196,6 +207,8 @@
                     <label for=""> Department Head </label>
                     <input type="text" id="deleteDepartmentHead" class="form-control" readonly>
                 </div>
+
+       
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
