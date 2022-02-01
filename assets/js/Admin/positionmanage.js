@@ -282,6 +282,9 @@ $(document).ready(function () {
         e.preventDefault();
         var formData = new FormData();
         formData.append('PositionId',$('#delId').val());
+        formData.append('Position',$('#delName').val());
+
+        
 
         $.ajax({
             type: "POST",

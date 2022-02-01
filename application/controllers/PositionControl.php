@@ -124,7 +124,7 @@ class PositionControl extends CI_Controller {
 
 	public function deleteRecord()
 	{
-		$positionId = $this->input->post('PositionId');
+		
 		$this->form_validation->set_rules('PositionId','Position Id','trim|numeric|required|min_length[1]|max_length[50]|callback_verifyId',
 		array(
 			'verifyId'=> "An Attempt to insert an invalid position id has been detected",
@@ -136,7 +136,8 @@ class PositionControl extends CI_Controller {
 
 		else{
 			$ajax_data = array(
-				'positionId' => $this->input->post('PositionId'),
+				'PositionId' => $this->input->post('PositionId'),
+				'Position' => $this->input->post('Position')
 			);
 			$this->load->model('PositionModel');
 			$verify = $this->PositionModel->deletePosition($ajax_data);

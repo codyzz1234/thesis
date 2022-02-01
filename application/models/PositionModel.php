@@ -46,6 +46,8 @@
             }
             else{
                 if($affectedRows > 0){
+                    $type = 1;
+                    $this->activity($ajax_data,$type);
                     return true;
                 }
                 else{
@@ -71,6 +73,8 @@
                     $message = "none";
                 }
                 else{
+                    $type = 2;
+                    $this->activity($ajax_data,$type);
                     $message = "success";
                 }
             }
@@ -82,14 +86,34 @@
             $this->db->trans_start();
             $sql = "DELETE from positions where PositionId = ? ";
             $results = $this->db->query($sql,array(
-                $ajax_data['positionId'],
+                $ajax_data['PositionId'],
             ));
             $this->db->trans_complete();
             if($this->db->trans_status() === false){
                 return false;
             }
             else{
+                $type = 3;
+                $this->activity($ajax_data,$type);
                 return true;
             }
+        }
+        private function activity($ajax_data,$type)
+        {
+            $activity = "";
+            $username = $this->session->userdata('username');
+			$adminId = $this->session->userdata('adminId');
+            if($type == 1){
+                $activity = "Added New Position ".'"'.$ajax_data['Position'].'"';
+            }
+            else if ($type == 2){
+                $activity = "Edited Position ".'"'.$ajax_data['Position'].'"'."Details";
+            }
+            else if ($type == 3){
+                $activity = "Deleted Position ".'"'.$ajax_data['Position'].'"';
+            }
+            $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";
+            $this->db->query($sql,array($adminId,$username,$activity));   
+
         }
     }
