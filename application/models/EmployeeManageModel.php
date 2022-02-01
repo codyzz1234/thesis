@@ -324,7 +324,7 @@
             $username = $this->session->userdata('username');
 			$adminId = $this->session->userdata('adminId');
             if($type == 1){
-                $activity = "Added New Employee ".'"'.$ajax_data['EmployeeNumber'].'"';
+                $activity = "Added New Employee ".'"'.$ajax_data['EmployeeNumber'].'"'." Information";
             }
             else if($type == 2){
                 $activity = "Updated Employee ".'"'.$ajax_data['EmployeeNumber'].'"';

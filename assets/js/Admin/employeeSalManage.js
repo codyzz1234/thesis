@@ -239,9 +239,6 @@ $(document).ready(function () {
     $('#editRecord').click(function (e) { 
         e.preventDefault();
         let formData = new FormData($('#editSalaryForm')[0]);
-
-   
-       
         $.ajax({
             type: "POST",
             url: baseurl+"EmployeeSalaryControl/editSalary",

@@ -49,9 +49,22 @@
                     $message = "none";
                 }
                 else{
+                    $type = 2;
+                    $this->activity($ajax_data,$type);
                     $message = "success";
                 }
             }
             return $message;
+        }
+        private function activity($ajax_data,$type)
+        {
+            $activity = "";
+            $username = $this->session->userdata('username');
+			$adminId = $this->session->userdata('adminId');
+            if($type == 2){
+                $activity = "Updated Employee Salary Of ".'"'.$ajax_data['EmployeeNumber'].'"';
+            }
+            $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";
+            $this->db->query($sql,array($adminId,$username,$activity));   
         }
 }

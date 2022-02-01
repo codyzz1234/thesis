@@ -94,6 +94,7 @@ class EmployeeSalaryControl extends CI_Controller {
 			$this->load->model('EmpSalModel');
 			$ajax_data = array(
 				'EmployeeId' => $this->input->post('EmployeeId'),
+				'EmployeeNumber'=> $this->input->post('EmployeeNumber'),
 				'BaseSalary' => $this->input->post('BaseSalary'),
 				'PagIbig' => $this->input->post('PagIbig'),
 				'SSS' => $this->input->post('SSS'),
