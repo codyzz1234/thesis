@@ -415,8 +415,12 @@ class EmployeeManageController extends CI_Controller {
 	public function deleteRecord()
 	{
 		$id = $this->input->post('id');
+		$ajax_data = array(
+			'id' => $this->input->post('id'),
+			'EmployeeNumber' => $this->input->post('EmployeeNumber')
+		);
 		$this->load->model('EmployeeManageModel');
-		$verify = $this->EmployeeManageModel->deleteRecord($id);
+		$verify = $this->EmployeeManageModel->deleteRecord($id,$ajax_data);
 		if($verify == false){
 			$data = array('response'=> "failed",'message'=> "There was an error in deleting record");
 		}

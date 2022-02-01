@@ -368,12 +368,14 @@ $('#editImage').change(function (e) {
 
     $('#deleteRecords').click(function (e) { 
         var id = $('#deleteEmployeeId').val();
+        let EmployeeNumber = $('#deleteEmployeeNumber').val();
         e.preventDefault();
         $.ajax({
             type: "POST",
             url: baseurl+"EmployeeManageController/deleteRecord",
             data: {
                 id:id,
+                EmployeeNumber:EmployeeNumber,
             },
             dataType: "JSON",
             success: function (data) {

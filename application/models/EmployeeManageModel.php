@@ -278,12 +278,16 @@
         }
 
         
-        public function deleteRecord($id)
+        public function deleteRecord($id,$ajax_data)
         {
             $this->db->trans_start();
             $this->unlinkFile($id);
             $sql = "DELETE from `employees` where `EmployeeId` = ?";
-            $this->db->query($sql,array($id));
+            $this->db->query($sql,array(
+                $ajax_data['id'],
+            ));
+            $type = 3;
+            $this->activity($ajax_data,$type);
             $this->db->trans_complete();
             if ($this->db->trans_status() == FALSE) {
                 return false;
@@ -326,7 +330,7 @@
                 $activity = "Updated Employee ".'"'.$ajax_data['EmployeeNumber'].'"';
             }
             else if ($type == 3){
-
+                $activity = "Deleted Employee ".'"'.$ajax_data['EmployeeNumber'].'"';
             }
             $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";
             $this->db->query($sql,array($adminId,$username,$activity));
