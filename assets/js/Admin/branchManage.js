@@ -257,6 +257,8 @@ $(document).ready(function () {
         loadDeleteForm(dataJson);
     });
 
+
+
     function loadDeleteForm(dataJson)
     {
         $('#deleteForm input[name=BranchId]').data('branchid',dataJson['BranchId']);
@@ -264,6 +266,13 @@ $(document).ready(function () {
         $('#deleteForm input[name=Address]').val(dataJson['Address']);
         $('#delBranchModal').modal('show');
     }
+
+    $(document).on('click','#launchConfModal', function (e) {
+        e.preventDefault();
+        $("#confirmModal").modal('show');
+        
+    });
+
 
     $(document).on('click','#deleteRecord'  ,function () {
 
@@ -286,6 +295,7 @@ $(document).ready(function () {
                 }
                 else{
                     toastr["success"]("Alert",data.message);
+                    $("#confirmModal").modal('hide');
                     $('#delBranchModal').modal('hide');
                     fetch();
                 }
