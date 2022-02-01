@@ -161,6 +161,7 @@ class BranchControl extends CI_Controller {
 
         else{
             $ajax_data = array(
+				'Branch' => $this->input->post('BranchName'),
                 'BranchId' => $this->input->post('BranchId'),
 			);
 			$this->load->model('BranchModel');

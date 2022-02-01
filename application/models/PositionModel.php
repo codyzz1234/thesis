@@ -104,13 +104,13 @@
             $username = $this->session->userdata('username');
 			$adminId = $this->session->userdata('adminId');
             if($type == 1){
-                $activity = "Added New Position ".'"'.$ajax_data['Position'].'"';
+                $activity = "Added new position ".$ajax_data['Position'];
             }
             else if ($type == 2){
-                $activity = "Edited Position ".'"'.$ajax_data['Position'].'"'."Details";
+                $activity = "Edited position ".$ajax_data['Position']." Information";
             }
             else if ($type == 3){
-                $activity = "Deleted Position ".'"'.$ajax_data['Position'].'"';
+                $activity = "Deleted position ".$ajax_data['Position'];
             }
             $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";
             $this->db->query($sql,array($adminId,$username,$activity));   

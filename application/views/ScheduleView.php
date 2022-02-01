@@ -74,7 +74,6 @@
             <div class="modal-body">
                     <div class = "form-group">
                         <label for = ""> Time In</label>
-
                         <div class="input-group">
                                <input type="text" id="addTimeIn" class = "timepicker form-control" >
                             <div class="input-group-append">

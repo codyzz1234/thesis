@@ -43,6 +43,8 @@
             }
             else{
                 if($affectedRows > 0){
+                    $type = 1;
+                    $this->activity($ajax_data,$type);
                     return true;
                 }
                 else{
@@ -67,6 +69,8 @@
                     $message = "none";
                 }
                 else{
+                    $type = 2;
+                    $this->activity($ajax_data,$type);
                     $message = "success";
                 }
             }
@@ -84,7 +88,27 @@
                 return false;
             }
             else{
+                $type = 3;
+                $this->activity($ajax_data,$type);
                 return true;
             }
+        }
+        private function activity($ajax_data,$type)
+        {
+            $activity = "";
+            $username = $this->session->userdata('username');
+			$adminId = $this->session->userdata('adminId');
+            if($type == 1){
+                $activity = "Added new schedule ";
+                
+            }
+            else if ($type == 2){
+                $activity = "Edited schedule ";
+            }
+            else if ($type == 3){
+                $activity = "Deleted schedule";
+            }
+            $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";
+            $this->db->query($sql,array($adminId,$username,$activity));  
         }
 }
