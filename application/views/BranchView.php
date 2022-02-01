@@ -69,14 +69,21 @@
             <div class="modal-body">
                     <form id = "addForm">
                         <div class = "form-group">
-                            <label for = ""> Branch Name </label>
+                            <label for = ""> Branch Name * </label>
                             <input type = "text"  class = "form-control" name = "BranchName">
                         </div>
                         
                         <div class = "form-group">
-                            <label for = ""> Address </label>
+                            <label for = ""> Address * </label>
                             <input type = "text"  class = "form-control" name = "Address">
                         </div>
+
+                        <div class = "form-group">
+                            <div class="text-right">
+                                <label for = ""> All fields marked with * are required </label> 
+                            </div>
+                        </div>
+
                     </form>
             </div>
             <div class="modal-footer">
@@ -103,14 +110,20 @@
                         <input type = "hidden"  class = "form-control" name = "BranchId">
 
                         <div class = "form-group">
-                            <label for = ""> Branch Name </label>
+                            <label for = ""> Branch Name * </label>
                             <input type = "text"  class = "form-control" name = "BranchName">
                         </div>
                     
                         <div class = "form-group">
-                            <label for = ""> Address </label>
+                            <label for = ""> Address * </label>
                             <input type = "text" id = "editDesc" class = "form-control" name = "Address">
                         </div>
+
+                        <div class = "form-group">
+                            <div class="text-right">
+                                <label for = ""> All fields marked with * are required </label> 
+                            </div>
+                       </div>
 
                     </form>
 
