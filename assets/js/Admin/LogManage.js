@@ -241,18 +241,37 @@ $(document).ready(function () {
          date = date.split('-');
          let startDate = date[0];
          let endDate = date[1];
-         startDate = moment(startDate).format('YYYY-MM-DD');
-         endDate = moment(endDate).format('YYYY-MM-DD');
-
+    
          purgeActivityRecords(startDate,endDate);
 
      });
 
      function purgeActivityRecords(startDate,endDate)
      {
-         console.log('start date is ' + startDate);
-         console.log('end date is ' + endDate);
-         
+         $.ajax({
+             type: "POST",
+             url: baseurl+"LogController/purgeRecords",
+             data:{
+                 StartDate:startDate,
+                 EndDate:endDate,
+             },
+             dataType: "JSON",
+             success: function (data) {
+                 if(data.response == "success"){
+                    toastr["success"]("Alert",data.message);
+                    $('#purgeModal').modal('hide');
+                    let date = $("#dateRangePicker").val();
+                    date= date.split('-');
+                    startDate = date[0];
+                    endDate = date[1];
+                    fetch(startDate,endDate);
+                 }
+
+                 else{
+                    toastr["error"]("Alert",data.message);
+                 }
+             }
+         });         
      }
 
 

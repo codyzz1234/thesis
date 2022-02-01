@@ -66,4 +66,26 @@ class LogController extends CI_Controller {
 		echo json_encode($data);
 		
     }
+
+	public function purgeRecords()
+	{
+		$startDate = $this->input->post('StartDate');
+		$endDate = $this->input->post('EndDate');
+
+
+		$startDate = date("Y-m-d",strtotime($startDate));
+		$endDate = date("Y-m-d",strtotime($endDate));
+		$this->load->model('LogModel');
+
+		$verify = $this->LogModel->purgeActivity($startDate,$endDate);
+
+		if($verify === false){
+			$data = array('response' => "failed" , 'message' => "There was an error in retrieving the records");
+		}
+		else{
+			$data = array('response' => "success" , 'message' => "Successfully Purged Logs");
+		}
+		echo json_encode($data);
+
+	}
 }

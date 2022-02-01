@@ -34,4 +34,29 @@
             }
             return $message;
         }
+
+        public function purgeActivity($startDate,$endDate)
+        {
+            $this->db->trans_start();
+            $sql = "DELETE from activitylog
+                    WHERE Date BETWEEN ? AND ?";
+                    
+            $this->db->query($sql,array($startDate,$endDate));
+
+            $affectedRows = $this->db->affected_rows();
+            $this->db->trans_complete();
+
+            if($this->db->trans_status() === false){
+                return false;
+            }
+            else{
+                if($affectedRows < 0){
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+            
+        }
 }?>
