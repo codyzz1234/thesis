@@ -110,29 +110,29 @@
      <div class="modal-body">
         <form action ="" method = "post" id = "addEmployeeForm">
             <div class = "form-group">
-                <label for = ""> First Name </label>
+                <label for = ""> First Name * </label>
                 <input type = "text" id = "FirstName" class = "form-control" name = "FirstName">
             </div>
 
             <div class = "form-group">
-                <label for = ""> Last Name </label>
+                <label for = ""> Last Name * </label>
                 <input type = "text" id = "LastName" class = "form-control" name = "LastName">
             </div>
             
         
 
             <div class = "form-group">
-                <label for = ""> Birthdate </label>
+                <label for = ""> Birthdate * </label>
                 <input type = "text" id = "BirthDate" class = "form-control">
             </div>
 
             <div class = "form-group">
-                <label for = ""> Address </label>
+                <label for = ""> Address * </label>
                 <input type = "text" id = "Address" class = "form-control">
             </div>
 
             <div class = "form-group">
-                <label for = ""> Contact Number </label>
+                <label for = ""> Contact Number * </label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">+63</span>
@@ -142,21 +142,21 @@
             </div>
 
             <div class="form-group">
-                <label for="Select Department">Select Department</label>
+                <label for="Select Department">Select Department *</label>
                 <select class="form-control" id="DepartmentSelector">
                 </option> <option value="0">Select A Department</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="Select Branch">Select Position</label>
+                <label for="Select Branch">Select Position *</label>
                 <select class="form-control" id="PositionSelector">
                 </option> <option value="0">Select A Position</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="Select Department">Select Branch</label>
+                <label for="Select Department">Select Branch *</label>
                 <select class="form-control" id="BranchSelector">
                 </option> <option value="0">Select A Branch</option>
                 </select>
@@ -164,14 +164,14 @@
 
             
             <div class="form-group">
-                <label for="Select Branch">Select Schedule</label>
+                <label for="Select Branch">Select Schedule *</label>
                 <select class="form-control" id="ScheduleSelector">
                 </option> <option value="0">Select A Schedule</option>
                 </select>
             </div>
 
             <div class = "form-group">
-                <label for = "">  Base Salary </label>
+                <label for = "">  Base Salary *</label>
                 <input type = "text" id = "baseSalary" class = "form-control">
             </div>
 
@@ -180,7 +180,7 @@
 
 
             <div class = "form-group">
-                <label for = ""> RFID Number </label>
+                <label for = ""> RFID Number * </label>
                 <input type = "text" id = "RFID" class = "form-control">
             </div>
 
@@ -193,6 +193,11 @@
                 <img src="..." class="img-fluid" alt="" id = "addPreview">
             </div>
 
+            <div class = "form-group">
+              <div class="text-right">
+                <label for = ""> All fields marked with * are required </label> 
+              </div>
+            </div>
 
         </form>
       </div>
@@ -236,37 +241,37 @@
 
 
             <div class = "form-group">
-                <label for = ""> Employee Number </label>
+                <label for = ""> Employee Number  </label>
                 <input type = "text" id = "editEmployeeNumber" class = "form-control" readonly>
              </div>
 
 
             <div class = "form-group">
-                <label for = ""> First Name </label>
+                <label for = ""> First Name * </label>
                 <input type = "text" id = "editFirstName" class = "form-control">
              </div>
 
             <div class = "form-group">
-                <label for = ""> Last Name </label>
+                <label for = ""> Last Name * </label>
                 <input type = "text" id = "editLastName" class = "form-control">
             </div>
             
         
 
             <div class = "form-group">
-                <label for = ""> Birthdate </label>
+                <label for = ""> Birthdate * </label>
                 <input type = "text" id = "editBirthDate" class = "form-control">
             </div>
 
             <div class = "form-group">
-                <label for = ""> Address </label>
+                <label for = ""> Address * </label>
                 <input type = "text" id = "editAddress" class = "form-control">
             </div>
 
     
 
             <div class = "form-group">
-                <label for = ""> Contact Number </label>
+                <label for = ""> Contact Number * </label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">+63</span>
@@ -277,21 +282,21 @@
 
 
             <div class="form-group">
-                <label for="Select Department">Select Department</label>
+                <label for="Select Department">Select Department *</label>
                 <select class="form-control" id="editDepartmentSelector">
                 </option> <option value="0">Select A Department</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="Select Branch">Select Position</label>
+                <label for="Select Branch">Select Position *</label>
                 <select class="form-control" id="editPositionSelector">
                 </option> <option value="0">Select A Position</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="Select Department">Select Branch</label>
+                <label for="Select Department">Select Branch *</label>
                 <select class="form-control" id="editBranchSelector">
                 </option> <option value="0">Select A Branch</option>
                 </select>
@@ -299,19 +304,21 @@
 
             
             <div class="form-group">
-                <label for="Select Branch">Select Schedule</label>
+                <label for="Select Branch">Select Schedule *</label>
                 <select class="form-control" id="editScheduleSelector">
                 </option> <option value="0">Select A Schedule</option>
                 </select>
             </div>
 
-            
-
-
+            <div class = "form-group">
+                <label for = ""> RFID Number *</label>
+                <input type = "text" id = "editRFID" class = "form-control">
+            </div>
 
             <div class = "form-group">
-                <label for = ""> RFID Number </label>
-                <input type = "text" id = "editRFID" class = "form-control">
+              <div class="text-right">
+                <label for = ""> All fields marked with * are required </label> 
+              </div>
             </div>
 
         </form>
