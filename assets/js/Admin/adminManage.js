@@ -127,7 +127,7 @@ function fetch()
     
 }
 //Edit Admin
-$(document).on('click','.editButton', function(e) 
+$(document).on('click','tbody .editButton', function(e) 
 { 
     e.preventDefault();
     $this = $(this);
@@ -204,8 +204,9 @@ $('#editAdminModal').on('hidden.bs.modal', function () {
 });
 
 //Delete Admin
-$(document).on('click','.deleteButton', function(e) 
+$(document).on('click','tbody .deleteButton', function(e) 
 { 
+
     e.preventDefault();
     $this = $(this);
     var id = $this.attr('value');
@@ -235,6 +236,7 @@ function loadDeleteForm(id)
             }
         }
     });
+    console.log("here")
     $('#deleteAdminModal').modal('show'); 
 }
 
@@ -307,6 +309,8 @@ $('#addRecord').click(function (e) {
 
 });
 
+
+
 $(document).on('click','#addShowPass' ,function () {
     if($("#addPassword").attr('type') == "password"){
         $("#addPassword").attr('type','text')
@@ -333,6 +337,7 @@ $(document).on('click','#editShowPass',function () {
     }
     
 });
+
 
 
 
