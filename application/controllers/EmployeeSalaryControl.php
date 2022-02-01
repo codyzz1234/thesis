@@ -31,6 +31,8 @@ class EmployeeSalaryControl extends CI_Controller {
 		if($sessionData != ''){
 			$data = array(
 				'username' => $sessionData,
+				'adminId' => $this->session->userdata('adminId')
+
 			);
 			$this->load->view('template/DashBoardHead',$data);
 			$this->load->view('EmpSalView',$data);
