@@ -530,6 +530,7 @@ $(document).ready(function () {
             data:{
                 CommissionId:commissionId,
                 EmployeeNumber:EmployeeNumber
+                
             },
             dataType: "JSON",
             success: function (data) {
