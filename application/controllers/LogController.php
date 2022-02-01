@@ -41,8 +41,8 @@ class LogController extends CI_Controller {
 		}
 	}
 
-    public function feth()
+    public function fetch()
     {
-
+		
     }
 }

@@ -34,6 +34,7 @@ $(document).ready(function () {
         end = moment(end).format('YYYY-MM-DD');
         fetch(start,end)
     }
+    
     function fetch(start,end)
     {
         start = moment(start).format('YYYY-MM-DD');

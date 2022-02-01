@@ -20,7 +20,7 @@
 
                         <div class="card-body">
 
-                            <div class="row justify-content-start commissionGroup">
+                            <div class="row justify-content-start activityLogGroup">
                                 <div class="col md-4 lg-5">
                                     <div class="input-group">
                                     <input type="text" id = "dateRangePicker" name="daterange"/>
@@ -35,7 +35,7 @@
 
                             
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="commissionsTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" id="logTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 
@@ -324,10 +324,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
-    <!-- date picker -->
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-
-    <script src="<?php echo base_url('assets\js\Admin\commissionmanage.js') ?>"></script>
+    <!-- custom script -->
+    <script src="<?php echo base_url('assets\js\Admin\LogManage.js') ?>"></script>
 
 
 </body>
