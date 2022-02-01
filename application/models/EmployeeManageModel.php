@@ -324,10 +324,10 @@
             $username = $this->session->userdata('username');
 			$adminId = $this->session->userdata('adminId');
             if($type == 1){
-                $activity = "Added New Employee ".$ajax_data['EmployeeNumber']." Information";
+                $activity = "Added New Employee ".$ajax_data['EmployeeNumber'];
             }
             else if($type == 2){
-                $activity = "Updated Employee ".$ajax_data['EmployeeNumber'];
+                $activity = "Updated Employee ".$ajax_data['EmployeeNumber']." Information";
             }
             else if ($type == 3){
                 $activity = "Deleted Employee ".$ajax_data['EmployeeNumber'];

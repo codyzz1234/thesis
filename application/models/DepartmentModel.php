@@ -202,7 +202,7 @@
                 $activity = "Added New Department ".$ajax_data['Department'];
             }
             else if ($type == 2){
-                $activity = "Edited Department ".'"'.$ajax_data['Department'];
+                $activity = "Edited Department ".$ajax_data['Department'];
             }
             else if ($type == 3){
                 $activity = "Deleted Department ".$ajax_data['Department'];
