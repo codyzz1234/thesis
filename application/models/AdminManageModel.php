@@ -163,13 +163,13 @@
             $username = $this->session->userdata('username');
 			$adminId = $this->session->userdata('adminId');
             if($type == 1){
-                $activity = "Added New Administrator ". '"'.$ajax_data['UserName'].'"';
+                $activity = "Added New Administrator ".$ajax_data['UserName'];
             }
             else if($type == 2){
-                $activity = "Updated Administrator ".'"'.$ajax_data['UserName'].'"'. " Credentials";
+                $activity = "Updated Administrator ".$ajax_data['UserName']." Credentials";
             }
             else if($type == 3){
-                $activity = "Deleted Administrator ".'"'.$ajax_data['UserName'].'"';
+                $activity = "Deleted Administrator ".$ajax_data['UserName'];
             }
 
             $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";

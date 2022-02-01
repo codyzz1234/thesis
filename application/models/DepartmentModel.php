@@ -199,13 +199,13 @@
             $username = $this->session->userdata('username');
 			$adminId = $this->session->userdata('adminId');
             if($type == 1){
-                $activity = "Added New Department ".'"'.$ajax_data['Department'].'"';
+                $activity = "Added New Department ".$ajax_data['Department'];
             }
             else if ($type == 2){
-                $activity = "Edited Department ".'"'.$ajax_data['Department'].'"';
+                $activity = "Edited Department ".'"'.$ajax_data['Department'];
             }
             else if ($type == 3){
-                $activity = "Deleted Department ".'"'.$ajax_data['Department'].'"';
+                $activity = "Deleted Department ".$ajax_data['Department'];
             }
             $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";
             $this->db->query($sql,array($adminId,$username,$activity));   

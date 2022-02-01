@@ -62,7 +62,7 @@
             $username = $this->session->userdata('username');
 			$adminId = $this->session->userdata('adminId');
             if($type == 2){
-                $activity = "Updated Employee Salary Of ".'"'.$ajax_data['EmployeeNumber'].'"';
+                $activity = "Updated Employee Salary Of ".$ajax_data['EmployeeNumber'];
             }
             $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";
             $this->db->query($sql,array($adminId,$username,$activity));   
