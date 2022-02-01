@@ -99,24 +99,30 @@
             </div>
 
             <div class = "form-group">
-                <label for = ""> Username </label>
+                <label for = ""> Username * </label>
                 <input type = "text" id = "editUserName" class = "form-control">
             </div>
 
             <div class = "form-group">
-                <label for = ""> Password </label>
+                <label for = ""> Password * </label>
                 <input type = "password" id = "editPassword" class = "form-control">
             </div>
 
             
             <div class = "form-group">
-                <label for = ""> First Name </label>
+                <label for = ""> First Name * </label>
                 <input type = "text" id = "editFirstName" class = "form-control">
             </div>
 
             <div class = "form-group">
-                <label for = ""> Last Name </label>
+                <label for = ""> Last Name * </label>
                 <input type = "text" id = "editLastName" class = "form-control">
+            </div>
+            
+            <div class = "form-group">
+              <div class="text-right">
+                <label for = ""> All fields marked with * are required </label> 
+              </div>
             </div>
 
         </form>
@@ -144,25 +150,32 @@
         <form action ="" method = "post" id = "addForm">
 
             <div class = "form-group">
-                <label for = ""> Username </label>
+                <label for = ""> Username * </label>
                 <input type = "text" id = "addUserName" class = "form-control">
             </div>
 
             <div class = "form-group">
-                <label for = ""> Password </label>
+                <label for = ""> Password * </label>
                 <input type = "password" id = "addPassword" class = "form-control">
             </div>
 
             
             <div class = "form-group">
-                <label for = ""> First Name </label>
+                <label for = ""> First Name * </label>
                 <input type = "text" id = "addFirstName" class = "form-control">
             </div>
 
             <div class = "form-group">
-                <label for = ""> Last Name </label>
+                <label for = ""> Last Name * </label>
                 <input type = "text" id = "addLastName" class = "form-control">
             </div>
+
+            <div class = "form-group">
+              <div class="text-right">
+                <label for = ""> All fields marked with * are required </label> 
+              </div>
+            </div>
+
         </form>
     </div>
       <div class="modal-footer">
