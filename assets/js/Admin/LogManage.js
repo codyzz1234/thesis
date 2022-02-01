@@ -129,7 +129,7 @@ $(document).ready(function () {
                                 {
                                     title:"Admin Id",
                                     data:"AdminId",
-                                    width:"3%",
+                                    width:"10%",
                                 },
                                 {
                                     title:"Admin Username",

@@ -10,7 +10,7 @@
         public function fetch($startDate,$endDate)
         {
             $this->db->trans_start();
-            $sql = "SELECT id, AdminId,Username, Activity, Date, Time
+            $sql = "SELECT id, AdminId,Username, Activity, Date, TIME_FORMAT(Time,'%H:%i') as Time
             from activitylog
             WHERE Date between ? AND ?
             ORDER BY id DESC";
