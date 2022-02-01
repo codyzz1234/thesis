@@ -73,7 +73,7 @@
             </div>
             <div class="modal-body">
                     <div class = "form-group">
-                        <label for = ""> Time In</label>
+                        <label for = ""> Time In *</label>
                         <div class="input-group">
                                <input type="text" id="addTimeIn" class = "timepicker form-control" >
                             <div class="input-group-append">
@@ -85,7 +85,7 @@
                     </div>
             
                     <div class = "form-group">
-                        <label for = ""> Time Out</label>
+                        <label for = ""> Time Out *</label>
                         <div class="input-group">
                             <input type = "text" id = "addTimeOut" class = "timepicker form-control" >
                             <div class="input-group-append">
@@ -94,6 +94,12 @@
                             </div>
                      </div> 
                   </div>
+
+                  <div class = "form-group">
+                        <div class="text-right">
+                            <label for = ""> All fields marked with * are required </label> 
+                        </div>
+                   </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-success" id = "addRecord">Add Schedule</button>
@@ -115,7 +121,7 @@
             </div>
             <div class="modal-body">
                     <div class = "form-group">
-                        <label for = ""> Time In</label>
+                        <label for = ""> Time In *</label>
                         <input type = "hidden" id = "editSchedId">
                         <div class="input-group">
                                <input type="text" id="editTimeIn" class = "timepicker form-control" >
@@ -128,7 +134,7 @@
                     </div>
             
                     <div class = "form-group">
-                        <label for = ""> Time Out</label>
+                        <label for = ""> Time Out *</label>
                         <div class="input-group">
                             <input type = "text" id = "editTimeOut" class = "timepicker form-control" >
                             <div class="input-group-append">
@@ -137,6 +143,13 @@
                             </div>
                      </div> 
                   </div>
+
+                  <div class = "form-group">
+                        <div class="text-right">
+                            <label for = ""> All fields marked with * are required </label> 
+                        </div>
+                  </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-info" id = "editRecord">Edit Schedule</button>
