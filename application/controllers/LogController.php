@@ -45,6 +45,11 @@ class LogController extends CI_Controller {
     {
 		$startDate = $this->input->post('StartDate');
 		$endDate =  $this->input->post('EndDate');
+
+		$startDate = date("Y-m-d",strtotime($startDate));
+		$endDate = date("Y-m-d",strtotime($endDate));
+
+
 		$this->load->model('LogModel');
 		$verify = $this->LogModel->fetch($startDate,$endDate);
 		if($verify === "none"){

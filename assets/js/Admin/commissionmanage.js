@@ -339,9 +339,6 @@ $(document).ready(function () {
         date= date.split('-');
         let start = date[0];
         let end = date[1];
-
-    
-
         fetch(start,end);
     });
 

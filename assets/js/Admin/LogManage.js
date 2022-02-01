@@ -39,8 +39,7 @@ $(document).ready(function () {
 
     function fetch(start,end)
     {
-        start = moment(start).format('YYYY-MM-DD');
-        end = moment(end).format('YYYY-MM-DD');
+       
         $.ajax({
             type: "POST",
             url: baseurl+"LogController/fetch",
@@ -214,8 +213,6 @@ $(document).ready(function () {
       $('#dateRangePicker').on('apply.daterangepicker', function(ev, picker) {
          var startDate = picker.startDate.format('YYYY-MM-DD');
          var endDate =  picker.endDate.format('YYYY-MM-DD');
-         console.log("start Date is : " + startDate);
-         console.log("end Date is : " + endDate );
          fetch(startDate,endDate)
      });
      // when Clear/Cancel button is hit
@@ -228,12 +225,12 @@ $(document).ready(function () {
     });
 
  
-     $('#applyDate').on('click', function (e,picker) {
+     $('#applyDate').on('click', function (e) {
          e.preventDefault();
-         var start = $('#dateRangePicker').data('daterangepicker').startDate;
-         var end =  $('#dateRangePicker').data('daterangepicker').endDate;
-         start = moment(start).format('YYYY-MM-DD');
-         end = moment(end).format('YYYY-MM-DD');
+         let date = $("#dateRangePicker").val();
+         date= date.split('-');
+         let start = date[0];
+         let end = date[1];
          fetch(start,end);
      });
 
@@ -246,7 +243,7 @@ $(document).ready(function () {
          let endDate = date[1];
          startDate = moment(startDate).format('YYYY-MM-DD');
          endDate = moment(endDate).format('YYYY-MM-DD');
-         
+
          purgeActivityRecords(startDate,endDate);
 
      });
