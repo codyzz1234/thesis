@@ -76,14 +76,21 @@
             <div class="modal-body">
                     <form id = "addForm">
                         <div class = "form-group">
-                            <label for = ""> Position Name </label>
+                            <label for = ""> Position Name * </label>
                             <input type = "text" id = "addPositionName" class = "form-control">
                         </div>
                         
                         <div class = "form-group">
-                            <label for = ""> Position Description </label>
+                            <label for = ""> Position Description * </label>
                             <input type = "text" id = "addPositionDescription" class = "form-control">
                         </div>
+
+                        <div class = "form-group">
+                            <div class="text-right">
+                                <label for = ""> All fields marked with * are required </label> 
+                            </div>
+                        </div>
+
                 
                     </form>
                    
@@ -111,13 +118,19 @@
             <div class="modal-body">
                     <input type = "hidden" id = "editPositionId" class = "form-control">
                     <div class = "form-group">
-                        <label for = ""> Position Name </label>
+                        <label for = ""> Position Name * </label>
                         <input type = "text" id = "editPositionName" class = "form-control">
                     </div>
                     
                     <div class = "form-group">
-                        <label for = ""> Position Description </label>
+                        <label for = ""> Position Description * </label>
                         <input type = "text" id = "editPositionDescription" class = "form-control">
+                    </div>
+
+                    <div class = "form-group">
+                        <div class="text-right">
+                            <label for = ""> All fields marked with * are required </label> 
+                        </div>
                     </div>
 
                
@@ -146,12 +159,12 @@
             <div class="modal-body">
                     <input type = "hidden" id = "delId" class = "form-control">
                     <div class = "form-group">
-                        <label for = "" > Position Name </label>
+                        <label for = "" > Position Name  </label>
                         <input type = "text" id = "delName" class = "form-control" readonly>
                     </div>
                     
                     <div class = "form-group">
-                        <label for = ""> Position Description </label>
+                        <label for = ""> Position Description  </label>
                         <input type = "text" id = "delDesc" class = "form-control" readonly>
                     </div>
 
