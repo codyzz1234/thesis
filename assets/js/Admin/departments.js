@@ -154,7 +154,7 @@ $(document).ready(function () {
 
                                 {
                                     title:"Number Of Employees",
-                                    data:"NumberOfEmployees",
+                                    data:"NumberOfEmployees",                        
                                     "render":function(data,type,row,meta){
                                         var a = '<div class = "text-center"><h6>'+data+'</h6> </div>'
                                         return a;
