@@ -115,8 +115,17 @@ $(document).ready(function() {
                                 },
                                 {"data": "Branch"},
                                 {"data": "Position"},
-                                {"data": "TimeIn"},
-                                {"data": "TimeOut"},
+
+                                {
+                                    "data": "TimeIn",
+                                     width:"8%"
+                                },
+
+                                {
+                                    "data": "TimeOut",
+                                     width:"8%"
+
+                                },
                                
                                 {"data":"EmployeeId",
                                 "render": function ( data, type, row, meta ) {
