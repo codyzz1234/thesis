@@ -159,7 +159,13 @@ class AdminManageController extends CI_Controller {
 	array(
 		'is_unique'=>'This username has already been taken, sad life this is'
 	));
-		$this->form_validation->set_rules('Password', 'Password', 'trim|required|min_length[6]|max_length[30]');
+		$this->form_validation->set_rules('Password', 'Password', 'trim|required|min_length[6]|max_length[30]|callback_passCheck',array(
+			'passCheck' => "The password should be at least 6 characters long. <br/>
+							The password has at least one uppercase letter. <br/>
+							The password has at least one lowercase letter. <br/>
+							The password has at least one digit <br/>.
+							The password has at least one special character. <br/>"
+		));
 
 		if ($this->form_validation->run() == FALSE) {
 			$data = array('response' => 'failed', 'message' => validation_errors());
@@ -206,5 +212,18 @@ class AdminManageController extends CI_Controller {
 			$data = array('response'=>'success','message'=>'Administrator Deleted');
 		}
 		echo json_encode($data);
+	}
+	// Password Complexiy Check
+	public function passCheck()
+	{
+		$password = $this->input->post('Password');
+
+		if(!preg_match('/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,})/',$password)){
+			return false;
+		}
+		else{
+			return true;
+		}
+	
 	}
 }

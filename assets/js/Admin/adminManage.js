@@ -307,6 +307,35 @@ $('#addRecord').click(function (e) {
 
 });
 
+$(document).on('click','#addShowPass' ,function () {
+    if($("#addPassword").attr('type') == "password"){
+        $("#addPassword").attr('type','text')
+        $("#addShowIcon").attr('class','fas fa-eye-slash');
+    }
+    else{
+        $("#addPassword").attr('type','password')
+        $("#addShowIcon").attr('class','fas fa-eye');
+        
+
+    }
+
+});
+
+$(document).on('click','#editShowPass',function () {
+    if($("#editPassword").attr('type') == "password"){
+        $("#editPassword").attr('type','text')
+        $("#editShowIcon").attr('class','fas fa-eye-slash');
+    }
+    else{
+        $("#editPassword").attr('type','password')
+        $("#editShowIcon").attr('class','fas fa-eye');
+
+    }
+    
+});
+
+
+
 
     
 });

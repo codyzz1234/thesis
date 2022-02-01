@@ -105,7 +105,15 @@
 
             <div class = "form-group">
                 <label for = ""> Password * </label>
-                <input type = "password" id = "editPassword" class = "form-control">
+
+                <div class="input-group">
+                  <input type = "password" id = "editPassword" class = "form-control">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-info" type="button" id = "editShowPass">
+                            <i class="fas fa-eye" id = "editShowIcon"></i>
+                        </button>
+                      </div>  
+                </div>  
             </div>
 
             
@@ -118,7 +126,7 @@
                 <label for = ""> Last Name * </label>
                 <input type = "text" id = "editLastName" class = "form-control">
             </div>
-            
+
             <div class = "form-group">
               <div class="text-right">
                 <label for = ""> All fields marked with * are required </label> 
@@ -156,8 +164,14 @@
 
             <div class = "form-group">
                 <label for = ""> Password * </label>
-                <input type = "password" id = "addPassword" class = "form-control">
-            </div>
+                   <div class="input-group">
+                        <input type = "password" id = "addPassword" class = "form-control">
+                        <div class="input-group-append">
+                               <button class="btn btn-outline-info" type="button" id = "addShowPass">
+                                  <i class="fas fa-eye" id = "addShowIcon"></i>
+                               </button>
+                        </div>   
+                  </div>
 
             
             <div class = "form-group">
