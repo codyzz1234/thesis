@@ -208,9 +208,12 @@ $(document).ready(function () {
         e.preventDefault();
         let form = $('#addForm')[0];
         let formData = new FormData(form);
+
+        formData.append('LabelNumber',$('#addForm label[for=LabelNumber]').text())
         for(var pair of formData.entries()){
             console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
         }
+
         $.ajax({
             type: "POST",
             url: baseurl+"CommissionControl/addRecord",
@@ -447,6 +450,8 @@ $(document).ready(function () {
         e.preventDefault();
         let form = $('#editForm')[0];
         let formData = new FormData(form);
+        formData.append('LabelNumber',$('#editForm label[for=LabelNumber]').text())
+
         for(var pair of formData.entries()){
             console.log("Key is: " +pair[0]+', Value is: '+pair[1]);
         }
@@ -518,11 +523,13 @@ $(document).ready(function () {
     $('#deleteRecord').click(function (e) { 
         e.preventDefault();
         var commissionId = $('#deleteForm input[name=CommissionId]').val();
+        let EmployeeNumber = $('#deleteForm input[name=EmployeeNumber]').val();
         $.ajax({
             type: "POST",
             url: baseurl+"CommissionControl/deleteRecord",
             data:{
                 CommissionId:commissionId,
+                EmployeeNumber:EmployeeNumber
             },
             dataType: "JSON",
             success: function (data) {

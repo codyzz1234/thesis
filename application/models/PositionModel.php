@@ -107,7 +107,7 @@
                 $activity = "Added new position ".$ajax_data['Position'];
             }
             else if ($type == 2){
-                $activity = "Edited position ".$ajax_data['Position']." Information";
+                $activity = "Edited position ".$ajax_data['Position']." details";
             }
             else if ($type == 3){
                 $activity = "Deleted position ".$ajax_data['Position'];

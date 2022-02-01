@@ -29,7 +29,7 @@
             return $message;
         }
 
-        public function addRecord($ajax_data)
+        public function addRecord($ajax_data,$empNumber)
         {
             $this->db->trans_start();
             $this->db->set($ajax_data);
@@ -44,6 +44,8 @@
             }
             else{
                 if($affectedRows > 0){
+                    $type = 1;
+                    $this->activity($empNumber,$type);
                     return true;
                 }
                 else{
@@ -80,7 +82,7 @@
             return $message;
         }
 
-        public function editRecord($ajax_data)
+        public function editRecord($ajax_data,$empNumber)
         {
             $message = "";
             $this->db->trans_start();
@@ -99,13 +101,15 @@
                     $message = "none";
                 }
                 else{
+                    $type = 2;
+                    $this->activity($empNumber,$type);
                     $message = "success";
                 }
             }
             return $message;
         }
 
-        public function deleteRecord($commissionId)
+        public function deleteRecord($commissionId,$empNumber)
         {
             $this->db->trans_start();
             $sql = "DELETE from commissions
@@ -121,10 +125,33 @@
                     return false;
                 }
                 else{
+                    $type = 3;
+                    $this->activity($empNumber,$type);
                     return true;
                 }
             }
         }
-    }
+        private function activity($empNumber,$type)
+        {
+            $activity = "";
+            $username = $this->session->userdata('username');
+			$adminId = $this->session->userdata('adminId');
+            if($type == 1){
+                $activity = "Added new Commission for employee ".$empNumber;
+            }
+            else if($type == 2){
+                $activity = "Edited commission of employee ".$empNumber;
+            }
+            else if ($type == 3){
+                $activity = "Deleted commission of employee ".$empNumber;
 
+            }
+            $sql = "INSERT into activitylog(AdminId,Username,Activity,Date) VALUES(?,?,?,CURRENT_DATE)";
+            $this->db->query($sql,array($adminId,$username,$activity));
+    
+        }
+
+
+    }
+   
 ?>  

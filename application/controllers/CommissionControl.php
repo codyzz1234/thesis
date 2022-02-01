@@ -79,8 +79,10 @@ class CommissionControl extends CI_Controller {
 				'Amount' => $this->input->post('Amount'),
 				'Description' =>$this->input->post('Description')
 			);
+			
 			$this->load->model('CommissionModel');
-			$verify = $this->CommissionModel->addRecord($ajax_data);
+			$empNumber = $this->input->post('LabelNumber');
+			$verify = $this->CommissionModel->addRecord($ajax_data,$empNumber);
 			if($verify === true){
 				$data = array('response' => 'success', 'message' => "Commission added successfully");
 			}
@@ -112,7 +114,6 @@ class CommissionControl extends CI_Controller {
 		else{
 			$date = $this->input->post('DatePicker');
 			$date = date('Y-m-d',strtotime($date));
-		
 			$ajax_data = array(
 				'CommissionId' => $this->input->post('CommissionId'),
 				'EmployeeId' => $this->input->post('EmployeeId'),
@@ -120,8 +121,9 @@ class CommissionControl extends CI_Controller {
 				'Amount' => $this->input->post('Amount'),
 				'Description' =>$this->input->post('Description')
 			);
+			$empNumber = $this->input->post('LabelNumber');
 			$this->load->model('CommissionModel');
-			$verify = $this->CommissionModel->editRecord($ajax_data);
+			$verify = $this->CommissionModel->editRecord($ajax_data,$empNumber);
 			if($verify === "none"){
 				$data = array('response' => 'none', 'message' => "No Changes Made");
 			}
@@ -177,8 +179,9 @@ class CommissionControl extends CI_Controller {
 	public function deleteRecord()
 	{
 		$commissionId = $this->input->post('CommissionId');
+		$empNumber = $this->input->post('EmployeeNumber');
 		$this->load->model('CommissionModel');
-		$verify = $this->CommissionModel->deleteRecord($commissionId);
+		$verify = $this->CommissionModel->deleteRecord($commissionId,$empNumber);
 		if($verify === false){
 			$data = array('response' => "failed",'message' => "There was an error in deleting the commission");
 		}
