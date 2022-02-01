@@ -56,9 +56,12 @@ $(document).ready(function () {
 
 
 
+
      //Date Range Picker
      function setDateRangePicker()
      {
+
+        
          var date = new Date();
          var start = new Date(date.getFullYear(), date.getMonth(), 1);
          var end = new Date(date.getFullYear(), date.getMonth() + 1, 0);
